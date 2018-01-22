@@ -28,10 +28,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.ie.min.css" />
 <![endif]-->
 
-  
-<!-- Bootstrap core CSS -->
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.css" rel="stylesheet">
-
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
   pre:not([class]) {
@@ -241,39 +237,129 @@ $(document).ready(function () {
 </div>
 
 
-<p><br/><br/></p>
-<div id="scpo-labor-homeworks" class="section level1">
-<h1>ScPo Labor Homeworks</h1>
-<p>This contains the homeworks for <em>Graduate Labor</em> at ScPo. The corresponding github repository can be found <a href="https://github.com/floswald/ScPo-Labor">here</a>. Please note that this site will get updated with more homeworks as we move along.</p>
-<!-- Place this tag where you want the button to render. -->
-<p><a class="github-button" href="https://github.com/floswald/ScPo-Labor/archive/master.zip" data-icon="octicon-cloud-download" data-style="mega" aria-label="Download floswald/ScPo-Labor on GitHub">Download</a> <a class="github-button" href="https://github.com/floswald/ScPo-Labor/fork" data-icon="octicon-repo-forked" data-style="mega" data-count-href="/floswald/ScPo-Labor/network" data-count-api="/repos/floswald/ScPo-Labor#forks_count" data-count-aria-label="# forks on GitHub" aria-label="Fork floswald/ScPo-Labor on GitHub">Fork</a></p>
-<div id="start" class="section level2">
-<h2>Getting started</h2>
-<p>You will first need to install <code>R</code> and <code>Rstudio</code>. To do use the following links:</p>
-<ul>
-<li><a href="https://cran.rstudio.com/">R</a></li>
-<li><a href="https://www.rstudio.com/products/rstudio/download/">RStudio</a></li>
-</ul>
-<div id="new-to-r" class="section level3">
-<h3>New to R?</h3>
-<p>There are gazillions of R tutorials online. <a href="http://scs.math.yorku.ca/index.php/R:_Getting_started_with_R#Starting_to_learn_R:_Tutorials_on_the_Web">this seems like a good place to start</a>.</p>
-<p>I like to use the data.table package. Here is a <a href="https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.pdf">tutorial</a> and a <a href="https://s3.amazonaws.com/assets.datacamp.com/img/blog/data+table+cheat+sheet.pdf">cheatsheet</a> for <code>data.table</code></p>
-<p>Here is a <a href="http://www.ceb-institute.org/bbs/wp-content/uploads/2011/09/handout_ggplot2.pdf">tutorial</a>, a <a href="http://www.rstudio.com/wp-content/uploads/2015/12/ggplot2-cheatsheet-2.0.pdf">cheatsheet</a> and the <a href="http://docs.ggplot2.org/current/">full documentation</a> for <code>ggplot2</code>.</p>
-<p>You can install most packages directly:</p>
-<pre class="r"><code>install.packages(c(&quot;devtools&quot;,&quot;data.table&quot;,&quot;ggplot2&quot;,&quot;plyr&quot;))</code></pre>
-<p>Other packages need to be installed from github using the devtools package:</p>
-<pre class="r"><code>require(devtools)
-install_github(&quot;tlamadon/RcppSimpleTensor&quot;)</code></pre>
+<div id="dynamic-labor-supply" class="section level1">
+<h1>Dynamic labor supply</h1>
+<div id="a-simple-numerical-model" class="section level2">
+<h2>A simple numerical model</h2>
+<p>We are going to cover the first steps to solving and simulating a dynamic programing problem. We consider a labor supply problem with asset and simple choices over hours. We will allow for sthochastic productivity. We are going to consider here a finite horizon problem.</p>
+<p>The decision problem for the agent is to choose every period, how much to consume, how much to work and how much to save. We are going to solve this at a yearly frequency over 50 years.</p>
+<div id="setting-the-environment" class="section level3">
+<h3>Setting the environment</h3>
+<p>The state space is given by age, producitivity and asset level. We consider the separable utility function over leisure and consumption. We fix all parameters. WE also consider a simple end of life value.</p>
+<p>We prepare the wage realizations in each state and the value function.</p>
+<pre class="r"><code>p    = list(nx=30,na=40,nb=100,nh=10,gamma = 2, eta=-1.5 , lambda=0.1,r=0.02,beta=5,fc=1)
+V    = array(0,c(p$na,p$nx,p$nb))
+X    = exp(  qnorm((1:(p$nx))/(p$nx+1)))  
+B    = c(0,exp(seq(log(min(X)),log(max(X/p$r)),l=p$nb-1)))
+H    = seq(0,1,l=p$nh)
+wage = X
+
+# transition matrix on productivity
+X1 = spread(X,1,p$nx);X2 = spread(X,2,p$nx);
+Gx = dnorm(log(X2)-log(X1))
+Gx = Gx/spread(rowSums(Gx),2,p$nx)
+persp(Gx)</code></pre>
+<p><img src="dynamic-labor-supply_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>We then solve the dynamic problem recursively. In the last period, we let the agent choose a single consumption and hours value that will make asset level 0.</p>
+<p>First step is to solve the final period problem. We assume that the agent has a access to a producitivity which is a thrid of the last period one, and then choose hours and consumption to make asset to 0.</p>
+<pre class="r"><code>t.final = tensorFunction(R[b,w,h] ~  ((W[w]*H[h] + r*B[b])^(1+eta))/(1+eta) - beta*((H[h])^(1+gamma))/(1+gamma) - I(H[h]&gt;0)*fc)
+VV      = t.final(X/3,H,B,p$r,p$eta,p$beta,p$gamma,p$fc)
+Vf      = aaply(VV,c(1,2),max,na.rm=T)
+
+# plotting the function
+ggplot(melt(Vf,c(&quot;b&quot;,&quot;x&quot;)),aes(x=b,y=value,color=x,group=x))+geom_line() + theme_bw() + scale_x_continuous(&quot;asset position&quot;)</code></pre>
+<p><img src="dynamic-labor-supply_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>We then solve the values recursively</p>
+<pre class="r"><code>V[p$na,,] = t(Vf)/p$r
+
+# prepare tensor that computes the Q value for each b,x,h,b2
+t.cur = tensorFunction(R[b,x,h,b2] ~  ((W[x]*H[h] - B[b2] + (1+r)*B[b])^(1+eta))/(1+eta) - beta*((H[h])^(1+gamma))/(1+gamma) + rho*VV[x,b2] - I(H[h]&gt;0)*fc )
+
+B.pol = V*0
+H.pol = V*0
+
+for (age in (p$na-1):1) {
+  # compute expected value tomorrow
+  EV = Gx %*% V[age+1,,]
+  # compute values at each control variables
+  Vn = t.cur(W=X*exp(p$lambda * age/p$na) ,H,B,EV,p$r,p$eta,p$beta,p$gamma,1/(1+p$r),p$fc)
+  # we need to choose the asset tomorrow and hours (which then gives consumption)
+  V[age,,] = t(aaply(Vn,c(1,2),max,na.rm=T))
+  # extract policy
+  pol = aaply(Vn,c(1,2),function(A) which(A==max(A,na.rm=T),arr.ind = T,useNames = T))
+  B.pol[age,,] = t(pol[,,2])
+  H.pol[age,,] = t(pol[,,1])
+  cat(&quot;.&quot;)
+}</code></pre>
+<pre><code>## .......................................</code></pre>
+<pre class="r"><code># let&#39;s plot hours at fix x and b over time
+rr= data.table(melt(H.pol[,,25],c(&quot;age&quot;,&quot;x&quot;)))
+ggplot(rr[x %in% c(5,10,15,20,25)][age&lt;40],aes(x=age,y=value,color=x,group=x)) + geom_line()</code></pre>
+<p><img src="dynamic-labor-supply_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
-<div id="submitting-homeworks" class="section level3">
-<h3>Submitting Homeworks</h3>
-<p>There are 2 ways. In both cases please make sure to write who was in the group.</p>
-<ol style="list-style-type: decimal">
-<li>You can either fork this repo (button above), do your homework on your fork <strong>in the .Rmd file of the homework</strong> and submit as a pull request <a href="https://github.com/floswald/ScPo-Labor">on this github repo</a></li>
-<li>Or you down just download this (again button above), and send me your homework (again, the corresponding .Rmd file which you changed with your work) as a direct message on our <strong>Slack channel</strong>.</li>
-</ol>
-<!-- Place this tag in your head or just before your close body tag. -->
-<script async defer src="https://buttons.github.io/buttons.js"></script>
+<div id="simulating-data" class="section level3">
+<h3>Simulating data</h3>
+<p>Finally we simulate some data</p>
+<pre class="r"><code>simdata = data.frame()
+D = array(0,c(p$na-1,6))
+colnames(D) = c(&quot;i&quot;,&quot;x&quot;,&quot;b&quot;,&quot;h&quot;,&quot;b2&quot;,&quot;age&quot;)
+  
+for (i in 1:1000) {
+  x=sample.int(p$nx,1)
+  b=1
+  for (age in 1:(p$na-1)) {
+    x = sample.int(p$nx,1,prob=Gx[x,])
+    D[age,1] = i
+    D[age,2] = x
+    D[age,3] = b
+    D[age,4] = H.pol[age,x,b]
+    D[age,5] = B.pol[age,x,b]
+    D[age,6] = age
+    b        = B.pol[age,x,b]
+  }
+  simdata=rbind(simdata,data.frame(D))
+}
+simdata = data.table(simdata)
+simdata[,lw := log(X[x]),x]
+simdata[,lb := log(B[b]),b]
+
+# choice of hours
+ggplot(simdata,aes(x=age,y=h)) + geom_smooth() +theme_bw()</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;gam&#39;</code></pre>
+<p><img src="dynamic-labor-supply_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code># compute asset 
+ggplot(simdata,aes(x=age,y=lb)) + geom_smooth()</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;gam&#39;</code></pre>
+<pre><code>## Warning: Removed 2007 rows containing non-finite values (stat_smooth).</code></pre>
+<p><img src="dynamic-labor-supply_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+<pre class="r"><code>simdata[,hist(h)]</code></pre>
+<p><img src="dynamic-labor-supply_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<pre><code>## $breaks
+##  [1]  1.0  1.5  2.0  2.5  3.0  3.5  4.0  4.5  5.0  5.5  6.0  6.5  7.0  7.5
+## [15]  8.0  8.5  9.0  9.5 10.0
+## 
+## $counts
+##  [1] 16384     0     0     0     0     0     0   102     0  2707     0
+## [12]  1524     0  5256     0  5093     0  7934
+## 
+## $density
+##  [1] 0.840205128 0.000000000 0.000000000 0.000000000 0.000000000
+##  [6] 0.000000000 0.000000000 0.005230769 0.000000000 0.138820513
+## [11] 0.000000000 0.078153846 0.000000000 0.269538462 0.000000000
+## [16] 0.261179487 0.000000000 0.406871795
+## 
+## $mids
+##  [1] 1.25 1.75 2.25 2.75 3.25 3.75 4.25 4.75 5.25 5.75 6.25 6.75 7.25 7.75
+## [15] 8.25 8.75 9.25 9.75
+## 
+## $xname
+## [1] &quot;h&quot;
+## 
+## $equidist
+## [1] TRUE
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;histogram&quot;</code></pre>
 </div>
 </div>
 </div>
