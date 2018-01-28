@@ -20,13 +20,17 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
 <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css" />
 <!--[if lt IE 9]>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.ie.min.css" />
 <![endif]-->
+
+  
+<!-- Bootstrap core CSS -->
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.css" rel="stylesheet">
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -35,12 +39,10 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
 }
 </script>
 
@@ -190,9 +192,16 @@ $(document).ready(function () {
     Home
   </a>
 </li>
+<li>
+  <a href="notes.html">
+    <span class="fa fa-calendar-check-o"></span>
+     
+    Topics
+  </a>
+</li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fa fa-pencil"></span>
+    <span class="fa fa-pencil-square-o"></span>
      
     Homeworks
      
@@ -203,7 +212,7 @@ $(document).ready(function () {
       <a href="static-labor-supply.html">Static LS</a>
     </li>
     <li>
-      <a href="hw-lifecycle-solutions.html">Lifecycle Model</a>
+      <a href="hw-lifecycle.html">Lifecycle Model</a>
     </li>
     <li>
       <a href="ShimerSmith.html">Search and Matching - AKM</a>

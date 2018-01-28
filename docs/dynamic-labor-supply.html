@@ -20,13 +20,17 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
 <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css" />
 <!--[if lt IE 9]>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.ie.min.css" />
 <![endif]-->
+
+  
+<!-- Bootstrap core CSS -->
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.css" rel="stylesheet">
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -35,12 +39,10 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
 }
 </script>
 
@@ -190,9 +192,16 @@ $(document).ready(function () {
     Home
   </a>
 </li>
+<li>
+  <a href="notes.html">
+    <span class="fa fa-calendar-check-o"></span>
+     
+    Topics
+  </a>
+</li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fa fa-pencil"></span>
+    <span class="fa fa-pencil-square-o"></span>
      
     Homeworks
      
@@ -203,7 +212,7 @@ $(document).ready(function () {
       <a href="static-labor-supply.html">Static LS</a>
     </li>
     <li>
-      <a href="hw-lifecycle-solutions.html">Lifecycle Model</a>
+      <a href="hw-lifecycle.html">Lifecycle Model</a>
     </li>
     <li>
       <a href="ShimerSmith.html">Search and Matching - AKM</a>
@@ -330,7 +339,7 @@ ggplot(simdata,aes(x=age,y=h)) + geom_smooth() +theme_bw()</code></pre>
 <pre class="r"><code># compute asset 
 ggplot(simdata,aes(x=age,y=lb)) + geom_smooth()</code></pre>
 <pre><code>## `geom_smooth()` using method = &#39;gam&#39;</code></pre>
-<pre><code>## Warning: Removed 2007 rows containing non-finite values (stat_smooth).</code></pre>
+<pre><code>## Warning: Removed 2018 rows containing non-finite values (stat_smooth).</code></pre>
 <p><img src="dynamic-labor-supply_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
 <pre class="r"><code>simdata[,hist(h)]</code></pre>
 <p><img src="dynamic-labor-supply_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
@@ -339,14 +348,14 @@ ggplot(simdata,aes(x=age,y=lb)) + geom_smooth()</code></pre>
 ## [15]  8.0  8.5  9.0  9.5 10.0
 ## 
 ## $counts
-##  [1] 16384     0     0     0     0     0     0   102     0  2707     0
-## [12]  1524     0  5256     0  5093     0  7934
+##  [1] 16087     0     0     0     0     0     0    84     0  2839     0
+## [12]  1562     0  5414     0  5100     0  7914
 ## 
 ## $density
-##  [1] 0.840205128 0.000000000 0.000000000 0.000000000 0.000000000
-##  [6] 0.000000000 0.000000000 0.005230769 0.000000000 0.138820513
-## [11] 0.000000000 0.078153846 0.000000000 0.269538462 0.000000000
-## [16] 0.261179487 0.000000000 0.406871795
+##  [1] 0.824974359 0.000000000 0.000000000 0.000000000 0.000000000
+##  [6] 0.000000000 0.000000000 0.004307692 0.000000000 0.145589744
+## [11] 0.000000000 0.080102564 0.000000000 0.277641026 0.000000000
+## [16] 0.261538462 0.000000000 0.405846154
 ## 
 ## $mids
 ##  [1] 1.25 1.75 2.25 2.75 3.25 3.75 4.25 4.75 5.25 5.75 6.25 6.75 7.25 7.75

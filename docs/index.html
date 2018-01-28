@@ -20,8 +20,8 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
 <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css" />
 <!--[if lt IE 9]>
@@ -39,12 +39,10 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
 }
 </script>
 
@@ -194,9 +192,16 @@ $(document).ready(function () {
     Home
   </a>
 </li>
+<li>
+  <a href="notes.html">
+    <span class="fa fa-calendar-check-o"></span>
+     
+    Topics
+  </a>
+</li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fa fa-pencil"></span>
+    <span class="fa fa-pencil-square-o"></span>
      
     Homeworks
      
@@ -207,7 +212,7 @@ $(document).ready(function () {
       <a href="static-labor-supply.html">Static LS</a>
     </li>
     <li>
-      <a href="hw-lifecycle-solutions.html">Lifecycle Model</a>
+      <a href="hw-lifecycle.html">Lifecycle Model</a>
     </li>
     <li>
       <a href="ShimerSmith.html">Search and Matching - AKM</a>
@@ -241,41 +246,42 @@ $(document).ready(function () {
 </div>
 
 
-<p><br/><br/></p>
-<div id="scpo-labor-homeworks" class="section level1">
-<h1>ScPo Labor Homeworks</h1>
-<p>This contains the homeworks for <em>Graduate Labor</em> at ScPo. The corresponding github repository can be found <a href="https://github.com/floswald/ScPo-Labor">here</a>. Please note that this site will get updated with more homeworks as we move along.</p>
-<!-- Place this tag where you want the button to render. -->
-<p><a class="github-button" href="https://github.com/floswald/ScPo-Labor/archive/master.zip" data-icon="octicon-cloud-download" data-style="mega" aria-label="Download floswald/ScPo-Labor on GitHub">Download</a> <a class="github-button" href="https://github.com/floswald/ScPo-Labor/fork" data-icon="octicon-repo-forked" data-style="mega" data-count-href="/floswald/ScPo-Labor/network" data-count-api="/repos/floswald/ScPo-Labor#forks_count" data-count-aria-label="# forks on GitHub" aria-label="Fork floswald/ScPo-Labor on GitHub">Fork</a></p>
-<div id="start" class="section level2">
-<h2>Getting started</h2>
-<p>You will first need to install <code>R</code> and <code>Rstudio</code>. To do use the following links:</p>
+<p><br/><br/> This is the website for the <strong>graduate labor</strong> course at SciencesPo Paris taught by <a href="https://floswald.github.io">Florian Oswald</a> in the Spring semester of 2018.</p>
+<p><a class="btn btn-danger" href="https://scpo-gradlabor2018.slack.com/signup" role="button">Our Slack group</a> <a class="btn btn-success" href="https://github.com/floswald/ScPo-Labor/" role="button">Github Repo</a><br />
+<br/></p>
+<div id="communication-and-content" class="section level3">
+<h3>Communication and Content</h3>
+<p>You can have a look at our Syllabus by clicking above on <em>topics</em>. Homeworks are posted above under <em>homeworks</em>. Please get in touch via our <a href="https://scpo-gradlabor2018.slack.com/signup">dedicated slack channel</a>, to which you have been invited via email.</p>
+</div>
+<div id="homeworks" class="section level3">
+<h3>Homeworks</h3>
+<p>You will be required to do homeworks with the <code>R</code> language. They alone will determine your grade.</p>
+<p>Please do homeworks in groups of 2. You can download the <code>.Rmd</code> that is the basis of all homeworks, and just edit this. <code>Rmd</code> is short for <em>R markdown</em>, and it’s a great way to embed (working!) code with text. You can download all homeworks from the associated <a href="https://github.com/floswald/ScPo-Labor">github repo</a> in the <code>src</code> folder.</p>
+<p>Homeworks should be submitted in a private slack channel. you can create a new channel and name it with your first names (Bob and Alice would call their channel <code>Bob_Alice</code>). You should then add me to your channel. You should then submit your homework simply by posting a message to that channel, with your <code>.Rmd</code> file attached.</p>
+<p>Notice that whatever code your write in your <code>.Rmd</code> file must run as it is (after installing required packages, maybe). There should be no required inputs for it.</p>
+</div>
+<div id="new-to-r" class="section level3">
+<h3>New to R?</h3>
+<p>You will first need to install <code>R</code> and <code>Rstudio</code>. To do this use the following links:</p>
 <ul>
 <li><a href="https://cran.rstudio.com/">R</a></li>
 <li><a href="https://www.rstudio.com/products/rstudio/download/">RStudio</a></li>
 </ul>
-<div id="new-to-r" class="section level3">
-<h3>New to R?</h3>
-<p>There are gazillions of R tutorials online. <a href="http://scs.math.yorku.ca/index.php/R:_Getting_started_with_R#Starting_to_learn_R:_Tutorials_on_the_Web">this seems like a good place to start</a>.</p>
-<p>I like to use the data.table package. Here is a <a href="https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.pdf">tutorial</a> and a <a href="https://s3.amazonaws.com/assets.datacamp.com/img/blog/data+table+cheat+sheet.pdf">cheatsheet</a> for <code>data.table</code></p>
-<p>Here is a <a href="http://www.ceb-institute.org/bbs/wp-content/uploads/2011/09/handout_ggplot2.pdf">tutorial</a>, a <a href="http://www.rstudio.com/wp-content/uploads/2015/12/ggplot2-cheatsheet-2.0.pdf">cheatsheet</a> and the <a href="http://docs.ggplot2.org/current/">full documentation</a> for <code>ggplot2</code>.</p>
-<p>You can install most packages directly:</p>
+<p>Then, get some help:</p>
+<ul>
+<li>There are gazillions of R tutorials online. <a href="http://scs.math.yorku.ca/index.php/R:_Getting_started_with_R#Starting_to_learn_R:_Tutorials_on_the_Web">this seems like a good place to start</a>.</li>
+<li>I like to use the data.table package, and the homeworks use it as well. Here is a <a href="https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.pdf">tutorial</a> and a <a href="https://s3.amazonaws.com/assets.datacamp.com/img/blog/data+table+cheat+sheet.pdf">cheatsheet</a> for <code>data.table</code></li>
+<li>Here is a <a href="http://www.ceb-institute.org/bbs/wp-content/uploads/2011/09/handout_ggplot2.pdf">tutorial</a>, a <a href="http://www.rstudio.com/wp-content/uploads/2015/12/ggplot2-cheatsheet-2.0.pdf">cheatsheet</a> and the <a href="http://docs.ggplot2.org/current/">full documentation</a> for <code>ggplot2</code>.</li>
+</ul>
+<p>We will be using several packages, most of which you can install directly:</p>
 <pre class="r"><code>install.packages(c(&quot;devtools&quot;,&quot;data.table&quot;,&quot;ggplot2&quot;,&quot;plyr&quot;))</code></pre>
 <p>Other packages need to be installed from github using the devtools package:</p>
 <pre class="r"><code>require(devtools)
 install_github(&quot;tlamadon/RcppSimpleTensor&quot;)</code></pre>
-</div>
-<div id="submitting-homeworks" class="section level3">
-<h3>Submitting Homeworks</h3>
-<p>There are 2 ways. In both cases please make sure to write who was in the group.</p>
-<ol style="list-style-type: decimal">
-<li>You can either fork this repo (button above), do your homework on your fork <strong>in the .Rmd file of the homework</strong> and submit as a pull request <a href="https://github.com/floswald/ScPo-Labor">on this github repo</a></li>
-<li>Or you down just download this (again button above), and send me your homework (again, the corresponding .Rmd file which you changed with your work) as a direct message on our <strong>Slack channel</strong>.</li>
-</ol>
+<!-- Place this tag where you want the button to render. -->
+<p><a class="github-button" href="https://github.com/floswald/ScPo-Labor/archive/master.zip" data-icon="octicon-cloud-download" data-style="mega" aria-label="Download floswald/ScPo-Labor on GitHub">Download</a> <a class="github-button" href="https://github.com/floswald/ScPo-Labor/fork" data-icon="octicon-repo-forked" data-style="mega" data-count-href="/floswald/ScPo-Labor/network" data-count-api="/repos/floswald/ScPo-Labor#forks_count" data-count-aria-label="# forks on GitHub" aria-label="Fork floswald/ScPo-Labor on GitHub">Fork</a></p>
 <!-- Place this tag in your head or just before your close body tag. -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
-</div>
-</div>
 </div>
 
 <!--<a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a> -->

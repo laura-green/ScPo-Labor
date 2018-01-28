@@ -6,13 +6,16 @@ navbar:
     - text: "Home"
       icon: fa-home      
       href: index.html
+    - text: "Topics"
+      icon: fa-calendar-check-o      
+      href: notes.html
     - text: "Homeworks"
-      icon: fa-pencil     
+      icon: fa-pencil-square-o     
       menu:
         - text: "Static LS"
           href: static-labor-supply.html
         - text: "Lifecycle Model"
-          href: hw-lifecycle-solutions.html
+          href: hw-lifecycle.html
         - text: "Search and Matching - AKM"
           href: ShimerSmith.html
   right:
@@ -28,3 +31,4 @@ output:
       after_body: footer.html
       in_header:  header.html
     css: styles.css
+    lib_dir: site_libs

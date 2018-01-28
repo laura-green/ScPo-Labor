@@ -4,7 +4,7 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
@@ -27,6 +27,10 @@
 <!--[if lt IE 9]>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.ie.min.css" />
 <![endif]-->
+
+  
+<!-- Bootstrap core CSS -->
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.css" rel="stylesheet">
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -188,9 +192,16 @@ $(document).ready(function () {
     Home
   </a>
 </li>
+<li>
+  <a href="notes.html">
+    <span class="fa fa-calendar-check-o"></span>
+     
+    Topics
+  </a>
+</li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fa fa-pencil"></span>
+    <span class="fa fa-pencil-square-o"></span>
      
     Homeworks
      
@@ -201,7 +212,7 @@ $(document).ready(function () {
       <a href="static-labor-supply.html">Static LS</a>
     </li>
     <li>
-      <a href="hw-lifecycle-solutions.html">Lifecycle Model</a>
+      <a href="hw-lifecycle.html">Lifecycle Model</a>
     </li>
     <li>
       <a href="ShimerSmith.html">Search and Matching - AKM</a>
@@ -242,7 +253,7 @@ $(document).ready(function () {
 <li>learn how to solve an equilibrium search model and</li>
 <li>estimate a two-way fixed effect model on the data generated from the model. We will use the model from Shimer and Smith.</li>
 </ol>
-<p>This is the version from 2017-04-10. Please check for updates later on.</p>
+<p>This is the version from 2018-01-27. Please check for updates later on.</p>
 <pre class="r"><code>  #some imports
 require(gtools)
 require(data.table)
@@ -497,7 +508,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

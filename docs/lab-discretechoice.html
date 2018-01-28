@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Lab on Discrete Choice</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css" />
+<!--[if lt IE 9]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.ie.min.css" />
+<![endif]-->
+
+  
+<!-- Bootstrap core CSS -->
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.css" rel="stylesheet">
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = false;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">ScPo-GradLabour</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="notes.html">
+    <span class="fa fa-calendar-check-o"></span>
+     
+    Topics
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-pencil-square-o"></span>
+     
+    Homeworks
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="static-labor-supply.html">Static LS</a>
+    </li>
+    <li>
+      <a href="hw-lifecycle.html">Lifecycle Model</a>
+    </li>
+    <li>
+      <a href="ShimerSmith.html">Search and Matching - AKM</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/floswald/ScPo-Labor">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://github.com/floswald/ScPo-Labor/issues">
+    <span class="fa fa-bug"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Lab on Discrete Choice</h1>
+<h4 class="date"><em>27 January, 2018</em></h4>
+
+</div>
+
+
+<ol style="list-style-type: decimal">
+<li>consider estimation of demand model for transport</li>
+<li>look at IIA assumption (potential pitt-falls)</li>
+<li>extend with 3 types, check substitution patterns</li>
+<li>consider max-rank substitution</li>
+</ol>
+<p>We consider here discrete choices over a set of alernatives. THe utility of the agent is modeled as</p>
+<div id="discrete-choices" class="section level1">
+<h1>Discrete Choices</h1>
+<p><span class="math display">\[u_i(j) = \beta X_i + \epsilon_{ij}\]</span></p>
+<p>and when the error term is type 2 extreme value:</p>
+<p><span class="math display">\[F(\epsilon_{ij}) = \exp( -\exp( -\epsilon_{ij}  ) )\]</span></p>
+<p>the choice probability is given by</p>
+<p><span class="math display">\[ Pr[j(i)^*=j] = \frac{ \exp[ u_i(j)  ] }{ \sum_j&#39;  \exp[ u_i(j&#39;)  ]} \]</span></p>
+<p>Armed with these tools we can tackle the data we are given.</p>
+<div id="data" class="section level2">
+<h2>Data</h2>
+<pre class="r"><code>library(AER)
+library(mlogit)
+library(kableExtra)
+library(knitr)
+library(foreach)
+data(&quot;TravelMode&quot;)
+data = TravelMode
+
+kable(data[1:10,])</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">individual</th>
+<th align="left">mode</th>
+<th align="left">choice</th>
+<th align="right">wait</th>
+<th align="right">vcost</th>
+<th align="right">travel</th>
+<th align="right">gcost</th>
+<th align="right">income</th>
+<th align="right">size</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">air</td>
+<td align="left">no</td>
+<td align="right">69</td>
+<td align="right">59</td>
+<td align="right">100</td>
+<td align="right">70</td>
+<td align="right">35</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">1</td>
+<td align="left">train</td>
+<td align="left">no</td>
+<td align="right">34</td>
+<td align="right">31</td>
+<td align="right">372</td>
+<td align="right">71</td>
+<td align="right">35</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">bus</td>
+<td align="left">no</td>
+<td align="right">35</td>
+<td align="right">25</td>
+<td align="right">417</td>
+<td align="right">70</td>
+<td align="right">35</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">1</td>
+<td align="left">car</td>
+<td align="left">yes</td>
+<td align="right">0</td>
+<td align="right">10</td>
+<td align="right">180</td>
+<td align="right">30</td>
+<td align="right">35</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">2</td>
+<td align="left">air</td>
+<td align="left">no</td>
+<td align="right">64</td>
+<td align="right">58</td>
+<td align="right">68</td>
+<td align="right">68</td>
+<td align="right">30</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">train</td>
+<td align="left">no</td>
+<td align="right">44</td>
+<td align="right">31</td>
+<td align="right">354</td>
+<td align="right">84</td>
+<td align="right">30</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="left">2</td>
+<td align="left">bus</td>
+<td align="left">no</td>
+<td align="right">53</td>
+<td align="right">25</td>
+<td align="right">399</td>
+<td align="right">85</td>
+<td align="right">30</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">car</td>
+<td align="left">yes</td>
+<td align="right">0</td>
+<td align="right">11</td>
+<td align="right">255</td>
+<td align="right">50</td>
+<td align="right">30</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">air</td>
+<td align="left">no</td>
+<td align="right">69</td>
+<td align="right">115</td>
+<td align="right">125</td>
+<td align="right">129</td>
+<td align="right">40</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">3</td>
+<td align="left">train</td>
+<td align="left">no</td>
+<td align="right">34</td>
+<td align="right">98</td>
+<td align="right">892</td>
+<td align="right">195</td>
+<td align="right">40</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="mlogit-results" class="section level2">
+<h2>Mlogit results</h2>
+<pre class="r"><code>library(AER)
+library(mlogit)
+library(kableExtra)
+library(knitr)
+library(reshape2)
+data(&quot;TravelMode&quot;)
+TravelMode &lt;- mlogit.data(TravelMode, choice = &quot;choice&quot;, shape = &quot;long&quot;, alt.var = &quot;mode&quot;, chid.var = &quot;individual&quot;)
+data = TravelMode
+
+## overall proportions for chosen mode
+with(data, prop.table(table(mode[choice == TRUE])))</code></pre>
+<pre><code>## 
+##       air     train       bus       car 
+## 0.2761905 0.3000000 0.1428571 0.2809524</code></pre>
+<pre class="r"><code>## travel vs. waiting time for different travel modes
+ggplot(data,aes(x=wait, y=travel)) + geom_point() + facet_wrap(~mode)</code></pre>
+<p><img src="lab-discretechoice_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="r"><code>## Greene (2003), Table 21.11, conditional logit model
+fit1 &lt;- mlogit(choice ~ gcost + wait, data = data, reflevel = &quot;car&quot;)
+# fit1 &lt;- mlogit(choice ~ gcost + wait | income, data = data, reflevel = &quot;car&quot;)
+# fit1 &lt;- mlogit(choice ~ gcost + wait + income, data = data, reflevel = &quot;car&quot;) # why doesn&#39;t it work?
+summary(fit1)</code></pre>
+<pre><code>## 
+## Call:
+## mlogit(formula = choice ~ gcost + wait, data = data, reflevel = &quot;car&quot;, 
+##     method = &quot;nr&quot;, print.level = 0)
+## 
+## Frequencies of alternatives:
+##     car     air   train     bus 
+## 0.28095 0.27619 0.30000 0.14286 
+## 
+## nr method
+## 5 iterations, 0h:0m:0s 
+## g&#39;(-H)^-1g = 0.000221 
+## successive function values within tolerance limits 
+## 
+## Coefficients :
+##                     Estimate Std. Error t-value  Pr(&gt;|t|)    
+## air:(intercept)    5.7763487  0.6559187  8.8065 &lt; 2.2e-16 ***
+## train:(intercept)  3.9229948  0.4419936  8.8757 &lt; 2.2e-16 ***
+## bus:(intercept)    3.2107314  0.4496528  7.1405 9.301e-13 ***
+## gcost             -0.0157837  0.0043828 -3.6013 0.0003166 ***
+## wait              -0.0970904  0.0104351 -9.3042 &lt; 2.2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Log-Likelihood: -199.98
+## McFadden R^2:  0.29526 
+## Likelihood ratio test : chisq = 167.56 (p.value = &lt; 2.22e-16)</code></pre>
+</div>
+<div id="nested-logit" class="section level2">
+<h2>Nested logit</h2>
+<p>One way to test the assumption is to estimate without one alternative and see if it affects the parameters. For instance we can focus on whether <code>air</code> or <code>train</code> is chosen and estimate within.</p>
+<pre class="r"><code>fit.nested &lt;- mlogit(choice ~ wait + gcost, TravelMode, reflevel = &quot;car&quot;,
+           nests = list(fly = &quot;air&quot;, ground = c(&quot;train&quot;, &quot;bus&quot;, &quot;car&quot;)),
+           unscaled = TRUE)
+
+summary(fit.nested)</code></pre>
+<pre><code>## 
+## Call:
+## mlogit(formula = choice ~ wait + gcost, data = TravelMode, reflevel = &quot;car&quot;, 
+##     nests = list(fly = &quot;air&quot;, ground = c(&quot;train&quot;, &quot;bus&quot;, &quot;car&quot;)), 
+##     unscaled = TRUE)
+## 
+## Frequencies of alternatives:
+##     car     air   train     bus 
+## 0.28095 0.27619 0.30000 0.14286 
+## 
+## bfgs method
+## 15 iterations, 0h:0m:0s 
+## g&#39;(-H)^-1g = 6.59E-07 
+## gradient close to zero 
+## 
+## Coefficients :
+##                     Estimate Std. Error t-value  Pr(&gt;|t|)    
+## air:(intercept)    7.0761993  1.1077730  6.3878 1.683e-10 ***
+## train:(intercept)  5.0826937  0.6755601  7.5237 5.329e-14 ***
+## bus:(intercept)    4.1190138  0.6290292  6.5482 5.823e-11 ***
+## wait              -0.1134235  0.0118306 -9.5873 &lt; 2.2e-16 ***
+## gcost             -0.0308887  0.0072559 -4.2571 2.071e-05 ***
+## iv.fly             0.6152141  0.1165753  5.2774 1.310e-07 ***
+## iv.ground          0.4207342  0.1606367  2.6192  0.008814 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Log-Likelihood: -195
+## McFadden R^2:  0.31281 
+## Likelihood ratio test : chisq = 177.52 (p.value = &lt; 2.22e-16)</code></pre>
+<pre class="r"><code>data2 =copy(data)
+I=paste(data2$mode)==&quot;bus&quot;
+
+# force other alternatives to mean value
+for (mm in c(&#39;car&#39;,&#39;train&#39;,&#39;air&#39;)) {
+  #data2$gcost[paste(data2$mode)==mm] = mean(data2$gcost[paste(data2$mode)==mm])
+  data2$wait[paste(data2$mode)==mm]  = mean(data2$wait[paste(data2$mode)==mm])
+}
+
+
+# run a for lopp for different prices
+# save shares for each option
+rr = foreach(dprice = seq(-100,100,l=20), .combine = rbind)  %do% {
+  data2$gcost[I] = data$gcost[I] + dprice
+  res = colMeans(predict(fit.nested,newdata=data2))
+  res[&#39;dprice&#39;] = dprice
+  res
+} 
+
+rr = melt(data.frame(rr),id.vars = &quot;dprice&quot;)
+ggplot(rr,aes(x=dprice,y=value,color=factor(variable))) + geom_line()</code></pre>
+<p><img src="lab-discretechoice_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="random-coefficient-model" class="section level2">
+<h2>Random coefficient model</h2>
+<p>Let’s try with 2 groups of people to run an EM</p>
+<pre class="r"><code>C = acast(data,individual ~ mode,value.var=&quot;choice&quot;)
+C = C[,c(4,1,2,3)]
+p1=0.5
+
+I = sample(unique(data$individua),nrow(data)/8)
+I  =data$individual %in% I
+
+# we start with the very first mlogit (we randomly sub-sample to create some variation)
+fit1 &lt;- mlogit(choice ~ gcost , data = data[I,], reflevel = &quot;car&quot;)
+fit2 &lt;- mlogit(choice ~ gcost , data = data[!I,], reflevel = &quot;car&quot;)
+
+liks = rep(0,15)
+for (i in 1:15) {
+  # for each individual we compute the posterior probability given their data
+  p1v = predict(fit1,newdata=data)
+  p2v = predict(fit2,newdata=data)
+  
+  p1v = rowSums(p1v * C)*p1
+  p2v = rowSums(p2v * C)*(1-p1)
+  
+  liks[i] = sum(log(p1v+p2v))
+  #cat(sprintf(&quot;ll=%f\n&quot;,ll))
+  
+  p1v  = p1v/(p1v+p2v)
+  p1v  = as.numeric( p1v %x% c(1,1,1,1) )
+  
+  # finally we run the 2 mlogit with weights
+  fit1 &lt;- mlogit(choice ~ gcost , data = data,weights = p1v, reflevel = &quot;car&quot;)
+  fit2 &lt;- mlogit(choice ~ gcost , data = data,weights = as.numeric(1-p1v), reflevel = &quot;car&quot;)
+  
+  p1 = mean(p1v)
+}
+print(fit1)</code></pre>
+<pre><code>## 
+## Call:
+## mlogit(formula = choice ~ gcost, data = data, weights = p1v,     reflevel = &quot;car&quot;, method = &quot;nr&quot;, print.level = 0)
+## 
+## Coefficients:
+##   air:(intercept)  train:(intercept)    bus:(intercept)  
+##          -5.72139            4.50935            2.58228  
+##             gcost  
+##          -0.16258</code></pre>
+<pre class="r"><code>print(fit2)</code></pre>
+<pre><code>## 
+## Call:
+## mlogit(formula = choice ~ gcost, data = data, weights = as.numeric(1 -     p1v), reflevel = &quot;car&quot;, method = &quot;nr&quot;, print.level = 0)
+## 
+## Coefficients:
+##   air:(intercept)  train:(intercept)    bus:(intercept)  
+##          1.501304          -1.337636          -2.413040  
+##             gcost  
+##          0.030909</code></pre>
+<pre class="r"><code>print(p1)</code></pre>
+<pre><code>## [1] 0.6390407</code></pre>
+<pre class="r"><code>plot(liks)</code></pre>
+<p><img src="lab-discretechoice_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+</div>
+
+<!--<a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a> -->
+<a class="github-fork-ribbon right-bottom fixed" href="https://github.com/floswald/ScPo-Labor" title="Fork me on GitHub">Fork me on GitHub</a>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -4,7 +4,7 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
@@ -27,6 +27,10 @@
 <!--[if lt IE 9]>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.ie.min.css" />
 <![endif]-->
+
+  
+<!-- Bootstrap core CSS -->
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.css" rel="stylesheet">
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -188,9 +192,16 @@ $(document).ready(function () {
     Home
   </a>
 </li>
+<li>
+  <a href="notes.html">
+    <span class="fa fa-calendar-check-o"></span>
+     
+    Topics
+  </a>
+</li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fa fa-pencil"></span>
+    <span class="fa fa-pencil-square-o"></span>
      
     Homeworks
      
@@ -201,7 +212,10 @@ $(document).ready(function () {
       <a href="static-labor-supply.html">Static LS</a>
     </li>
     <li>
-      <a href="hw-lifecycle-solutions.html">Lifecycle Model</a>
+      <a href="hw-lifecycle.html">Lifecycle Model</a>
+    </li>
+    <li>
+      <a href="ShimerSmith.html">Search and Matching - AKM</a>
     </li>
   </ul>
 </li>
@@ -233,7 +247,6 @@ $(document).ready(function () {
 </div>
 
 
-<p>You can find the source code for this file in the class repository. The direct link is <a href="https://raw.githubusercontent.com/tlamadon/econ-34430/master/src/static-labor-supply.Rmd">here</a></p>
 <p>Let’s start with studying static labor supply. We will consider the decision of the agent under the following rule:</p>
 <p><span class="math display">\[
 \max_{c,h} \frac{c^{1+\eta}}{1+\eta} - \beta \frac{h^{1+\gamma}}{1+\gamma}\\
@@ -243,7 +256,7 @@ $(document).ready(function () {
 <div id="interior-solution" class="section level3">
 <h3>Interior solution</h3>
 <p>The first order conditions give us <span class="math inline">\(w(wh +r - \mu)^\eta = \beta h^\gamma\)</span>. There is no closed-form but we can very quickly find an interior solution by using Newton maximization on the function <span class="math inline">\(f(x) = w(wh +r - \mu)^\eta - \beta h^\gamma\)</span>. We iterate on</p>
-<p><span class="math display">\[x \leftarrow x - f(x)/f&#39;x)\]</span>.</p>
+<p><span class="math display">\[x \leftarrow x - f(x)/f&#39;(x)\]</span>.</p>
 <pre class="r"><code># function which updates choice of hours using Newton step
 # R here is total unearned income (including taxes when not working and all)
 ff.newt &lt;- function(x,w,R,eta,gamma,beta) {
@@ -298,23 +311,23 @@ simdata[, u1 := c^(1+p$eta)/(1+p$eta) - p$beta * h^(1+p$gamma)/(1+p$gamma) ];</c
 <tr class="odd">
 <td align="center"><strong>log(c)</strong></td>
 <td align="center">1.5</td>
-<td align="center">1.451e-16</td>
-<td align="center">1.033e+16</td>
+<td align="center">8.73e-17</td>
+<td align="center">1.718e+16</td>
 <td align="center">0</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>log(h)</strong></td>
 <td align="center">0.8</td>
-<td align="center">3.433e-16</td>
-<td align="center">2.331e+15</td>
+<td align="center">2.334e-16</td>
+<td align="center">3.427e+15</td>
 <td align="center">0</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>(Intercept)</strong></td>
-<td align="center">3.707e-15</td>
-<td align="center">2.953e-16</td>
-<td align="center">12.56</td>
-<td align="center">1.126e-33</td>
+<td align="center">-1.348e-15</td>
+<td align="center">1.905e-16</td>
+<td align="center">-7.076</td>
+<td align="center">2.795e-12</td>
 </tr>
 </tbody>
 </table>
@@ -337,7 +350,7 @@ simdata[, u1 := c^(1+p$eta)/(1+p$eta) - p$beta * h^(1+p$gamma)/(1+p$gamma) ];</c
 <tbody>
 <tr class="odd">
 <td align="center">1000</td>
-<td align="center">2.696e-15</td>
+<td align="center">1.641e-15</td>
 <td align="center">1</td>
 <td align="center">1</td>
 </tr>
@@ -353,8 +366,6 @@ ggplot(simdata,aes(x=u0,y=u1)) + geom_point() + geom_abline(linetype=2)</code></
 <p><img src="static-labor-supply_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>The regression still works, among ecah individual who chooses to work, the FOC is still satified.</p>
 <pre class="r"><code>pander(summary(simdata[p1==TRUE,lm(lw ~ log(c) + log(h))]))</code></pre>
-<pre><code>## Warning in summary.lm(simdata[p1 == TRUE, lm(lw ~ log(c) + log(h))]):
-## essentially perfect fit: summary may be unreliable</code></pre>
 <table style="width:86%;">
 <colgroup>
 <col width="25%" />
@@ -376,23 +387,23 @@ ggplot(simdata,aes(x=u0,y=u1)) + geom_point() + geom_abline(linetype=2)</code></
 <tr class="odd">
 <td align="center"><strong>log(c)</strong></td>
 <td align="center">1.5</td>
-<td align="center">4.631e-17</td>
-<td align="center">3.239e+16</td>
+<td align="center">1.105e-16</td>
+<td align="center">1.357e+16</td>
 <td align="center">0</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>log(h)</strong></td>
 <td align="center">0.8</td>
-<td align="center">1.62e-16</td>
-<td align="center">4.939e+15</td>
+<td align="center">3.916e-16</td>
+<td align="center">2.043e+15</td>
 <td align="center">0</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>(Intercept)</strong></td>
-<td align="center">1.914e-15</td>
-<td align="center">1.098e-16</td>
-<td align="center">17.43</td>
-<td align="center">1.203e-57</td>
+<td align="center">-7.589e-16</td>
+<td align="center">2.646e-16</td>
+<td align="center">-2.868</td>
+<td align="center">0.004242</td>
 </tr>
 </tbody>
 </table>
@@ -414,8 +425,8 @@ ggplot(simdata,aes(x=u0,y=u1)) + geom_point() + geom_abline(linetype=2)</code></
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center">775</td>
-<td align="center">6.724e-16</td>
+<td align="center">789</td>
+<td align="center">1.625e-15</td>
 <td align="center">1</td>
 <td align="center">1</td>
 </tr>
@@ -438,8 +449,10 @@ simdata[, u0:=  mu^(1+p$eta)/(1+p$eta)];
 simdata[,p1:=u1&gt;u0]
 
 # let&#39;s check that the FOC holds
-sfit = summary(simdata[,lm(lw ~ log(c) + log(h) + log(betai))])
-expect_equivalent(sfit$r.squared,1)
+sfit = summary(simdata[,lm(lw ~ log(c) + log(h) + log(betai))])</code></pre>
+<pre><code>## Warning in summary.lm(simdata[, lm(lw ~ log(c) + log(h) + log(betai))]):
+## essentially perfect fit: summary may be unreliable</code></pre>
+<pre class="r"><code>expect_equivalent(sfit$r.squared,1)
 expect_equivalent(coef(sfit)[&quot;log(c)&quot;,1],-p$eta)
 expect_equivalent(coef(sfit)[&quot;log(h)&quot;,1],p$gamma)
 
@@ -466,24 +479,24 @@ expect_false(coef(sfit)[&quot;log(c)&quot;,1]==-p$eta)</code></pre>
 <tbody>
 <tr class="odd">
 <td align="center"><strong>log(c)</strong></td>
-<td align="center">2.151</td>
-<td align="center">0.02272</td>
-<td align="center">94.68</td>
+<td align="center">2.125</td>
+<td align="center">0.02313</td>
+<td align="center">91.84</td>
 <td align="center">0</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>log(h)</strong></td>
-<td align="center">0.3648</td>
-<td align="center">0.03069</td>
-<td align="center">11.89</td>
-<td align="center">2.73e-30</td>
+<td align="center">0.2854</td>
+<td align="center">0.03136</td>
+<td align="center">9.1</td>
+<td align="center">5.778e-19</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>(Intercept)</strong></td>
-<td align="center">-0.5235</td>
-<td align="center">0.0152</td>
-<td align="center">-34.44</td>
-<td align="center">2.253e-164</td>
+<td align="center">-0.5646</td>
+<td align="center">0.01507</td>
+<td align="center">-37.47</td>
+<td align="center">3.514e-185</td>
 </tr>
 </tbody>
 </table>
@@ -505,26 +518,27 @@ expect_false(coef(sfit)[&quot;log(c)&quot;,1]==-p$eta)</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center">868</td>
-<td align="center">0.1582</td>
-<td align="center">0.9665</td>
-<td align="center">0.9664</td>
+<td align="center">893</td>
+<td align="center">0.1596</td>
+<td align="center">0.9671</td>
+<td align="center">0.967</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div id="short-panel-version" class="section level1">
 <h1>Short Panel version</h1>
-<p><strong>Q1:</strong> Take the simulated data from the model with heterogenous <span class="math inline">\(\beta_i\)</span>. First explain why regressing <span class="math inline">\(\log(w)\)</span> on <span class="math inline">\(\log(c)\)</span>, <span class="math inline">\(\log(h)\)</span>, and <span class="math inline">\(X\)</span> does not deliver correct estimates. <strong>Q2:</strong> Simulate 2 periods of the model (a short panel), keep everything fixed over the 2 periods, but redraw the wage. Estimate the model in differences and recover the parameters using <span class="math inline">\(\log(w)\)</span> on <span class="math inline">\(\log(c)\)</span>, <span class="math inline">\(\log(h)\)</span>. How does including or not including participation decision affect the results? Explain.</p>
+<p><span class="label label-success">Question 1.</span> Take the simulated data from the model with heterogenous <span class="math inline">\(\beta_i\)</span>. First explain why regressing <span class="math inline">\(\log(w)\)</span> on <span class="math inline">\(\log(c)\)</span>, <span class="math inline">\(\log(h)\)</span> does not deliver correct estimates.</p>
+<p><span class="label label-success">Question 2.</span> Simulate 2 periods of the model (a short panel), keep everything fixed over the 2 periods, but redraw the wage. Estimate the model in differences and recover the parameters using <span class="math inline">\(\log(w)\)</span> on <span class="math inline">\(\log(c)\)</span>, <span class="math inline">\(\log(h)\)</span>. How does including or not including participation decision affect the results? Explain.</p>
 </div>
 <div id="repeated-cross-section-version" class="section level1">
 <h1>Repeated cross-section version</h1>
 <p>In this section we want to get closer to the Blundell, Duncan and Meghir (1998) exercice. We first modify the cost to allow for an increase return to X, and for the presence of a change in the tax rate. Simulate wages according to:</p>
 <pre class="r"><code>  simdata[,lw := lb*X + rnorm(N)*0.2];      # add a wage which depends on X</code></pre>
 <p>Write a function that can simulate a full cross section and that takes <code>lb</code> as inpute as well as marginal tax rate <span class="math inline">\(\rho\)</span>. It should apply the same function as before to solve for the interior solution, but use the after-tax wage every where.</p>
-<p><strong>Q3:</strong> simulate two cross-sections with <span class="math inline">\((lb=1,\rho=1)\)</span> and <span class="math inline">\((lb=1.5,\rho=0.8)\)</span> and use 10k indivduals. Simulate data without participation decision for now. Combine the data and show that previous regression provides biased estimates. Then slice X into K categories (for example using quantiles). Then compute <span class="math inline">\(\log(w)\)</span>, <span class="math inline">\(\log(c)\)</span> and <span class="math inline">\(\log(h)\)</span> within each group and time period. Run the regression in first differences and show that this recovers the structural parameters.</p>
-<p><strong>Q4:</strong> Add the participation decision to the data generating process. Show that the results are now biased.</p>
-<p><strong>Q5:</strong> Extend the model to add an excluded variable that affects participation through <span class="math inline">\(\mu\)</span> but not the wage (keep X everywhere). Devise a way improve the estimates by controling for participation.</p>
+<p><span class="label label-success">Question 3.</span> simulate two cross-sections with <span class="math inline">\((lb=1,\rho=1)\)</span> and <span class="math inline">\((lb=1.5,\rho=0.8)\)</span> and use 10k indivduals. Simulate data without participation decision for now. Combine the data and show that previous regression provides biased estimates. Then slice X into K categories (for example using quantiles). Then compute <span class="math inline">\(\log(w)\)</span>, <span class="math inline">\(\log(c)\)</span> and <span class="math inline">\(\log(h)\)</span> within each group and time period. Run the regression in first differences and show that this recovers the structural parameters.</p>
+<p><span class="label label-success">Question 4.</span> Add the participation decision to the data generating process. Show that the results are now biased.</p>
+<p><span class="label label-success">Question 5.</span> Extend the model to add an excluded variable that affects participation through <span class="math inline">\(\mu\)</span> but not the wage (keep X everywhere). Devise a way improve the estimates by controling for participation.</p>
 </div>
 
 <!--<a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a> -->
@@ -552,7 +566,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Homework on estimating dynamic discrete choice models</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css" />
+<!--[if lt IE 9]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.ie.min.css" />
+<![endif]-->
+
+  
+<!-- Bootstrap core CSS -->
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.css" rel="stylesheet">
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = false;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">ScPo-GradLabour</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="notes.html">
+    <span class="fa fa-calendar-check-o"></span>
+     
+    Topics
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-pencil-square-o"></span>
+     
+    Homeworks
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="static-labor-supply.html">Static LS</a>
+    </li>
+    <li>
+      <a href="hw-lifecycle.html">Lifecycle Model</a>
+    </li>
+    <li>
+      <a href="ShimerSmith.html">Search and Matching - AKM</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/floswald/ScPo-Labor">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://github.com/floswald/ScPo-Labor/issues">
+    <span class="fa fa-bug"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Homework on estimating dynamic discrete choice models</h1>
+<h4 class="date"><em>27 January, 2018</em></h4>
+
+</div>
+
+
+<p>In this homework we want to estimate a simple dynamic discrete choice model that we saw in class. See also the paper <a href="">Keane and Wolpin</a>. They propose a simple model of female labor supply as follows. Utility for married woman <span class="math inline">\(i\)</span> in period <span class="math inline">\(t\)</span> from working (option 1) vs not working (option 0) with <span class="math inline">\(n_i\)</span> small children is</p>
+<p><span class="math display">\[
+\begin{align}
+U_{it}^1 &amp;= y_{it} + w_{it} - \pi n_{it} \\
+U_{it}^0 &amp;= y_{it} + x_{it}\beta + \epsilon_{it} 
+\end{align}
+\]</span> where <span class="math inline">\(y_{it}\)</span> is the husband’s income. Let’s write the difference in those utilities as <span class="math inline">\(U_{it}^1 - U_{it}^0\)</span>,</p>
+<p><span class="math display">\[
+v_{it}(x_{it},w_{it},n_{it},\epsilon_{it}) = w_{it} - \pi n_{it} -x_{it}\beta - \epsilon_{it} 
+\]</span> and define the work indicator <span class="math inline">\(d_{it} = \mathbf{1}[U_{it}^1 &gt; U_{it}^0]\)</span>. Next, we define the state space as observed by the econometrician as <span class="math inline">\(\Omega_{it} = (x_{it},w_{it},n_{it})\)</span>, i.e. we don’t observe <span class="math inline">\(\epsilon\)</span>, but the decision maker does.</p>
+<p>Woman <span class="math inline">\(i\)</span> will work in <span class="math inline">\(t\)</span> if <span class="math inline">\(U_{it}^1 &gt; U_{it}^0\)</span>, i.e. if <span class="math inline">\(v_{it}(x_{it},w_{it},n_{it},\epsilon_{it}) &gt; 0\)</span>, and at <span class="math inline">\(v_{it}(x_{it},w_{it},n_{it},\epsilon_{it}) = 0\)</span> she is indifferent. Call the <span class="math inline">\(\epsilon\)</span> that solves this <em>the critical epsilon</em> <span class="math inline">\(\epsilon^*(\Omega_{it})\)</span>. We have that, given state <span class="math inline">\(\Omega_{it}\)</span>,</p>
+<p><span class="math display">\[
+i\text{ chooses to }\begin{cases}\text{work in t}&amp;\text{if }\epsilon_{it} &lt; \epsilon^*(\Omega_{it}) \Rightarrow U_{it}^1 &gt; U_{it}^0 \\
+\text{not work in t}&amp; \text{if }\epsilon_{it} &gt; \epsilon^*(\Omega_{it}) \Rightarrow U_{it}^1 &lt; U_{it}^0\end{cases}
+\]</span></p>
+<p>Assuming that <span class="math inline">\(\epsilon\)</span> is independent of <span class="math inline">\(\Omega\)</span>, the probability of working is computed by looking at each <span class="math inline">\(i\)</span>’s <span class="math inline">\(\epsilon_{it}\)</span> and couting whether it’s below <span class="math inline">\(\epsilon^*(\Omega_{it})\)</span>:</p>
+<p><span class="math display">\[
+\Pr[d_{it}=1|\Omega{it}] = \int_{-\infty}^{\epsilon_{it}^*} dF_{\epsilon}(\epsilon|\Omega{it}) = \int_{-\infty}^{\epsilon_{it}^*} dF_{\epsilon}(\epsilon)
+\]</span></p>
+<p>Clearly <span class="math inline">\(\Pr[d_{it}=0|\Omega{it}] = 1- \Pr[d_{it}=1|\Omega{it}]\)</span>, and so the likelihood for a random sample of <span class="math inline">\(N\)</span> females observed for <span class="math inline">\(T\)</span> periods is</p>
+<p><span class="math display">\[
+L(\beta,\pi,F_{\epsilon};x_{it},w_{it}) = \Pi_{i=1}^N \Pi_{t=1}^T \Pr[d_{it}=1|\Omega{it}]^{d_{it}} \Pr[d_{it}=0|\Omega{it}]^{1-d_{it}}
+\]</span></p>
+<p><strong>Notice</strong> that we are treating this as a single cross-section at this point. There is no dynamics in the model up to now.</p>
+<div id="simulating-a-data-set" class="section level1">
+<h1>Simulating a data set</h1>
+<p>We start out with a simulated data set that we will use in estimation.</p>
+<div id="r-golfing" class="section level2">
+<h2>R-golfing</h2>
+<p>write a one-liner that computes the means of x,w,eps,v and work from this data.table. count how many characters you had to type with <code>nchar(&quot;YOUR_CODE_IN_QUOTES_LIKE_THIS&quot;)</code>. I have 32.</p>
+<pre class="r"><code>nchar(&quot;d[,lapply(.SD,mean),.SDcols=4:9]&quot;)</code></pre>
+<pre><code>## [1] 32</code></pre>
+<pre class="r"><code>d[,lapply(.SD,mean),.SDcols=4:9]</code></pre>
+<pre><code>##             x1           x2        w        eps        v   work
+## 1: 0.006803956 -0.008939452 3.002007 0.01564197 1.534467 0.6855</code></pre>
+<ol style="list-style-type: decimal">
+<li>Why is the mean of w not 2?</li>
+</ol>
+<div id="estimating-a-static-model" class="section level3">
+<h3>Estimating a static model</h3>
+<p>What does the likelihood function above remind you of?</p>
+<p>Sometimes people use a linear probability model to approximate a probit model. Which parameters can we recover using an LPM here? How well does it predict the average probability of work? Give the quartiles of the probabilities.</p>
+<pre class="r"><code>lmod = lm(work ~w+ x1 + x2 + +n,d)
+d[,lpm := predict(lmod,d) ]
+summary(lmod)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = work ~ w + x1 + x2 + +n, data = d)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.78192 -0.26290  0.03439  0.25942  0.73080 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  0.515305   0.013894   37.09   &lt;2e-16 ***
+## w            0.114431   0.004115   27.81   &lt;2e-16 ***
+## x1          -0.278998   0.004097  -68.09   &lt;2e-16 ***
+## x2          -0.054108   0.004071  -13.29   &lt;2e-16 ***
+## n           -0.177229   0.005013  -35.36   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.3176 on 5995 degrees of freedom
+## Multiple R-squared:  0.5325, Adjusted R-squared:  0.5322 
+## F-statistic:  1707 on 4 and 5995 DF,  p-value: &lt; 2.2e-16</code></pre>
+<pre class="r"><code>d[,list(mean(work),mean(lpm))]</code></pre>
+<pre><code>##        V1     V2
+## 1: 0.6855 0.6855</code></pre>
+<pre class="r"><code>d[,quantile(lpm)]</code></pre>
+<pre><code>##         0%        25%        50%        75%       100% 
+## -0.4748976  0.4609101  0.6904221  0.9148146  1.7288776</code></pre>
+<p>What about a probit model?</p>
+<pre class="r"><code>gmod = glm(work ~ w+ x1 + x2 +n,family =binomial(link=&quot;probit&quot;),d)</code></pre>
+<pre><code>## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</code></pre>
+<pre class="r"><code>d[,glm := predict(gmod,d,type=&quot;response&quot;)]
+d[,list(mean(work),mean(lpm),mean(glm))]</code></pre>
+<pre><code>##        V1     V2       V3
+## 1: 0.6855 0.6855 0.686052</code></pre>
+<pre class="r"><code>summary(gmod)</code></pre>
+<pre><code>## 
+## Call:
+## glm(formula = work ~ w + x1 + x2 + n, family = binomial(link = &quot;probit&quot;), 
+##     data = d)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -3.1628  -0.0358   0.0037   0.1923   2.9791  
+## 
+## Coefficients:
+##              Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept) -0.005237   0.098136  -0.053    0.957    
+## w            1.039899   0.040308  25.799   &lt;2e-16 ***
+## x1          -2.591286   0.075138 -34.487   &lt;2e-16 ***
+## x2          -0.516578   0.032444 -15.922   &lt;2e-16 ***
+## n           -1.588501   0.054312 -29.248   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 7471.8  on 5999  degrees of freedom
+## Residual deviance: 2341.6  on 5995  degrees of freedom
+## AIC: 2351.6
+## 
+## Number of Fisher Scoring iterations: 8</code></pre>
+<p>Let’s make the wage a bit more realistic. Suppose we knew completed years of education, and we had a variable <span class="math inline">\(z\)</span> capturing <em>potential experience</em> (age - educ - 6), which determines the wage, and <span class="math inline">\(\eta\)</span> a random error:</p>
+<p><span class="math display">\[
+w_{it} = \gamma z_{it} + \eta_{it}
+\]</span></p>
+<pre class="r"><code>get.data &lt;- function(p){
+  d = data.table(expand.grid(id = 1:p$N,it=20:p$T))
+  d[,n := sample(c(0,1,2),size=1), by=id]
+  d[,x1 := rnorm(n=nrow(d))]
+  d[,x2 := rnorm(n=nrow(d))]
+  d[,educ := sample(10:18,size=1),by=id]
+  d[,z := it - educ]
+  d[,eta := rnorm(n=nrow(d))]
+  d[,w := p$gamma*z + eta]
+  d[,eps := rnorm(mean=0,sd=1,n=nrow(d))]
+  d[,v:= w - p$pi*n - p$beta1*x1- p$beta2*x2]
+  d[,work := eps &lt; v]
+}</code></pre>
+<p>With this modification, our model changes. We have</p>
+<p><span class="math display">\[
+\begin{align}
+v_{it}(x_{it},z_{it},n_{it},\epsilon_{it},\eta_{it}) &amp; = \gamma z_{it} - \pi n_{it} -x_{it}\beta + \eta_{it} - \epsilon_{it} \\
+&amp; = \xi_{it}^*(\Omega_{it}) + \xi_{it}
+\end{align}
+\]</span> where <span class="math inline">\(\xi = \eta-\epsilon\)</span> is your new composite iid error, and $_{it}^*(<em>{it}) = z</em>{it} - n_{it} -x_{it}$ Clearly <span class="math inline">\(\Pr[d_{it}=0|\Omega{it}] = 1- \Pr[d_{it}=1|\Omega{it}]\)</span>, and so the likelihood for a random sample of <span class="math inline">\(N\)</span> females observed for <span class="math inline">\(T\)</span> periods is</p>
+<p><span class="math display">\[
+L(\beta,\pi,F_{\epsilon};x_{it},w_{it}) = \Pi_{i=1}^N \Pi_{t=1}^T \Pr[d_{it}=1,w_{it}|\Omega{it}]^{d_{it}} \Pr[d_{it}=0|\Omega{it}]^{1-d_{it}}
+\]</span> where again we have</p>
+<p><span class="math display">\[
+\Pr[d_{it}=1,w_{it}|\Omega{it}] = \Pr[d_{it}=1,\eta_{it} = w_{it} - \gamma z_{it}]
+\]</span></p>
+<p><span class="label label-success">Question 7</span> Report the true values, the non biased corrected and the bias corrected.</p>
+</div>
+</div>
+</div>
+
+<!--<a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a> -->
+<a class="github-fork-ribbon right-bottom fixed" href="https://github.com/floswald/ScPo-Labor" title="Fork me on GitHub">Fork me on GitHub</a>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
