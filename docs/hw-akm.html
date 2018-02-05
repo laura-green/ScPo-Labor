@@ -15,7 +15,7 @@
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/simplex.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -23,8 +23,6 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-1.1/highlight.js"></script>
 <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css" />
 <!--[if lt IE 9]>
@@ -33,22 +31,55 @@
 
   
 <!-- Bootstrap core CSS -->
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.css" rel="stylesheet">
+<link href="site_libs/bootstrap-3.3.5/css/simplex.css" rel="stylesheet">
+
 
 <style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #1f1c1b; background-color: #ffffff; }
+code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code > span.dt { color: #0057ae; } /* DataType */
+code > span.dv { color: #b08000; } /* DecVal */
+code > span.bn { color: #b08000; } /* BaseN */
+code > span.fl { color: #b08000; } /* Float */
+code > span.cn { color: #aa5500; } /* Constant */
+code > span.ch { color: #924c9d; } /* Char */
+code > span.sc { color: #3daee9; } /* SpecialChar */
+code > span.st { color: #bf0303; } /* String */
+code > span.vs { color: #bf0303; } /* VerbatimString */
+code > span.ss { color: #ff5500; } /* SpecialString */
+code > span.im { color: #ff5500; } /* Import */
+code > span.co { color: #898887; } /* Comment */
+code > span.do { color: #607880; } /* Documentation */
+code > span.an { color: #ca60ca; } /* Annotation */
+code > span.cv { color: #0095ff; } /* CommentVar */
+code > span.ot { color: #006e28; } /* Other */
+code > span.fu { color: #644a9b; } /* Function */
+code > span.va { color: #0057ae; } /* Variable */
+code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #1f1c1b; } /* Operator */
+code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code > span.pp { color: #006e28; } /* Preprocessor */
+code > span.at { color: #0057ae; } /* Attribute */
+code > span.re { color: #0057ae; } /* RegionMarker */
+code > span.in { color: #b08000; } /* Information */
+code > span.wa { color: #bf0303; } /* Warning */
+code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
+code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code > span. { color: #1f1c1b; } /* Normal */
+</style>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
   }
 </style>
-<script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
-}
-</script>
-
 
 
 <style type="text/css">
@@ -110,34 +141,34 @@ button.code-folding-btn:focus {
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
-  padding-top: 51px;
+  padding-top: 41px;
   padding-bottom: 40px;
 }
 /* offset scroll position for anchor links (for fixed navbar)  */
 .section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 
 .section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 .section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 .section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 .section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 .section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 </style>
 
@@ -347,7 +378,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Homework on two-way fixed effects</h1>
-<h4 class="date"><em>27 January, 2018</em></h4>
+<h4 class="date"><em>05 February, 2018</em></h4>
 
 </div>
 
@@ -359,94 +390,94 @@ div.tocify {
 <h2>Simulating a network</h2>
 <p>One central piece is to have a network of workers and firms over time. We then start by simulating such an object. The rest of homework will focus on adding wages to this model. As we know from the lectures, a central issue of the network will be the number of movers.</p>
 <p>We are going to model the mobility between workers and firms. Given a transition matrix we can solve for a stationary distrubtion, and then construct our panel from there.</p>
-<pre class="r"><code>nk = 30
-nl = 10
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nk =<span class="st"> </span><span class="dv">30</span>
+nl =<span class="st"> </span><span class="dv">10</span>
 
-alpha_sd = 1
-psi_sd   = 1
+alpha_sd =<span class="st"> </span><span class="dv">1</span>
+psi_sd   =<span class="st"> </span><span class="dv">1</span>
 
-# let&#39;s draw some FE
-psi   = qnorm(1:nk/(nk+1)) * alpha_sd
-alpha = qnorm(1:nl/(nl+1)) * psi_sd
+<span class="co"># let&#39;s draw some FE</span>
+psi   =<span class="st"> </span><span class="kw">qnorm</span>(<span class="dv">1</span><span class="op">:</span>nk<span class="op">/</span>(nk<span class="op">+</span><span class="dv">1</span>)) <span class="op">*</span><span class="st"> </span>alpha_sd
+alpha =<span class="st"> </span><span class="kw">qnorm</span>(<span class="dv">1</span><span class="op">:</span>nl<span class="op">/</span>(nl<span class="op">+</span><span class="dv">1</span>)) <span class="op">*</span><span class="st"> </span>psi_sd
 
-# let&#39;s assume moving PR is fixed
-lambda = 0.05
+<span class="co"># let&#39;s assume moving PR is fixed</span>
+lambda =<span class="st"> </span><span class="fl">0.05</span>
 
-csort = 0.5 # sorting effect
-cnetw = 0.2 # network effect
-csig  = 0.5
+csort =<span class="st"> </span><span class="fl">0.5</span> <span class="co"># sorting effect</span>
+cnetw =<span class="st"> </span><span class="fl">0.2</span> <span class="co"># network effect</span>
+csig  =<span class="st"> </span><span class="fl">0.5</span>
 
-# lets create type specific transition matrices
-# we are going to use joint normal centered on different values
-G = array(0,c(nl,nk,nk))
-for (l in 1:nl) for (k in 1:nk) {
-  G[l,k,] = dnorm(csort*(psi[k] - alpha[l])) * dnorm(cnetw*(psi[k] - psi))
-  G[l,k,] = dnorm( psi - cnetw *psi[k] - csort * alpha[l],sd = csig )
-  G[l,k,] = G[l,k,]/sum(G[l,k,])
+<span class="co"># lets create type specific transition matrices</span>
+<span class="co"># we are going to use joint normal centered on different values</span>
+G =<span class="st"> </span><span class="kw">array</span>(<span class="dv">0</span>,<span class="kw">c</span>(nl,nk,nk))
+<span class="cf">for</span> (l <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>nl) <span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>nk) {
+  G[l,k,] =<span class="st"> </span><span class="kw">dnorm</span>(csort<span class="op">*</span>(psi[k] <span class="op">-</span><span class="st"> </span>alpha[l])) <span class="op">*</span><span class="st"> </span><span class="kw">dnorm</span>(cnetw<span class="op">*</span>(psi[k] <span class="op">-</span><span class="st"> </span>psi))
+  G[l,k,] =<span class="st"> </span><span class="kw">dnorm</span>( psi <span class="op">-</span><span class="st"> </span>cnetw <span class="op">*</span>psi[k] <span class="op">-</span><span class="st"> </span>csort <span class="op">*</span><span class="st"> </span>alpha[l],<span class="dt">sd =</span> csig )
+  G[l,k,] =<span class="st"> </span>G[l,k,]<span class="op">/</span><span class="kw">sum</span>(G[l,k,])
 } 
 
 
-# we then solve for the stationary distribution over psis for each alpha value
-H = array(1/nk,c(nl,nk))
-for (l in 1:nl) {
- M = G[l,,]
- for (i in 1:100) {
-   H[l,] = t(G[l,,]) %*% H[l,]
+<span class="co"># we then solve for the stationary distribution over psis for each alpha value</span>
+H =<span class="st"> </span><span class="kw">array</span>(<span class="dv">1</span><span class="op">/</span>nk,<span class="kw">c</span>(nl,nk))
+<span class="cf">for</span> (l <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>nl) {
+ M =<span class="st"> </span>G[l,,]
+ <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>) {
+   H[l,] =<span class="st"> </span><span class="kw">t</span>(G[l,,]) <span class="op">%*%</span><span class="st"> </span>H[l,]
  }
 }
 
-Plot1=wireframe(G[1,,],aspect = c(1,1),xlab = &quot;previous firm&quot;,ylab=&quot;next firm&quot;)
-Plot2=wireframe(G[nl,,],aspect = c(1,1),xlab = &quot;previous firm&quot;,ylab=&quot;next firm&quot;)
-grid.arrange(Plot1, Plot2,nrow=1)</code></pre>
+Plot1=<span class="kw">wireframe</span>(G[<span class="dv">1</span>,,],<span class="dt">aspect =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>),<span class="dt">xlab =</span> <span class="st">&quot;previous firm&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;next firm&quot;</span>)
+Plot2=<span class="kw">wireframe</span>(G[nl,,],<span class="dt">aspect =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>),<span class="dt">xlab =</span> <span class="st">&quot;previous firm&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;next firm&quot;</span>)
+<span class="kw">grid.arrange</span>(Plot1, Plot2,<span class="dt">nrow=</span><span class="dv">1</span>)</code></pre></div>
 <p><img src="hw-akm_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>And we can plot the joint distribution of matches</p>
-<pre class="r"><code>wireframe(H,aspect = c(1,1),xlab = &quot;worker&quot;,ylab=&quot;firm&quot;)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">wireframe</span>(H,<span class="dt">aspect =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>),<span class="dt">xlab =</span> <span class="st">&quot;worker&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;firm&quot;</span>)</code></pre></div>
 <p><img src="hw-akm_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>The next step is to simulate our network given our transitions rules.</p>
-<pre class="r"><code>nt = 5
-ni = 100000
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nt =<span class="st"> </span><span class="dv">5</span>
+ni =<span class="st"> </span><span class="dv">100000</span>
 
-# we simulate a panel
-network    = array(0,c(ni,nt))
-spellcount = array(0,c(ni,nt))
-A = rep(0,ni)
+<span class="co"># we simulate a panel</span>
+network    =<span class="st"> </span><span class="kw">array</span>(<span class="dv">0</span>,<span class="kw">c</span>(ni,nt))
+spellcount =<span class="st"> </span><span class="kw">array</span>(<span class="dv">0</span>,<span class="kw">c</span>(ni,nt))
+A =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>,ni)
 
-for (i in 1:ni) {
-  # we draw the worker type
-  l = sample.int(nl,1)
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>ni) {
+  <span class="co"># we draw the worker type</span>
+  l =<span class="st"> </span><span class="kw">sample.int</span>(nl,<span class="dv">1</span>)
   A[i]=l
-  # at time 1, we draw from H
-  network[i,1] = sample.int(nk,1,prob = H[l,])
-  for (t in 2:nt) {
-    if (runif(1)&lt;lambda) {
-      network[i,t] = sample.int(nk,1,prob = G[l,network[i,t-1],])
-      spellcount[i,t] = spellcount[i,t-1] +1
-    } else {
-      network[i,t]    = network[i,t-1]
-      spellcount[i,t] = spellcount[i,t-1]
+  <span class="co"># at time 1, we draw from H</span>
+  network[i,<span class="dv">1</span>] =<span class="st"> </span><span class="kw">sample.int</span>(nk,<span class="dv">1</span>,<span class="dt">prob =</span> H[l,])
+  <span class="cf">for</span> (t <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span>nt) {
+    <span class="cf">if</span> (<span class="kw">runif</span>(<span class="dv">1</span>)<span class="op">&lt;</span>lambda) {
+      network[i,t] =<span class="st"> </span><span class="kw">sample.int</span>(nk,<span class="dv">1</span>,<span class="dt">prob =</span> G[l,network[i,t<span class="op">-</span><span class="dv">1</span>],])
+      spellcount[i,t] =<span class="st"> </span>spellcount[i,t<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span><span class="dv">1</span>
+    } <span class="cf">else</span> {
+      network[i,t]    =<span class="st"> </span>network[i,t<span class="op">-</span><span class="dv">1</span>]
+      spellcount[i,t] =<span class="st"> </span>spellcount[i,t<span class="op">-</span><span class="dv">1</span>]
     }
   }
 }
 
-data  = data.table(melt(network,c(&#39;i&#39;,&#39;t&#39;)))
-data2 = data.table(melt(spellcount,c(&#39;i&#39;,&#39;t&#39;)))
-setnames(data,&quot;value&quot;,&quot;k&quot;)
-data &lt;- data[,spell := data2$value]
-data &lt;- data[,l := A[i],i]
-data &lt;- data[,alpha := alpha[l],l]
-data &lt;- data[,psi := psi[k],k]</code></pre>
+data  =<span class="st"> </span><span class="kw">data.table</span>(<span class="kw">melt</span>(network,<span class="kw">c</span>(<span class="st">&#39;i&#39;</span>,<span class="st">&#39;t&#39;</span>)))
+data2 =<span class="st"> </span><span class="kw">data.table</span>(<span class="kw">melt</span>(spellcount,<span class="kw">c</span>(<span class="st">&#39;i&#39;</span>,<span class="st">&#39;t&#39;</span>)))
+<span class="kw">setnames</span>(data,<span class="st">&quot;value&quot;</span>,<span class="st">&quot;k&quot;</span>)
+data &lt;-<span class="st"> </span>data[,spell <span class="op">:</span><span class="er">=</span><span class="st"> </span>data2<span class="op">$</span>value]
+data &lt;-<span class="st"> </span>data[,l <span class="op">:</span><span class="er">=</span><span class="st"> </span>A[i],i]
+data &lt;-<span class="st"> </span>data[,alpha <span class="op">:</span><span class="er">=</span><span class="st"> </span>alpha[l],l]
+data &lt;-<span class="st"> </span>data[,psi <span class="op">:</span><span class="er">=</span><span class="st"> </span>psi[k],k]</code></pre></div>
 <p>The final step is a to assign identities to the firm. We are going to do this is a relatively simple way, by simply randomly assigning firm ids to spells.</p>
-<pre class="r"><code>firm_size = 10
-within_firm_count = ni/(firm_size*nk*nt)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">firm_size =<span class="st"> </span><span class="dv">10</span>
+within_firm_count =<span class="st"> </span>ni<span class="op">/</span>(firm_size<span class="op">*</span>nk<span class="op">*</span>nt)
 
-dspell &lt;- data[,list(len=.N),list(i,spell,k)]
-dspell &lt;- dspell[,fid := sample( 1: pmax(1,sum(len)/(firm_size*nt) ) ,.N,replace=TRUE) , k]
-dspell &lt;- dspell[,fid := .GRP, list(k,fid)]
+dspell &lt;-<span class="st"> </span>data[,<span class="kw">list</span>(<span class="dt">len=</span>.N),<span class="kw">list</span>(i,spell,k)]
+dspell &lt;-<span class="st"> </span>dspell[,fid <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">sample</span>( <span class="dv">1</span><span class="op">:</span><span class="st"> </span><span class="kw">pmax</span>(<span class="dv">1</span>,<span class="kw">sum</span>(len)<span class="op">/</span>(firm_size<span class="op">*</span>nt) ) ,.N,<span class="dt">replace=</span><span class="ot">TRUE</span>) , k]
+dspell &lt;-<span class="st"> </span>dspell[,fid <span class="op">:</span><span class="er">=</span><span class="st"> </span>.GRP, <span class="kw">list</span>(k,fid)]
 
-setkey(data,i,spell)
-setkey(dspell,i,spell)
+<span class="kw">setkey</span>(data,i,spell)
+<span class="kw">setkey</span>(dspell,i,spell)
 
-data &lt;- data[, fid:= dspell[data,fid]]</code></pre>
+data &lt;-<span class="st"> </span>data[, fid<span class="op">:</span><span class="er">=</span><span class="st"> </span>dspell[data,fid]]</code></pre></div>
 <p><span class="label label-success">Question 1</span> We are going to do some <code>R-golfing</code> (see <a href="https://en.wikipedia.org/wiki/Code_golf">wikipedia</a>). I want you to use a one line code to evaluate the following 2 quantities:</p>
 <ul>
 <li>mean firm size, in the crossection, expect something like 15.</li>
@@ -457,8 +488,8 @@ data &lt;- data[, fid:= dspell[data,fid]]</code></pre>
 <div id="simulating-akm-wages" class="section level2">
 <h2>Simulating AKM wages</h2>
 <p>We start with just AKM wages, which is log additive with some noise.</p>
-<pre class="r"><code>w_sigma = 0.8
-data &lt;- data[, lw := alpha + psi + w_sigma * rnorm(.N) ]</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">w_sigma =<span class="st"> </span><span class="fl">0.8</span>
+data &lt;-<span class="st"> </span>data[, lw <span class="op">:</span><span class="er">=</span><span class="st"> </span>alpha <span class="op">+</span><span class="st"> </span>psi <span class="op">+</span><span class="st"> </span>w_sigma <span class="op">*</span><span class="st"> </span><span class="kw">rnorm</span>(.N) ]</code></pre></div>
 <p><span class="label label-success">Question 2</span> Before we finish with the simulation code. Use this generated data to create the event study plot from Card-Heining-Kline:</p>
 <ol style="list-style-type: decimal">
 <li>Compute the mean wage within firm</li>

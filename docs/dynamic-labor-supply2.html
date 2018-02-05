@@ -15,13 +15,11 @@
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/simplex.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-1.1/highlight.js"></script>
 <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css" />
 <!--[if lt IE 9]>
@@ -30,22 +28,55 @@
 
   
 <!-- Bootstrap core CSS -->
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.css" rel="stylesheet">
+<link href="site_libs/bootstrap-3.3.5/css/simplex.css" rel="stylesheet">
+
 
 <style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #1f1c1b; background-color: #ffffff; }
+code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code > span.dt { color: #0057ae; } /* DataType */
+code > span.dv { color: #b08000; } /* DecVal */
+code > span.bn { color: #b08000; } /* BaseN */
+code > span.fl { color: #b08000; } /* Float */
+code > span.cn { color: #aa5500; } /* Constant */
+code > span.ch { color: #924c9d; } /* Char */
+code > span.sc { color: #3daee9; } /* SpecialChar */
+code > span.st { color: #bf0303; } /* String */
+code > span.vs { color: #bf0303; } /* VerbatimString */
+code > span.ss { color: #ff5500; } /* SpecialString */
+code > span.im { color: #ff5500; } /* Import */
+code > span.co { color: #898887; } /* Comment */
+code > span.do { color: #607880; } /* Documentation */
+code > span.an { color: #ca60ca; } /* Annotation */
+code > span.cv { color: #0095ff; } /* CommentVar */
+code > span.ot { color: #006e28; } /* Other */
+code > span.fu { color: #644a9b; } /* Function */
+code > span.va { color: #0057ae; } /* Variable */
+code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #1f1c1b; } /* Operator */
+code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code > span.pp { color: #006e28; } /* Preprocessor */
+code > span.at { color: #0057ae; } /* Attribute */
+code > span.re { color: #0057ae; } /* RegionMarker */
+code > span.in { color: #b08000; } /* Information */
+code > span.wa { color: #bf0303; } /* Warning */
+code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
+code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code > span. { color: #1f1c1b; } /* Normal */
+</style>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
   }
 </style>
-<script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
-}
-</script>
-
 
 
 <style type="text/css">
@@ -107,34 +138,34 @@ button.code-folding-btn:focus {
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
-  padding-top: 51px;
+  padding-top: 41px;
   padding-bottom: 40px;
 }
 /* offset scroll position for anchor links (for fixed navbar)  */
 .section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 
 .section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 .section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 .section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 .section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 .section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 </style>
 
@@ -260,73 +291,73 @@ $(document).ready(function () {
 <p>As we know we can solve for the expected value function given by:</p>
 <p><span class="math display">\[ \bar{V}_t(x) = \log \sum_a \exp(  E U(w,a) + \beta \bar{V}_t(x_{t+1})) \]</span> Let’s assume log-normal shocks for the wage, and get <span class="math inline">\(E(U) = exp(\rho \sigma_\epsilon^2/2) * w^\sigma\)</span>.</p>
 <p>We prepare the wage realizations in each state and the value function.</p>
-<pre class="r"><code>p    = list(nt=10,ne=10,beta=5,rho=2,wsd=1,
-            r1=0.1,r2=0,rt=0.05,u0=-2,u1=0.5,u2=0.25,
-            r=0.02,b=0.5)
-V    = array(0,c(p$nt,p$ne))
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p    =<span class="st"> </span><span class="kw">list</span>(<span class="dt">nt=</span><span class="dv">10</span>,<span class="dt">ne=</span><span class="dv">10</span>,<span class="dt">beta=</span><span class="dv">5</span>,<span class="dt">rho=</span><span class="dv">2</span>,<span class="dt">wsd=</span><span class="dv">1</span>,
+            <span class="dt">r1=</span><span class="fl">0.1</span>,<span class="dt">r2=</span><span class="dv">0</span>,<span class="dt">rt=</span><span class="fl">0.05</span>,<span class="dt">u0=</span><span class="op">-</span><span class="dv">2</span>,<span class="dt">u1=</span><span class="fl">0.5</span>,<span class="dt">u2=</span><span class="fl">0.25</span>,
+            <span class="dt">r=</span><span class="fl">0.02</span>,<span class="dt">b=</span><span class="fl">0.5</span>)
+V    =<span class="st"> </span><span class="kw">array</span>(<span class="dv">0</span>,<span class="kw">c</span>(p<span class="op">$</span>nt,p<span class="op">$</span>ne))
 
-# prepare simple matrices for E1 and E2
-E = 1:p$ne
+<span class="co"># prepare simple matrices for E1 and E2</span>
+E =<span class="st"> </span><span class="dv">1</span><span class="op">:</span>p<span class="op">$</span>ne
 
-# construct transition matrix for each choice
-trm &lt;- function(d,s,n) {
-  X1 = spread(qnorm( (1:n)/(n+1) ),1,n)
-  D = dnorm( X1 - (t(X1) +d),0,s)
-  D = D / spread(rowSums(D),2,n) 
+<span class="co"># construct transition matrix for each choice</span>
+trm &lt;-<span class="st"> </span><span class="cf">function</span>(d,s,n) {
+  X1 =<span class="st"> </span><span class="kw">spread</span>(<span class="kw">qnorm</span>( (<span class="dv">1</span><span class="op">:</span>n)<span class="op">/</span>(n<span class="op">+</span><span class="dv">1</span>) ),<span class="dv">1</span>,n)
+  D =<span class="st"> </span><span class="kw">dnorm</span>( X1 <span class="op">-</span><span class="st"> </span>(<span class="kw">t</span>(X1) <span class="op">+</span>d),<span class="dv">0</span>,s)
+  D =<span class="st"> </span>D <span class="op">/</span><span class="st"> </span><span class="kw">spread</span>(<span class="kw">rowSums</span>(D),<span class="dv">2</span>,n) 
 }
 
-GG = array(0,c(3,p$ne,p$ne))
-GG[1,,] = trm(-0.2,0.2,p$ne)  # depreciates
-GG[2,,] = trm(0   ,0.2,p$ne)  # accumulates
-GG[3,,] = trm(1   ,0.2,p$ne)  # accumulates faster
+GG =<span class="st"> </span><span class="kw">array</span>(<span class="dv">0</span>,<span class="kw">c</span>(<span class="dv">3</span>,p<span class="op">$</span>ne,p<span class="op">$</span>ne))
+GG[<span class="dv">1</span>,,] =<span class="st"> </span><span class="kw">trm</span>(<span class="op">-</span><span class="fl">0.2</span>,<span class="fl">0.2</span>,p<span class="op">$</span>ne)  <span class="co"># depreciates</span>
+GG[<span class="dv">2</span>,,] =<span class="st"> </span><span class="kw">trm</span>(<span class="dv">0</span>   ,<span class="fl">0.2</span>,p<span class="op">$</span>ne)  <span class="co"># accumulates</span>
+GG[<span class="dv">3</span>,,] =<span class="st"> </span><span class="kw">trm</span>(<span class="dv">1</span>   ,<span class="fl">0.2</span>,p<span class="op">$</span>ne)  <span class="co"># accumulates faster</span>
 
-# define utility function
-uf &lt;- function(w,p) (w^(1-p$rho))/(1-p$rho)</code></pre>
+<span class="co"># define utility function</span>
+uf &lt;-<span class="st"> </span><span class="cf">function</span>(w,p) (w<span class="op">^</span>(<span class="dv">1</span><span class="op">-</span>p<span class="op">$</span>rho))<span class="op">/</span>(<span class="dv">1</span><span class="op">-</span>p<span class="op">$</span>rho)</code></pre></div>
 <p>We then solve the dynamic problem recursively. In the last period they just get the last wage for ever.</p>
-<pre class="r"><code>S = exp( p$wsd^2 * (1-p$rho)^2/2)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">S =<span class="st"> </span><span class="kw">exp</span>( p<span class="op">$</span>wsd<span class="op">^</span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span><span class="op">-</span>p<span class="op">$</span>rho)<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="dv">2</span>)
 
-QQa = array(0,c(p$nt,p$ne,3))
-Vf = cbind( p$u0 , uf(p$r1 * E + p$rt*p$nt ,p) +p$u1, uf(p$r2 * E + p$rt*p$nt ,p) + p$u2)/p$r
-V[p$nt,] = log( rowSums(exp(Vf)))
-QQa[p$nt,,] = Vf</code></pre>
+QQa =<span class="st"> </span><span class="kw">array</span>(<span class="dv">0</span>,<span class="kw">c</span>(p<span class="op">$</span>nt,p<span class="op">$</span>ne,<span class="dv">3</span>))
+Vf =<span class="st"> </span><span class="kw">cbind</span>( p<span class="op">$</span>u0 , <span class="kw">uf</span>(p<span class="op">$</span>r1 <span class="op">*</span><span class="st"> </span>E <span class="op">+</span><span class="st"> </span>p<span class="op">$</span>rt<span class="op">*</span>p<span class="op">$</span>nt ,p) <span class="op">+</span>p<span class="op">$</span>u1, <span class="kw">uf</span>(p<span class="op">$</span>r2 <span class="op">*</span><span class="st"> </span>E <span class="op">+</span><span class="st"> </span>p<span class="op">$</span>rt<span class="op">*</span>p<span class="op">$</span>nt ,p) <span class="op">+</span><span class="st"> </span>p<span class="op">$</span>u2)<span class="op">/</span>p<span class="op">$</span>r
+V[p<span class="op">$</span>nt,] =<span class="st"> </span><span class="kw">log</span>( <span class="kw">rowSums</span>(<span class="kw">exp</span>(Vf)))
+QQa[p<span class="op">$</span>nt,,] =<span class="st"> </span>Vf</code></pre></div>
 <p>We then solve the values recursively</p>
-<pre class="r"><code># construct Q value for each choice of the 3 choices
-for (t in (p$nt-1):1) {
-  Q0 =                                p$u0  + 1/(1+p$r)* GG[1,,] %*% V[t+1,]
-  Q1 =  uf(p$r1 * E + p$rt*p$nt ,p) + p$u1  + 1/(1+p$r)* GG[2,,] %*% V[t+1,]
-  Q2 =  uf(p$r2 * E + p$rt*p$nt ,p) + p$u2  + 1/(1+p$r)* GG[3,,] %*% V[t+1,]
-  QQ = cbind(Q0,Q1,Q2)
-  V[t,] = log(rowSums(exp(QQ)))
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># construct Q value for each choice of the 3 choices</span>
+<span class="cf">for</span> (t <span class="cf">in</span> (p<span class="op">$</span>nt<span class="op">-</span><span class="dv">1</span>)<span class="op">:</span><span class="dv">1</span>) {
+  Q0 =<span class="st">                                </span>p<span class="op">$</span>u0  <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>p<span class="op">$</span>r)<span class="op">*</span><span class="st"> </span>GG[<span class="dv">1</span>,,] <span class="op">%*%</span><span class="st"> </span>V[t<span class="op">+</span><span class="dv">1</span>,]
+  Q1 =<span class="st">  </span><span class="kw">uf</span>(p<span class="op">$</span>r1 <span class="op">*</span><span class="st"> </span>E <span class="op">+</span><span class="st"> </span>p<span class="op">$</span>rt<span class="op">*</span>p<span class="op">$</span>nt ,p) <span class="op">+</span><span class="st"> </span>p<span class="op">$</span>u1  <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>p<span class="op">$</span>r)<span class="op">*</span><span class="st"> </span>GG[<span class="dv">2</span>,,] <span class="op">%*%</span><span class="st"> </span>V[t<span class="op">+</span><span class="dv">1</span>,]
+  Q2 =<span class="st">  </span><span class="kw">uf</span>(p<span class="op">$</span>r2 <span class="op">*</span><span class="st"> </span>E <span class="op">+</span><span class="st"> </span>p<span class="op">$</span>rt<span class="op">*</span>p<span class="op">$</span>nt ,p) <span class="op">+</span><span class="st"> </span>p<span class="op">$</span>u2  <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>p<span class="op">$</span>r)<span class="op">*</span><span class="st"> </span>GG[<span class="dv">3</span>,,] <span class="op">%*%</span><span class="st"> </span>V[t<span class="op">+</span><span class="dv">1</span>,]
+  QQ =<span class="st"> </span><span class="kw">cbind</span>(Q0,Q1,Q2)
+  V[t,] =<span class="st"> </span><span class="kw">log</span>(<span class="kw">rowSums</span>(<span class="kw">exp</span>(QQ)))
   
-  # saving the choice probability
-  QQa[t,,] = QQ
-}</code></pre>
+  <span class="co"># saving the choice probability</span>
+  QQa[t,,] =<span class="st"> </span>QQ
+}</code></pre></div>
 <p>then we simulate a data set</p>
-<pre class="r"><code>N=50000
-simdata = data.table(ii=1:N)
-R = c(0,p$r1,p$r2)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">N=<span class="dv">50000</span>
+simdata =<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">ii=</span><span class="dv">1</span><span class="op">:</span>N)
+R =<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>,p<span class="op">$</span>r1,p<span class="op">$</span>r2)
 
-dE = 1:10
-dW = 1:10
-dA = 1:10
+dE =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span>
+dW =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span>
+dA =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span>
 
-simdata = simdata[,{
-  dE[1] = sample.int(p$ne,1,prob=1/(1:p$ne))
-  for (t in 1:p$nt) {
-    pr = exp(QQa[t,dE[1],] - max(QQa[t,dE[1],]))
-    dA[t] = sample.int(3,1,prob= exp(QQa[t,dE[1],]))
-    dW[t] = exp(R[dA[t]] * dE[t] + p$rt*t + p$wsd*rnorm(1))
-    if (dA[t]==1) dW[t]=NA;
-    if (t&lt;p$nt) {dE[t+1] = sample.int(p$ne,1,prob=GG[dA[t],dE[t],])}
+simdata =<span class="st"> </span>simdata[,{
+  dE[<span class="dv">1</span>] =<span class="st"> </span><span class="kw">sample.int</span>(p<span class="op">$</span>ne,<span class="dv">1</span>,<span class="dt">prob=</span><span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span><span class="op">:</span>p<span class="op">$</span>ne))
+  <span class="cf">for</span> (t <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>p<span class="op">$</span>nt) {
+    pr =<span class="st"> </span><span class="kw">exp</span>(QQa[t,dE[<span class="dv">1</span>],] <span class="op">-</span><span class="st"> </span><span class="kw">max</span>(QQa[t,dE[<span class="dv">1</span>],]))
+    dA[t] =<span class="st"> </span><span class="kw">sample.int</span>(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dt">prob=</span> <span class="kw">exp</span>(QQa[t,dE[<span class="dv">1</span>],]))
+    dW[t] =<span class="st"> </span><span class="kw">exp</span>(R[dA[t]] <span class="op">*</span><span class="st"> </span>dE[t] <span class="op">+</span><span class="st"> </span>p<span class="op">$</span>rt<span class="op">*</span>t <span class="op">+</span><span class="st"> </span>p<span class="op">$</span>wsd<span class="op">*</span><span class="kw">rnorm</span>(<span class="dv">1</span>))
+    <span class="cf">if</span> (dA[t]<span class="op">==</span><span class="dv">1</span>) dW[t]=<span class="ot">NA</span>;
+    <span class="cf">if</span> (t<span class="op">&lt;</span>p<span class="op">$</span>nt) {dE[t<span class="op">+</span><span class="dv">1</span>] =<span class="st"> </span><span class="kw">sample.int</span>(p<span class="op">$</span>ne,<span class="dv">1</span>,<span class="dt">prob=</span>GG[dA[t],dE[t],])}
   }
-  list(A=dA,W=dW,E=dE,t=1:p$nt)
+  <span class="kw">list</span>(<span class="dt">A=</span>dA,<span class="dt">W=</span>dW,<span class="dt">E=</span>dE,<span class="dt">t=</span><span class="dv">1</span><span class="op">:</span>p<span class="op">$</span>nt)
 },ii]
 
-rr = simdata[,.N,list(A,t)][,pr:=N/sum(N),t]
-ggplot(rr,aes(x=t,y=pr,color=factor(A))) + geom_line()</code></pre>
+rr =<span class="st"> </span>simdata[,.N,<span class="kw">list</span>(A,t)][,pr<span class="op">:</span><span class="er">=</span>N<span class="op">/</span><span class="kw">sum</span>(N),t]
+<span class="kw">ggplot</span>(rr,<span class="kw">aes</span>(<span class="dt">x=</span>t,<span class="dt">y=</span>pr,<span class="dt">color=</span><span class="kw">factor</span>(A))) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>()</code></pre></div>
 <p><img src="dynamic-labor-supply2_files/figure-html/simulating-1.png" width="672" /></p>
-<pre class="r"><code>rr = simdata[,list(m=mean(E),q975=quantile(E,0.975),q025=quantile(E,0.025)),t]
-ggplot(rr,aes(x=t,y=m,ymin=q025,ymax=q975)) + geom_line() + geom_errorbar(width=0.2)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rr =<span class="st"> </span>simdata[,<span class="kw">list</span>(<span class="dt">m=</span><span class="kw">mean</span>(E),<span class="dt">q975=</span><span class="kw">quantile</span>(E,<span class="fl">0.975</span>),<span class="dt">q025=</span><span class="kw">quantile</span>(E,<span class="fl">0.025</span>)),t]
+<span class="kw">ggplot</span>(rr,<span class="kw">aes</span>(<span class="dt">x=</span>t,<span class="dt">y=</span>m,<span class="dt">ymin=</span>q025,<span class="dt">ymax=</span>q975)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_errorbar</span>(<span class="dt">width=</span><span class="fl">0.2</span>)</code></pre></div>
 <p><img src="dynamic-labor-supply2_files/figure-html/simulating-2.png" width="672" /></p>
 </div>
 </div>

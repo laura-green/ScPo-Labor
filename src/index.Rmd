@@ -2,7 +2,7 @@
 <br/><br/>
 This is the website for the **graduate labor** course at SciencesPo Paris taught by [Florian Oswald](https://floswald.github.io) in the Spring semester of 2018.
 
-<a class="btn btn-danger" href="https://scpo-gradlabor2018.slack.com/signup" role="button">Our Slack group</a>  <a class="btn btn-success" href="https://github.com/floswald/ScPo-Labor/" role="button">Github Repo</a>  
+<a class="btn btn-primary" href="https://scpo-gradlabor2018.slack.com/signup" role="button">Our Slack group</a>  <a class="btn btn-info" href="https://github.com/floswald/ScPo-Labor/" role="button">Github Repo</a>  
 <br/>
 
 

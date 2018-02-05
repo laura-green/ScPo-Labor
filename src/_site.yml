@@ -25,8 +25,8 @@ navbar:
       href: https://github.com/floswald/ScPo-Labor/issues
 output:
   html_document:
-    theme: cosmo
-    highlight: textmate
+    theme: simplex
+    highlight: kate
     include:
       after_body: footer.html
       in_header:  header.html

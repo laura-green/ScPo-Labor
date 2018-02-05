@@ -15,13 +15,11 @@
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/simplex.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-1.1/highlight.js"></script>
 <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css" />
 <!--[if lt IE 9]>
@@ -30,22 +28,55 @@
 
   
 <!-- Bootstrap core CSS -->
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.css" rel="stylesheet">
+<link href="site_libs/bootstrap-3.3.5/css/simplex.css" rel="stylesheet">
+
 
 <style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #1f1c1b; background-color: #ffffff; }
+code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code > span.dt { color: #0057ae; } /* DataType */
+code > span.dv { color: #b08000; } /* DecVal */
+code > span.bn { color: #b08000; } /* BaseN */
+code > span.fl { color: #b08000; } /* Float */
+code > span.cn { color: #aa5500; } /* Constant */
+code > span.ch { color: #924c9d; } /* Char */
+code > span.sc { color: #3daee9; } /* SpecialChar */
+code > span.st { color: #bf0303; } /* String */
+code > span.vs { color: #bf0303; } /* VerbatimString */
+code > span.ss { color: #ff5500; } /* SpecialString */
+code > span.im { color: #ff5500; } /* Import */
+code > span.co { color: #898887; } /* Comment */
+code > span.do { color: #607880; } /* Documentation */
+code > span.an { color: #ca60ca; } /* Annotation */
+code > span.cv { color: #0095ff; } /* CommentVar */
+code > span.ot { color: #006e28; } /* Other */
+code > span.fu { color: #644a9b; } /* Function */
+code > span.va { color: #0057ae; } /* Variable */
+code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #1f1c1b; } /* Operator */
+code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code > span.pp { color: #006e28; } /* Preprocessor */
+code > span.at { color: #0057ae; } /* Attribute */
+code > span.re { color: #0057ae; } /* RegionMarker */
+code > span.in { color: #b08000; } /* Information */
+code > span.wa { color: #bf0303; } /* Warning */
+code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
+code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code > span. { color: #1f1c1b; } /* Normal */
+</style>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
   }
 </style>
-<script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
-}
-</script>
-
 
 
 <style type="text/css">
@@ -107,34 +138,34 @@ button.code-folding-btn:focus {
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
-  padding-top: 51px;
+  padding-top: 41px;
   padding-bottom: 40px;
 }
 /* offset scroll position for anchor links (for fixed navbar)  */
 .section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 
 .section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 .section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 .section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 .section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 .section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 </style>
 
@@ -247,7 +278,7 @@ $(document).ready(function () {
 
 
 <p><br/><br/> This is the website for the <strong>graduate labor</strong> course at SciencesPo Paris taught by <a href="https://floswald.github.io">Florian Oswald</a> in the Spring semester of 2018.</p>
-<p><a class="btn btn-danger" href="https://scpo-gradlabor2018.slack.com/signup" role="button">Our Slack group</a> <a class="btn btn-success" href="https://github.com/floswald/ScPo-Labor/" role="button">Github Repo</a><br />
+<p><a class="btn btn-primary" href="https://scpo-gradlabor2018.slack.com/signup" role="button">Our Slack group</a> <a class="btn btn-info" href="https://github.com/floswald/ScPo-Labor/" role="button">Github Repo</a><br />
 <br/></p>
 <div id="communication-and-content" class="section level3">
 <h3>Communication and Content</h3>
@@ -274,10 +305,10 @@ $(document).ready(function () {
 <li>Here is a <a href="http://www.ceb-institute.org/bbs/wp-content/uploads/2011/09/handout_ggplot2.pdf">tutorial</a>, a <a href="http://www.rstudio.com/wp-content/uploads/2015/12/ggplot2-cheatsheet-2.0.pdf">cheatsheet</a> and the <a href="http://docs.ggplot2.org/current/">full documentation</a> for <code>ggplot2</code>.</li>
 </ul>
 <p>We will be using several packages, most of which you can install directly:</p>
-<pre class="r"><code>install.packages(c(&quot;devtools&quot;,&quot;data.table&quot;,&quot;ggplot2&quot;,&quot;plyr&quot;))</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="kw">c</span>(<span class="st">&quot;devtools&quot;</span>,<span class="st">&quot;data.table&quot;</span>,<span class="st">&quot;ggplot2&quot;</span>,<span class="st">&quot;plyr&quot;</span>))</code></pre></div>
 <p>Other packages need to be installed from github using the devtools package:</p>
-<pre class="r"><code>require(devtools)
-install_github(&quot;tlamadon/RcppSimpleTensor&quot;)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(devtools)
+<span class="kw">install_github</span>(<span class="st">&quot;tlamadon/RcppSimpleTensor&quot;</span>)</code></pre></div>
 <!-- Place this tag where you want the button to render. -->
 <p><a class="github-button" href="https://github.com/floswald/ScPo-Labor/archive/master.zip" data-icon="octicon-cloud-download" data-style="mega" aria-label="Download floswald/ScPo-Labor on GitHub">Download</a> <a class="github-button" href="https://github.com/floswald/ScPo-Labor/fork" data-icon="octicon-repo-forked" data-style="mega" data-count-href="/floswald/ScPo-Labor/network" data-count-api="/repos/floswald/ScPo-Labor#forks_count" data-count-aria-label="# forks on GitHub" aria-label="Fork floswald/ScPo-Labor on GitHub">Fork</a></p>
 <!-- Place this tag in your head or just before your close body tag. -->

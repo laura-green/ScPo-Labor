@@ -15,7 +15,7 @@
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/simplex.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -23,8 +23,6 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-1.1/highlight.js"></script>
 <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css" />
 <!--[if lt IE 9]>
@@ -33,22 +31,55 @@
 
   
 <!-- Bootstrap core CSS -->
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.css" rel="stylesheet">
+<link href="site_libs/bootstrap-3.3.5/css/simplex.css" rel="stylesheet">
+
 
 <style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #1f1c1b; background-color: #ffffff; }
+code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code > span.dt { color: #0057ae; } /* DataType */
+code > span.dv { color: #b08000; } /* DecVal */
+code > span.bn { color: #b08000; } /* BaseN */
+code > span.fl { color: #b08000; } /* Float */
+code > span.cn { color: #aa5500; } /* Constant */
+code > span.ch { color: #924c9d; } /* Char */
+code > span.sc { color: #3daee9; } /* SpecialChar */
+code > span.st { color: #bf0303; } /* String */
+code > span.vs { color: #bf0303; } /* VerbatimString */
+code > span.ss { color: #ff5500; } /* SpecialString */
+code > span.im { color: #ff5500; } /* Import */
+code > span.co { color: #898887; } /* Comment */
+code > span.do { color: #607880; } /* Documentation */
+code > span.an { color: #ca60ca; } /* Annotation */
+code > span.cv { color: #0095ff; } /* CommentVar */
+code > span.ot { color: #006e28; } /* Other */
+code > span.fu { color: #644a9b; } /* Function */
+code > span.va { color: #0057ae; } /* Variable */
+code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #1f1c1b; } /* Operator */
+code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code > span.pp { color: #006e28; } /* Preprocessor */
+code > span.at { color: #0057ae; } /* Attribute */
+code > span.re { color: #0057ae; } /* RegionMarker */
+code > span.in { color: #b08000; } /* Information */
+code > span.wa { color: #bf0303; } /* Warning */
+code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
+code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code > span. { color: #1f1c1b; } /* Normal */
+</style>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
   }
 </style>
-<script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
-}
-</script>
-
 
 
 <style type="text/css">
@@ -110,34 +141,34 @@ button.code-folding-btn:focus {
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
-  padding-top: 51px;
+  padding-top: 41px;
   padding-bottom: 40px;
 }
 /* offset scroll position for anchor links (for fixed navbar)  */
 .section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 
 .section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 .section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 .section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 .section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 .section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 </style>
 
@@ -347,7 +378,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Lab on Discrete Choice</h1>
-<h4 class="date"><em>27 January, 2018</em></h4>
+<h4 class="date"><em>05 February, 2018</em></h4>
 
 </div>
 
@@ -369,15 +400,18 @@ div.tocify {
 <p>Armed with these tools we can tackle the data we are given.</p>
 <div id="data" class="section level2">
 <h2>Data</h2>
-<pre class="r"><code>library(AER)
-library(mlogit)
-library(kableExtra)
-library(knitr)
-library(foreach)
-data(&quot;TravelMode&quot;)
-data = TravelMode
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(AER)</code></pre></div>
+<pre><code>## Warning: package &#39;car&#39; was built under R version 3.4.3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(mlogit)
+<span class="kw">library</span>(kableExtra)</code></pre></div>
+<pre><code>## Warning: package &#39;kableExtra&#39; was built under R version 3.4.3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(knitr)
+<span class="kw">library</span>(foreach)</code></pre></div>
+<pre><code>## Warning: package &#39;foreach&#39; was built under R version 3.4.3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(<span class="st">&quot;TravelMode&quot;</span>)
+data =<span class="st"> </span>TravelMode
 
-kable(data[1:10,])</code></pre>
+<span class="kw">kable</span>(data[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,])</code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -508,28 +542,28 @@ kable(data[1:10,])</code></pre>
 </div>
 <div id="mlogit-results" class="section level2">
 <h2>Mlogit results</h2>
-<pre class="r"><code>library(AER)
-library(mlogit)
-library(kableExtra)
-library(knitr)
-library(reshape2)
-data(&quot;TravelMode&quot;)
-TravelMode &lt;- mlogit.data(TravelMode, choice = &quot;choice&quot;, shape = &quot;long&quot;, alt.var = &quot;mode&quot;, chid.var = &quot;individual&quot;)
-data = TravelMode
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(AER)
+<span class="kw">library</span>(mlogit)
+<span class="kw">library</span>(kableExtra)
+<span class="kw">library</span>(knitr)
+<span class="kw">library</span>(reshape2)
+<span class="kw">data</span>(<span class="st">&quot;TravelMode&quot;</span>)
+TravelMode &lt;-<span class="st"> </span><span class="kw">mlogit.data</span>(TravelMode, <span class="dt">choice =</span> <span class="st">&quot;choice&quot;</span>, <span class="dt">shape =</span> <span class="st">&quot;long&quot;</span>, <span class="dt">alt.var =</span> <span class="st">&quot;mode&quot;</span>, <span class="dt">chid.var =</span> <span class="st">&quot;individual&quot;</span>)
+data =<span class="st"> </span>TravelMode
 
 ## overall proportions for chosen mode
-with(data, prop.table(table(mode[choice == TRUE])))</code></pre>
+<span class="kw">with</span>(data, <span class="kw">prop.table</span>(<span class="kw">table</span>(mode[choice <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>])))</code></pre></div>
 <pre><code>## 
 ##       air     train       bus       car 
 ## 0.2761905 0.3000000 0.1428571 0.2809524</code></pre>
-<pre class="r"><code>## travel vs. waiting time for different travel modes
-ggplot(data,aes(x=wait, y=travel)) + geom_point() + facet_wrap(~mode)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## travel vs. waiting time for different travel modes
+<span class="kw">ggplot</span>(data,<span class="kw">aes</span>(<span class="dt">x=</span>wait, <span class="dt">y=</span>travel)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">facet_wrap</span>(<span class="op">~</span>mode)</code></pre></div>
 <p><img src="lab-discretechoice_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<pre class="r"><code>## Greene (2003), Table 21.11, conditional logit model
-fit1 &lt;- mlogit(choice ~ gcost + wait, data = data, reflevel = &quot;car&quot;)
-# fit1 &lt;- mlogit(choice ~ gcost + wait | income, data = data, reflevel = &quot;car&quot;)
-# fit1 &lt;- mlogit(choice ~ gcost + wait + income, data = data, reflevel = &quot;car&quot;) # why doesn&#39;t it work?
-summary(fit1)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Greene (2003), Table 21.11, conditional logit model
+fit1 &lt;-<span class="st"> </span><span class="kw">mlogit</span>(choice <span class="op">~</span><span class="st"> </span>gcost <span class="op">+</span><span class="st"> </span>wait, <span class="dt">data =</span> data, <span class="dt">reflevel =</span> <span class="st">&quot;car&quot;</span>)
+<span class="co"># fit1 &lt;- mlogit(choice ~ gcost + wait | income, data = data, reflevel = &quot;car&quot;)</span>
+<span class="co"># fit1 &lt;- mlogit(choice ~ gcost + wait + income, data = data, reflevel = &quot;car&quot;) # why doesn&#39;t it work?</span>
+<span class="kw">summary</span>(fit1)</code></pre></div>
 <pre><code>## 
 ## Call:
 ## mlogit(formula = choice ~ gcost + wait, data = data, reflevel = &quot;car&quot;, 
@@ -561,11 +595,11 @@ summary(fit1)</code></pre>
 <div id="nested-logit" class="section level2">
 <h2>Nested logit</h2>
 <p>One way to test the assumption is to estimate without one alternative and see if it affects the parameters. For instance we can focus on whether <code>air</code> or <code>train</code> is chosen and estimate within.</p>
-<pre class="r"><code>fit.nested &lt;- mlogit(choice ~ wait + gcost, TravelMode, reflevel = &quot;car&quot;,
-           nests = list(fly = &quot;air&quot;, ground = c(&quot;train&quot;, &quot;bus&quot;, &quot;car&quot;)),
-           unscaled = TRUE)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit.nested &lt;-<span class="st"> </span><span class="kw">mlogit</span>(choice <span class="op">~</span><span class="st"> </span>wait <span class="op">+</span><span class="st"> </span>gcost, TravelMode, <span class="dt">reflevel =</span> <span class="st">&quot;car&quot;</span>,
+           <span class="dt">nests =</span> <span class="kw">list</span>(<span class="dt">fly =</span> <span class="st">&quot;air&quot;</span>, <span class="dt">ground =</span> <span class="kw">c</span>(<span class="st">&quot;train&quot;</span>, <span class="st">&quot;bus&quot;</span>, <span class="st">&quot;car&quot;</span>)),
+           <span class="dt">unscaled =</span> <span class="ot">TRUE</span>)
 
-summary(fit.nested)</code></pre>
+<span class="kw">summary</span>(fit.nested)</code></pre></div>
 <pre><code>## 
 ## Call:
 ## mlogit(formula = choice ~ wait + gcost, data = TravelMode, reflevel = &quot;car&quot;, 
@@ -596,87 +630,87 @@ summary(fit.nested)</code></pre>
 ## Log-Likelihood: -195
 ## McFadden R^2:  0.31281 
 ## Likelihood ratio test : chisq = 177.52 (p.value = &lt; 2.22e-16)</code></pre>
-<pre class="r"><code>data2 =copy(data)
-I=paste(data2$mode)==&quot;bus&quot;
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data2 =<span class="kw">copy</span>(data)
+I=<span class="kw">paste</span>(data2<span class="op">$</span>mode)<span class="op">==</span><span class="st">&quot;bus&quot;</span>
 
-# force other alternatives to mean value
-for (mm in c(&#39;car&#39;,&#39;train&#39;,&#39;air&#39;)) {
-  #data2$gcost[paste(data2$mode)==mm] = mean(data2$gcost[paste(data2$mode)==mm])
-  data2$wait[paste(data2$mode)==mm]  = mean(data2$wait[paste(data2$mode)==mm])
+<span class="co"># force other alternatives to mean value</span>
+<span class="cf">for</span> (mm <span class="cf">in</span> <span class="kw">c</span>(<span class="st">&#39;car&#39;</span>,<span class="st">&#39;train&#39;</span>,<span class="st">&#39;air&#39;</span>)) {
+  <span class="co">#data2$gcost[paste(data2$mode)==mm] = mean(data2$gcost[paste(data2$mode)==mm])</span>
+  data2<span class="op">$</span>wait[<span class="kw">paste</span>(data2<span class="op">$</span>mode)<span class="op">==</span>mm]  =<span class="st"> </span><span class="kw">mean</span>(data2<span class="op">$</span>wait[<span class="kw">paste</span>(data2<span class="op">$</span>mode)<span class="op">==</span>mm])
 }
 
 
-# run a for lopp for different prices
-# save shares for each option
-rr = foreach(dprice = seq(-100,100,l=20), .combine = rbind)  %do% {
-  data2$gcost[I] = data$gcost[I] + dprice
-  res = colMeans(predict(fit.nested,newdata=data2))
-  res[&#39;dprice&#39;] = dprice
+<span class="co"># run a for lopp for different prices</span>
+<span class="co"># save shares for each option</span>
+rr =<span class="st"> </span><span class="kw">foreach</span>(<span class="dt">dprice =</span> <span class="kw">seq</span>(<span class="op">-</span><span class="dv">100</span>,<span class="dv">100</span>,<span class="dt">l=</span><span class="dv">20</span>), <span class="dt">.combine =</span> rbind)  <span class="op">%do%</span><span class="st"> </span>{
+  data2<span class="op">$</span>gcost[I] =<span class="st"> </span>data<span class="op">$</span>gcost[I] <span class="op">+</span><span class="st"> </span>dprice
+  res =<span class="st"> </span><span class="kw">colMeans</span>(<span class="kw">predict</span>(fit.nested,<span class="dt">newdata=</span>data2))
+  res[<span class="st">&#39;dprice&#39;</span>] =<span class="st"> </span>dprice
   res
 } 
 
-rr = melt(data.frame(rr),id.vars = &quot;dprice&quot;)
-ggplot(rr,aes(x=dprice,y=value,color=factor(variable))) + geom_line()</code></pre>
+rr =<span class="st"> </span><span class="kw">melt</span>(<span class="kw">data.frame</span>(rr),<span class="dt">id.vars =</span> <span class="st">&quot;dprice&quot;</span>)
+<span class="kw">ggplot</span>(rr,<span class="kw">aes</span>(<span class="dt">x=</span>dprice,<span class="dt">y=</span>value,<span class="dt">color=</span><span class="kw">factor</span>(variable))) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>()</code></pre></div>
 <p><img src="lab-discretechoice_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 </div>
 <div id="random-coefficient-model" class="section level2">
 <h2>Random coefficient model</h2>
 <p>Let’s try with 2 groups of people to run an EM</p>
-<pre class="r"><code>C = acast(data,individual ~ mode,value.var=&quot;choice&quot;)
-C = C[,c(4,1,2,3)]
-p1=0.5
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">C =<span class="st"> </span><span class="kw">acast</span>(data,individual <span class="op">~</span><span class="st"> </span>mode,<span class="dt">value.var=</span><span class="st">&quot;choice&quot;</span>)
+C =<span class="st"> </span>C[,<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)]
+p1=<span class="fl">0.5</span>
 
-I = sample(unique(data$individua),nrow(data)/8)
-I  =data$individual %in% I
+I =<span class="st"> </span><span class="kw">sample</span>(<span class="kw">unique</span>(data<span class="op">$</span>individua),<span class="kw">nrow</span>(data)<span class="op">/</span><span class="dv">8</span>)
+I  =data<span class="op">$</span>individual <span class="op">%in%</span><span class="st"> </span>I
 
-# we start with the very first mlogit (we randomly sub-sample to create some variation)
-fit1 &lt;- mlogit(choice ~ gcost , data = data[I,], reflevel = &quot;car&quot;)
-fit2 &lt;- mlogit(choice ~ gcost , data = data[!I,], reflevel = &quot;car&quot;)
+<span class="co"># we start with the very first mlogit (we randomly sub-sample to create some variation)</span>
+fit1 &lt;-<span class="st"> </span><span class="kw">mlogit</span>(choice <span class="op">~</span><span class="st"> </span>gcost , <span class="dt">data =</span> data[I,], <span class="dt">reflevel =</span> <span class="st">&quot;car&quot;</span>)
+fit2 &lt;-<span class="st"> </span><span class="kw">mlogit</span>(choice <span class="op">~</span><span class="st"> </span>gcost , <span class="dt">data =</span> data[<span class="op">!</span>I,], <span class="dt">reflevel =</span> <span class="st">&quot;car&quot;</span>)
 
-liks = rep(0,15)
-for (i in 1:15) {
-  # for each individual we compute the posterior probability given their data
-  p1v = predict(fit1,newdata=data)
-  p2v = predict(fit2,newdata=data)
+liks =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">15</span>)
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">15</span>) {
+  <span class="co"># for each individual we compute the posterior probability given their data</span>
+  p1v =<span class="st"> </span><span class="kw">predict</span>(fit1,<span class="dt">newdata=</span>data)
+  p2v =<span class="st"> </span><span class="kw">predict</span>(fit2,<span class="dt">newdata=</span>data)
   
-  p1v = rowSums(p1v * C)*p1
-  p2v = rowSums(p2v * C)*(1-p1)
+  p1v =<span class="st"> </span><span class="kw">rowSums</span>(p1v <span class="op">*</span><span class="st"> </span>C)<span class="op">*</span>p1
+  p2v =<span class="st"> </span><span class="kw">rowSums</span>(p2v <span class="op">*</span><span class="st"> </span>C)<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>p1)
   
-  liks[i] = sum(log(p1v+p2v))
-  #cat(sprintf(&quot;ll=%f\n&quot;,ll))
+  liks[i] =<span class="st"> </span><span class="kw">sum</span>(<span class="kw">log</span>(p1v<span class="op">+</span>p2v))
+  <span class="co">#cat(sprintf(&quot;ll=%f\n&quot;,ll))</span>
   
-  p1v  = p1v/(p1v+p2v)
-  p1v  = as.numeric( p1v %x% c(1,1,1,1) )
+  p1v  =<span class="st"> </span>p1v<span class="op">/</span>(p1v<span class="op">+</span>p2v)
+  p1v  =<span class="st"> </span><span class="kw">as.numeric</span>( p1v <span class="op">%x%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>) )
   
-  # finally we run the 2 mlogit with weights
-  fit1 &lt;- mlogit(choice ~ gcost , data = data,weights = p1v, reflevel = &quot;car&quot;)
-  fit2 &lt;- mlogit(choice ~ gcost , data = data,weights = as.numeric(1-p1v), reflevel = &quot;car&quot;)
+  <span class="co"># finally we run the 2 mlogit with weights</span>
+  fit1 &lt;-<span class="st"> </span><span class="kw">mlogit</span>(choice <span class="op">~</span><span class="st"> </span>gcost , <span class="dt">data =</span> data,<span class="dt">weights =</span> p1v, <span class="dt">reflevel =</span> <span class="st">&quot;car&quot;</span>)
+  fit2 &lt;-<span class="st"> </span><span class="kw">mlogit</span>(choice <span class="op">~</span><span class="st"> </span>gcost , <span class="dt">data =</span> data,<span class="dt">weights =</span> <span class="kw">as.numeric</span>(<span class="dv">1</span><span class="op">-</span>p1v), <span class="dt">reflevel =</span> <span class="st">&quot;car&quot;</span>)
   
-  p1 = mean(p1v)
+  p1 =<span class="st"> </span><span class="kw">mean</span>(p1v)
 }
-print(fit1)</code></pre>
+<span class="kw">print</span>(fit1)</code></pre></div>
 <pre><code>## 
 ## Call:
 ## mlogit(formula = choice ~ gcost, data = data, weights = p1v,     reflevel = &quot;car&quot;, method = &quot;nr&quot;, print.level = 0)
 ## 
 ## Coefficients:
 ##   air:(intercept)  train:(intercept)    bus:(intercept)  
-##          -5.72139            4.50935            2.58228  
+##          1.408603          -1.318121          -2.441394  
 ##             gcost  
-##          -0.16258</code></pre>
-<pre class="r"><code>print(fit2)</code></pre>
+##          0.029957</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(fit2)</code></pre></div>
 <pre><code>## 
 ## Call:
 ## mlogit(formula = choice ~ gcost, data = data, weights = as.numeric(1 -     p1v), reflevel = &quot;car&quot;, method = &quot;nr&quot;, print.level = 0)
 ## 
 ## Coefficients:
 ##   air:(intercept)  train:(intercept)    bus:(intercept)  
-##          1.501304          -1.337636          -2.413040  
+##          -5.71832            4.63235            2.69805  
 ##             gcost  
-##          0.030909</code></pre>
-<pre class="r"><code>print(p1)</code></pre>
-<pre><code>## [1] 0.6390407</code></pre>
-<pre class="r"><code>plot(liks)</code></pre>
+##          -0.16753</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(p1)</code></pre></div>
+<pre><code>## [1] 0.3667511</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(liks)</code></pre></div>
 <p><img src="lab-discretechoice_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
 </div>

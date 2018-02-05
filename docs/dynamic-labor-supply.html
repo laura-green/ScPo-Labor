@@ -15,13 +15,11 @@
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/simplex.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-1.1/highlight.js"></script>
 <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css" />
 <!--[if lt IE 9]>
@@ -30,22 +28,55 @@
 
   
 <!-- Bootstrap core CSS -->
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.css" rel="stylesheet">
+<link href="site_libs/bootstrap-3.3.5/css/simplex.css" rel="stylesheet">
+
 
 <style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #1f1c1b; background-color: #ffffff; }
+code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code > span.dt { color: #0057ae; } /* DataType */
+code > span.dv { color: #b08000; } /* DecVal */
+code > span.bn { color: #b08000; } /* BaseN */
+code > span.fl { color: #b08000; } /* Float */
+code > span.cn { color: #aa5500; } /* Constant */
+code > span.ch { color: #924c9d; } /* Char */
+code > span.sc { color: #3daee9; } /* SpecialChar */
+code > span.st { color: #bf0303; } /* String */
+code > span.vs { color: #bf0303; } /* VerbatimString */
+code > span.ss { color: #ff5500; } /* SpecialString */
+code > span.im { color: #ff5500; } /* Import */
+code > span.co { color: #898887; } /* Comment */
+code > span.do { color: #607880; } /* Documentation */
+code > span.an { color: #ca60ca; } /* Annotation */
+code > span.cv { color: #0095ff; } /* CommentVar */
+code > span.ot { color: #006e28; } /* Other */
+code > span.fu { color: #644a9b; } /* Function */
+code > span.va { color: #0057ae; } /* Variable */
+code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #1f1c1b; } /* Operator */
+code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code > span.pp { color: #006e28; } /* Preprocessor */
+code > span.at { color: #0057ae; } /* Attribute */
+code > span.re { color: #0057ae; } /* RegionMarker */
+code > span.in { color: #b08000; } /* Information */
+code > span.wa { color: #bf0303; } /* Warning */
+code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
+code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code > span. { color: #1f1c1b; } /* Normal */
+</style>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
   }
 </style>
-<script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
-}
-</script>
-
 
 
 <style type="text/css">
@@ -107,34 +138,34 @@ button.code-folding-btn:focus {
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
-  padding-top: 51px;
+  padding-top: 41px;
   padding-bottom: 40px;
 }
 /* offset scroll position for anchor links (for fixed navbar)  */
 .section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 
 .section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 .section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 .section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 .section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 .section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 </style>
 
@@ -256,106 +287,106 @@ $(document).ready(function () {
 <h3>Setting the environment</h3>
 <p>The state space is given by age, producitivity and asset level. We consider the separable utility function over leisure and consumption. We fix all parameters. WE also consider a simple end of life value.</p>
 <p>We prepare the wage realizations in each state and the value function.</p>
-<pre class="r"><code>p    = list(nx=30,na=40,nb=100,nh=10,gamma = 2, eta=-1.5 , lambda=0.1,r=0.02,beta=5,fc=1)
-V    = array(0,c(p$na,p$nx,p$nb))
-X    = exp(  qnorm((1:(p$nx))/(p$nx+1)))  
-B    = c(0,exp(seq(log(min(X)),log(max(X/p$r)),l=p$nb-1)))
-H    = seq(0,1,l=p$nh)
-wage = X
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p    =<span class="st"> </span><span class="kw">list</span>(<span class="dt">nx=</span><span class="dv">30</span>,<span class="dt">na=</span><span class="dv">40</span>,<span class="dt">nb=</span><span class="dv">100</span>,<span class="dt">nh=</span><span class="dv">10</span>,<span class="dt">gamma =</span> <span class="dv">2</span>, <span class="dt">eta=</span><span class="op">-</span><span class="fl">1.5</span> , <span class="dt">lambda=</span><span class="fl">0.1</span>,<span class="dt">r=</span><span class="fl">0.02</span>,<span class="dt">beta=</span><span class="dv">5</span>,<span class="dt">fc=</span><span class="dv">1</span>)
+V    =<span class="st"> </span><span class="kw">array</span>(<span class="dv">0</span>,<span class="kw">c</span>(p<span class="op">$</span>na,p<span class="op">$</span>nx,p<span class="op">$</span>nb))
+X    =<span class="st"> </span><span class="kw">exp</span>(  <span class="kw">qnorm</span>((<span class="dv">1</span><span class="op">:</span>(p<span class="op">$</span>nx))<span class="op">/</span>(p<span class="op">$</span>nx<span class="op">+</span><span class="dv">1</span>)))  
+B    =<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>,<span class="kw">exp</span>(<span class="kw">seq</span>(<span class="kw">log</span>(<span class="kw">min</span>(X)),<span class="kw">log</span>(<span class="kw">max</span>(X<span class="op">/</span>p<span class="op">$</span>r)),<span class="dt">l=</span>p<span class="op">$</span>nb<span class="op">-</span><span class="dv">1</span>)))
+H    =<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dt">l=</span>p<span class="op">$</span>nh)
+wage =<span class="st"> </span>X
 
-# transition matrix on productivity
-X1 = spread(X,1,p$nx);X2 = spread(X,2,p$nx);
-Gx = dnorm(log(X2)-log(X1))
-Gx = Gx/spread(rowSums(Gx),2,p$nx)
-persp(Gx)</code></pre>
+<span class="co"># transition matrix on productivity</span>
+X1 =<span class="st"> </span><span class="kw">spread</span>(X,<span class="dv">1</span>,p<span class="op">$</span>nx);X2 =<span class="st"> </span><span class="kw">spread</span>(X,<span class="dv">2</span>,p<span class="op">$</span>nx);
+Gx =<span class="st"> </span><span class="kw">dnorm</span>(<span class="kw">log</span>(X2)<span class="op">-</span><span class="kw">log</span>(X1))
+Gx =<span class="st"> </span>Gx<span class="op">/</span><span class="kw">spread</span>(<span class="kw">rowSums</span>(Gx),<span class="dv">2</span>,p<span class="op">$</span>nx)
+<span class="kw">persp</span>(Gx)</code></pre></div>
 <p><img src="dynamic-labor-supply_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 <p>We then solve the dynamic problem recursively. In the last period, we let the agent choose a single consumption and hours value that will make asset level 0.</p>
 <p>First step is to solve the final period problem. We assume that the agent has a access to a producitivity which is a thrid of the last period one, and then choose hours and consumption to make asset to 0.</p>
-<pre class="r"><code>t.final = tensorFunction(R[b,w,h] ~  ((W[w]*H[h] + r*B[b])^(1+eta))/(1+eta) - beta*((H[h])^(1+gamma))/(1+gamma) - I(H[h]&gt;0)*fc)
-VV      = t.final(X/3,H,B,p$r,p$eta,p$beta,p$gamma,p$fc)
-Vf      = aaply(VV,c(1,2),max,na.rm=T)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">t.final =<span class="st"> </span><span class="kw">tensorFunction</span>(R[b,w,h] <span class="op">~</span><span class="st">  </span>((W[w]<span class="op">*</span>H[h] <span class="op">+</span><span class="st"> </span>r<span class="op">*</span>B[b])<span class="op">^</span>(<span class="dv">1</span><span class="op">+</span>eta))<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>eta) <span class="op">-</span><span class="st"> </span>beta<span class="op">*</span>((H[h])<span class="op">^</span>(<span class="dv">1</span><span class="op">+</span>gamma))<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>gamma) <span class="op">-</span><span class="st"> </span><span class="kw">I</span>(H[h]<span class="op">&gt;</span><span class="dv">0</span>)<span class="op">*</span>fc)
+VV      =<span class="st"> </span><span class="kw">t.final</span>(X<span class="op">/</span><span class="dv">3</span>,H,B,p<span class="op">$</span>r,p<span class="op">$</span>eta,p<span class="op">$</span>beta,p<span class="op">$</span>gamma,p<span class="op">$</span>fc)
+Vf      =<span class="st"> </span><span class="kw">aaply</span>(VV,<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),max,<span class="dt">na.rm=</span>T)
 
-# plotting the function
-ggplot(melt(Vf,c(&quot;b&quot;,&quot;x&quot;)),aes(x=b,y=value,color=x,group=x))+geom_line() + theme_bw() + scale_x_continuous(&quot;asset position&quot;)</code></pre>
+<span class="co"># plotting the function</span>
+<span class="kw">ggplot</span>(<span class="kw">melt</span>(Vf,<span class="kw">c</span>(<span class="st">&quot;b&quot;</span>,<span class="st">&quot;x&quot;</span>)),<span class="kw">aes</span>(<span class="dt">x=</span>b,<span class="dt">y=</span>value,<span class="dt">color=</span>x,<span class="dt">group=</span>x))<span class="op">+</span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="st">&quot;asset position&quot;</span>)</code></pre></div>
 <p><img src="dynamic-labor-supply_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>We then solve the values recursively</p>
-<pre class="r"><code>V[p$na,,] = t(Vf)/p$r
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">V[p<span class="op">$</span>na,,] =<span class="st"> </span><span class="kw">t</span>(Vf)<span class="op">/</span>p<span class="op">$</span>r
 
-# prepare tensor that computes the Q value for each b,x,h,b2
-t.cur = tensorFunction(R[b,x,h,b2] ~  ((W[x]*H[h] - B[b2] + (1+r)*B[b])^(1+eta))/(1+eta) - beta*((H[h])^(1+gamma))/(1+gamma) + rho*VV[x,b2] - I(H[h]&gt;0)*fc )
+<span class="co"># prepare tensor that computes the Q value for each b,x,h,b2</span>
+t.cur =<span class="st"> </span><span class="kw">tensorFunction</span>(R[b,x,h,b2] <span class="op">~</span><span class="st">  </span>((W[x]<span class="op">*</span>H[h] <span class="op">-</span><span class="st"> </span>B[b2] <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span><span class="op">+</span>r)<span class="op">*</span>B[b])<span class="op">^</span>(<span class="dv">1</span><span class="op">+</span>eta))<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>eta) <span class="op">-</span><span class="st"> </span>beta<span class="op">*</span>((H[h])<span class="op">^</span>(<span class="dv">1</span><span class="op">+</span>gamma))<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>gamma) <span class="op">+</span><span class="st"> </span>rho<span class="op">*</span>VV[x,b2] <span class="op">-</span><span class="st"> </span><span class="kw">I</span>(H[h]<span class="op">&gt;</span><span class="dv">0</span>)<span class="op">*</span>fc )
 
-B.pol = V*0
-H.pol = V*0
+B.pol =<span class="st"> </span>V<span class="op">*</span><span class="dv">0</span>
+H.pol =<span class="st"> </span>V<span class="op">*</span><span class="dv">0</span>
 
-for (age in (p$na-1):1) {
-  # compute expected value tomorrow
-  EV = Gx %*% V[age+1,,]
-  # compute values at each control variables
-  Vn = t.cur(W=X*exp(p$lambda * age/p$na) ,H,B,EV,p$r,p$eta,p$beta,p$gamma,1/(1+p$r),p$fc)
-  # we need to choose the asset tomorrow and hours (which then gives consumption)
-  V[age,,] = t(aaply(Vn,c(1,2),max,na.rm=T))
-  # extract policy
-  pol = aaply(Vn,c(1,2),function(A) which(A==max(A,na.rm=T),arr.ind = T,useNames = T))
-  B.pol[age,,] = t(pol[,,2])
-  H.pol[age,,] = t(pol[,,1])
-  cat(&quot;.&quot;)
-}</code></pre>
+<span class="cf">for</span> (age <span class="cf">in</span> (p<span class="op">$</span>na<span class="op">-</span><span class="dv">1</span>)<span class="op">:</span><span class="dv">1</span>) {
+  <span class="co"># compute expected value tomorrow</span>
+  EV =<span class="st"> </span>Gx <span class="op">%*%</span><span class="st"> </span>V[age<span class="op">+</span><span class="dv">1</span>,,]
+  <span class="co"># compute values at each control variables</span>
+  Vn =<span class="st"> </span><span class="kw">t.cur</span>(<span class="dt">W=</span>X<span class="op">*</span><span class="kw">exp</span>(p<span class="op">$</span>lambda <span class="op">*</span><span class="st"> </span>age<span class="op">/</span>p<span class="op">$</span>na) ,H,B,EV,p<span class="op">$</span>r,p<span class="op">$</span>eta,p<span class="op">$</span>beta,p<span class="op">$</span>gamma,<span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>p<span class="op">$</span>r),p<span class="op">$</span>fc)
+  <span class="co"># we need to choose the asset tomorrow and hours (which then gives consumption)</span>
+  V[age,,] =<span class="st"> </span><span class="kw">t</span>(<span class="kw">aaply</span>(Vn,<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),max,<span class="dt">na.rm=</span>T))
+  <span class="co"># extract policy</span>
+  pol =<span class="st"> </span><span class="kw">aaply</span>(Vn,<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="cf">function</span>(A) <span class="kw">which</span>(A<span class="op">==</span><span class="kw">max</span>(A,<span class="dt">na.rm=</span>T),<span class="dt">arr.ind =</span> T,<span class="dt">useNames =</span> T))
+  B.pol[age,,] =<span class="st"> </span><span class="kw">t</span>(pol[,,<span class="dv">2</span>])
+  H.pol[age,,] =<span class="st"> </span><span class="kw">t</span>(pol[,,<span class="dv">1</span>])
+  <span class="kw">cat</span>(<span class="st">&quot;.&quot;</span>)
+}</code></pre></div>
 <pre><code>## .......................................</code></pre>
-<pre class="r"><code># let&#39;s plot hours at fix x and b over time
-rr= data.table(melt(H.pol[,,25],c(&quot;age&quot;,&quot;x&quot;)))
-ggplot(rr[x %in% c(5,10,15,20,25)][age&lt;40],aes(x=age,y=value,color=x,group=x)) + geom_line()</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># let&#39;s plot hours at fix x and b over time</span>
+rr=<span class="st"> </span><span class="kw">data.table</span>(<span class="kw">melt</span>(H.pol[,,<span class="dv">25</span>],<span class="kw">c</span>(<span class="st">&quot;age&quot;</span>,<span class="st">&quot;x&quot;</span>)))
+<span class="kw">ggplot</span>(rr[x <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">20</span>,<span class="dv">25</span>)][age<span class="op">&lt;</span><span class="dv">40</span>],<span class="kw">aes</span>(<span class="dt">x=</span>age,<span class="dt">y=</span>value,<span class="dt">color=</span>x,<span class="dt">group=</span>x)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>()</code></pre></div>
 <p><img src="dynamic-labor-supply_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
 <div id="simulating-data" class="section level3">
 <h3>Simulating data</h3>
 <p>Finally we simulate some data</p>
-<pre class="r"><code>simdata = data.frame()
-D = array(0,c(p$na-1,6))
-colnames(D) = c(&quot;i&quot;,&quot;x&quot;,&quot;b&quot;,&quot;h&quot;,&quot;b2&quot;,&quot;age&quot;)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">simdata =<span class="st"> </span><span class="kw">data.frame</span>()
+D =<span class="st"> </span><span class="kw">array</span>(<span class="dv">0</span>,<span class="kw">c</span>(p<span class="op">$</span>na<span class="op">-</span><span class="dv">1</span>,<span class="dv">6</span>))
+<span class="kw">colnames</span>(D) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;i&quot;</span>,<span class="st">&quot;x&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;h&quot;</span>,<span class="st">&quot;b2&quot;</span>,<span class="st">&quot;age&quot;</span>)
   
-for (i in 1:1000) {
-  x=sample.int(p$nx,1)
-  b=1
-  for (age in 1:(p$na-1)) {
-    x = sample.int(p$nx,1,prob=Gx[x,])
-    D[age,1] = i
-    D[age,2] = x
-    D[age,3] = b
-    D[age,4] = H.pol[age,x,b]
-    D[age,5] = B.pol[age,x,b]
-    D[age,6] = age
-    b        = B.pol[age,x,b]
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>) {
+  x=<span class="kw">sample.int</span>(p<span class="op">$</span>nx,<span class="dv">1</span>)
+  b=<span class="dv">1</span>
+  <span class="cf">for</span> (age <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>(p<span class="op">$</span>na<span class="op">-</span><span class="dv">1</span>)) {
+    x =<span class="st"> </span><span class="kw">sample.int</span>(p<span class="op">$</span>nx,<span class="dv">1</span>,<span class="dt">prob=</span>Gx[x,])
+    D[age,<span class="dv">1</span>] =<span class="st"> </span>i
+    D[age,<span class="dv">2</span>] =<span class="st"> </span>x
+    D[age,<span class="dv">3</span>] =<span class="st"> </span>b
+    D[age,<span class="dv">4</span>] =<span class="st"> </span>H.pol[age,x,b]
+    D[age,<span class="dv">5</span>] =<span class="st"> </span>B.pol[age,x,b]
+    D[age,<span class="dv">6</span>] =<span class="st"> </span>age
+    b        =<span class="st"> </span>B.pol[age,x,b]
   }
-  simdata=rbind(simdata,data.frame(D))
+  simdata=<span class="kw">rbind</span>(simdata,<span class="kw">data.frame</span>(D))
 }
-simdata = data.table(simdata)
-simdata[,lw := log(X[x]),x]
-simdata[,lb := log(B[b]),b]
+simdata =<span class="st"> </span><span class="kw">data.table</span>(simdata)
+simdata[,lw <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">log</span>(X[x]),x]
+simdata[,lb <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">log</span>(B[b]),b]
 
-# choice of hours
-ggplot(simdata,aes(x=age,y=h)) + geom_smooth() +theme_bw()</code></pre>
+<span class="co"># choice of hours</span>
+<span class="kw">ggplot</span>(simdata,<span class="kw">aes</span>(<span class="dt">x=</span>age,<span class="dt">y=</span>h)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_smooth</span>() <span class="op">+</span><span class="kw">theme_bw</span>()</code></pre></div>
 <pre><code>## `geom_smooth()` using method = &#39;gam&#39;</code></pre>
 <p><img src="dynamic-labor-supply_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<pre class="r"><code># compute asset 
-ggplot(simdata,aes(x=age,y=lb)) + geom_smooth()</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># compute asset </span>
+<span class="kw">ggplot</span>(simdata,<span class="kw">aes</span>(<span class="dt">x=</span>age,<span class="dt">y=</span>lb)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_smooth</span>()</code></pre></div>
 <pre><code>## `geom_smooth()` using method = &#39;gam&#39;</code></pre>
-<pre><code>## Warning: Removed 2018 rows containing non-finite values (stat_smooth).</code></pre>
+<pre><code>## Warning: Removed 1946 rows containing non-finite values (stat_smooth).</code></pre>
 <p><img src="dynamic-labor-supply_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
-<pre class="r"><code>simdata[,hist(h)]</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">simdata[,<span class="kw">hist</span>(h)]</code></pre></div>
 <p><img src="dynamic-labor-supply_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <pre><code>## $breaks
 ##  [1]  1.0  1.5  2.0  2.5  3.0  3.5  4.0  4.5  5.0  5.5  6.0  6.5  7.0  7.5
 ## [15]  8.0  8.5  9.0  9.5 10.0
 ## 
 ## $counts
-##  [1] 16087     0     0     0     0     0     0    84     0  2839     0
-## [12]  1562     0  5414     0  5100     0  7914
+##  [1] 16029     0     0     0     0     0     0    98     0  2922     0
+## [12]  1505     0  5401     0  5047     0  7998
 ## 
 ## $density
-##  [1] 0.824974359 0.000000000 0.000000000 0.000000000 0.000000000
-##  [6] 0.000000000 0.000000000 0.004307692 0.000000000 0.145589744
-## [11] 0.000000000 0.080102564 0.000000000 0.277641026 0.000000000
-## [16] 0.261538462 0.000000000 0.405846154
+##  [1] 0.822000000 0.000000000 0.000000000 0.000000000 0.000000000
+##  [6] 0.000000000 0.000000000 0.005025641 0.000000000 0.149846154
+## [11] 0.000000000 0.077179487 0.000000000 0.276974359 0.000000000
+## [16] 0.258820513 0.000000000 0.410153846
 ## 
 ## $mids
 ##  [1] 1.25 1.75 2.25 2.75 3.25 3.75 4.25 4.75 5.25 5.75 6.25 6.75 7.25 7.75

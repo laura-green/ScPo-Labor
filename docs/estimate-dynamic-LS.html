@@ -15,7 +15,7 @@
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/simplex.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -23,8 +23,6 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-1.1/highlight.js"></script>
 <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css" />
 <!--[if lt IE 9]>
@@ -33,22 +31,55 @@
 
   
 <!-- Bootstrap core CSS -->
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.css" rel="stylesheet">
+<link href="site_libs/bootstrap-3.3.5/css/simplex.css" rel="stylesheet">
+
 
 <style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #1f1c1b; background-color: #ffffff; }
+code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code > span.dt { color: #0057ae; } /* DataType */
+code > span.dv { color: #b08000; } /* DecVal */
+code > span.bn { color: #b08000; } /* BaseN */
+code > span.fl { color: #b08000; } /* Float */
+code > span.cn { color: #aa5500; } /* Constant */
+code > span.ch { color: #924c9d; } /* Char */
+code > span.sc { color: #3daee9; } /* SpecialChar */
+code > span.st { color: #bf0303; } /* String */
+code > span.vs { color: #bf0303; } /* VerbatimString */
+code > span.ss { color: #ff5500; } /* SpecialString */
+code > span.im { color: #ff5500; } /* Import */
+code > span.co { color: #898887; } /* Comment */
+code > span.do { color: #607880; } /* Documentation */
+code > span.an { color: #ca60ca; } /* Annotation */
+code > span.cv { color: #0095ff; } /* CommentVar */
+code > span.ot { color: #006e28; } /* Other */
+code > span.fu { color: #644a9b; } /* Function */
+code > span.va { color: #0057ae; } /* Variable */
+code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #1f1c1b; } /* Operator */
+code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code > span.pp { color: #006e28; } /* Preprocessor */
+code > span.at { color: #0057ae; } /* Attribute */
+code > span.re { color: #0057ae; } /* RegionMarker */
+code > span.in { color: #b08000; } /* Information */
+code > span.wa { color: #bf0303; } /* Warning */
+code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
+code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code > span. { color: #1f1c1b; } /* Normal */
+</style>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
   }
 </style>
-<script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
-}
-</script>
-
 
 
 <style type="text/css">
@@ -110,34 +141,34 @@ button.code-folding-btn:focus {
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
-  padding-top: 51px;
+  padding-top: 41px;
   padding-bottom: 40px;
 }
 /* offset scroll position for anchor links (for fixed navbar)  */
 .section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 
 .section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 .section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 .section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 .section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 .section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 </style>
 
@@ -347,7 +378,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Homework on estimating dynamic discrete choice models</h1>
-<h4 class="date"><em>27 January, 2018</em></h4>
+<h4 class="date"><em>05 February, 2018</em></h4>
 
 </div>
 
@@ -382,11 +413,11 @@ L(\beta,\pi,F_{\epsilon};x_{it},w_{it}) = \Pi_{i=1}^N \Pi_{t=1}^T \Pr[d_{it}=1|\
 <div id="r-golfing" class="section level2">
 <h2>R-golfing</h2>
 <p>write a one-liner that computes the means of x,w,eps,v and work from this data.table. count how many characters you had to type with <code>nchar(&quot;YOUR_CODE_IN_QUOTES_LIKE_THIS&quot;)</code>. I have 32.</p>
-<pre class="r"><code>nchar(&quot;d[,lapply(.SD,mean),.SDcols=4:9]&quot;)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nchar</span>(<span class="st">&quot;d[,lapply(.SD,mean),.SDcols=4:9]&quot;</span>)</code></pre></div>
 <pre><code>## [1] 32</code></pre>
-<pre class="r"><code>d[,lapply(.SD,mean),.SDcols=4:9]</code></pre>
-<pre><code>##             x1           x2        w        eps        v   work
-## 1: 0.006803956 -0.008939452 3.002007 0.01564197 1.534467 0.6855</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">d[,<span class="kw">lapply</span>(.SD,mean),.SDcols=<span class="dv">4</span><span class="op">:</span><span class="dv">9</span>]</code></pre></div>
+<pre><code>##              x1          x2        w          eps        v      work
+## 1: 0.0007647946 -0.01694104 2.985013 0.0006751938 1.671571 0.6988333</code></pre>
 <ol style="list-style-type: decimal">
 <li>Why is the mean of w not 2?</li>
 </ol>
@@ -394,44 +425,44 @@ L(\beta,\pi,F_{\epsilon};x_{it},w_{it}) = \Pi_{i=1}^N \Pi_{t=1}^T \Pr[d_{it}=1|\
 <h3>Estimating a static model</h3>
 <p>What does the likelihood function above remind you of?</p>
 <p>Sometimes people use a linear probability model to approximate a probit model. Which parameters can we recover using an LPM here? How well does it predict the average probability of work? Give the quartiles of the probabilities.</p>
-<pre class="r"><code>lmod = lm(work ~w+ x1 + x2 + +n,d)
-d[,lpm := predict(lmod,d) ]
-summary(lmod)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lmod =<span class="st"> </span><span class="kw">lm</span>(work <span class="op">~</span>w<span class="op">+</span><span class="st"> </span>x1 <span class="op">+</span><span class="st"> </span>x2 <span class="op">+</span><span class="st"> </span><span class="op">+</span>n,d)
+d[,lpm <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">predict</span>(lmod,d) ]
+<span class="kw">summary</span>(lmod)</code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = work ~ w + x1 + x2 + +n, data = d)
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -0.78192 -0.26290  0.03439  0.25942  0.73080 
+## -0.82049 -0.26127  0.03024  0.25985  0.88123 
 ## 
 ## Coefficients:
 ##              Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)  0.515305   0.013894   37.09   &lt;2e-16 ***
-## w            0.114431   0.004115   27.81   &lt;2e-16 ***
-## x1          -0.278998   0.004097  -68.09   &lt;2e-16 ***
-## x2          -0.054108   0.004071  -13.29   &lt;2e-16 ***
-## n           -0.177229   0.005013  -35.36   &lt;2e-16 ***
+## (Intercept)  0.535771   0.013602   39.39   &lt;2e-16 ***
+## w            0.104650   0.004074   25.68   &lt;2e-16 ***
+## x1          -0.269121   0.004059  -66.30   &lt;2e-16 ***
+## x2          -0.052805   0.004156  -12.71   &lt;2e-16 ***
+## n           -0.170462   0.005049  -33.76   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 0.3176 on 5995 degrees of freedom
-## Multiple R-squared:  0.5325, Adjusted R-squared:  0.5322 
-## F-statistic:  1707 on 4 and 5995 DF,  p-value: &lt; 2.2e-16</code></pre>
-<pre class="r"><code>d[,list(mean(work),mean(lpm))]</code></pre>
-<pre><code>##        V1     V2
-## 1: 0.6855 0.6855</code></pre>
-<pre class="r"><code>d[,quantile(lpm)]</code></pre>
+## Residual standard error: 0.319 on 5995 degrees of freedom
+## Multiple R-squared:  0.5169, Adjusted R-squared:  0.5166 
+## F-statistic:  1604 on 4 and 5995 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">d[,<span class="kw">list</span>(<span class="kw">mean</span>(work),<span class="kw">mean</span>(lpm))]</code></pre></div>
+<pre><code>##           V1        V2
+## 1: 0.6988333 0.6988333</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">d[,<span class="kw">quantile</span>(lpm)]</code></pre></div>
 <pre><code>##         0%        25%        50%        75%       100% 
-## -0.4748976  0.4609101  0.6904221  0.9148146  1.7288776</code></pre>
+## -0.4809521  0.4709066  0.6956971  0.9283431  1.7789788</code></pre>
 <p>What about a probit model?</p>
-<pre class="r"><code>gmod = glm(work ~ w+ x1 + x2 +n,family =binomial(link=&quot;probit&quot;),d)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gmod =<span class="st"> </span><span class="kw">glm</span>(work <span class="op">~</span><span class="st"> </span>w<span class="op">+</span><span class="st"> </span>x1 <span class="op">+</span><span class="st"> </span>x2 <span class="op">+</span>n,<span class="dt">family =</span><span class="kw">binomial</span>(<span class="dt">link=</span><span class="st">&quot;probit&quot;</span>),d)</code></pre></div>
 <pre><code>## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</code></pre>
-<pre class="r"><code>d[,glm := predict(gmod,d,type=&quot;response&quot;)]
-d[,list(mean(work),mean(lpm),mean(glm))]</code></pre>
-<pre><code>##        V1     V2       V3
-## 1: 0.6855 0.6855 0.686052</code></pre>
-<pre class="r"><code>summary(gmod)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">d[,glm <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">predict</span>(gmod,d,<span class="dt">type=</span><span class="st">&quot;response&quot;</span>)]
+d[,<span class="kw">list</span>(<span class="kw">mean</span>(work),<span class="kw">mean</span>(lpm),<span class="kw">mean</span>(glm))]</code></pre></div>
+<pre><code>##           V1        V2        V3
+## 1: 0.6988333 0.6988333 0.6996377</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(gmod)</code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = work ~ w + x1 + x2 + n, family = binomial(link = &quot;probit&quot;), 
@@ -439,42 +470,42 @@ d[,list(mean(work),mean(lpm),mean(glm))]</code></pre>
 ## 
 ## Deviance Residuals: 
 ##     Min       1Q   Median       3Q      Max  
-## -3.1628  -0.0358   0.0037   0.1923   2.9791  
+## -3.5163  -0.0451   0.0057   0.2179   3.9955  
 ## 
 ## Coefficients:
-##              Estimate Std. Error z value Pr(&gt;|z|)    
-## (Intercept) -0.005237   0.098136  -0.053    0.957    
-## w            1.039899   0.040308  25.799   &lt;2e-16 ***
-## x1          -2.591286   0.075138 -34.487   &lt;2e-16 ***
-## x2          -0.516578   0.032444 -15.922   &lt;2e-16 ***
-## n           -1.588501   0.054312 -29.248   &lt;2e-16 ***
+##             Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept) -0.02375    0.09342  -0.254    0.799    
+## w            0.96363    0.03845  25.060   &lt;2e-16 ***
+## x1          -2.38816    0.06854 -34.843   &lt;2e-16 ***
+## x2          -0.47243    0.03076 -15.361   &lt;2e-16 ***
+## n           -1.39857    0.04818 -29.026   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## (Dispersion parameter for binomial family taken to be 1)
 ## 
-##     Null deviance: 7471.8  on 5999  degrees of freedom
-## Residual deviance: 2341.6  on 5995  degrees of freedom
-## AIC: 2351.6
+##     Null deviance: 7342.2  on 5999  degrees of freedom
+## Residual deviance: 2461.6  on 5995  degrees of freedom
+## AIC: 2471.6
 ## 
 ## Number of Fisher Scoring iterations: 8</code></pre>
 <p>Let’s make the wage a bit more realistic. Suppose we knew completed years of education, and we had a variable <span class="math inline">\(z\)</span> capturing <em>potential experience</em> (age - educ - 6), which determines the wage, and <span class="math inline">\(\eta\)</span> a random error:</p>
 <p><span class="math display">\[
 w_{it} = \gamma z_{it} + \eta_{it}
 \]</span></p>
-<pre class="r"><code>get.data &lt;- function(p){
-  d = data.table(expand.grid(id = 1:p$N,it=20:p$T))
-  d[,n := sample(c(0,1,2),size=1), by=id]
-  d[,x1 := rnorm(n=nrow(d))]
-  d[,x2 := rnorm(n=nrow(d))]
-  d[,educ := sample(10:18,size=1),by=id]
-  d[,z := it - educ]
-  d[,eta := rnorm(n=nrow(d))]
-  d[,w := p$gamma*z + eta]
-  d[,eps := rnorm(mean=0,sd=1,n=nrow(d))]
-  d[,v:= w - p$pi*n - p$beta1*x1- p$beta2*x2]
-  d[,work := eps &lt; v]
-}</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">get.data &lt;-<span class="st"> </span><span class="cf">function</span>(p){
+  d =<span class="st"> </span><span class="kw">data.table</span>(<span class="kw">expand.grid</span>(<span class="dt">id =</span> <span class="dv">1</span><span class="op">:</span>p<span class="op">$</span>N,<span class="dt">it=</span><span class="dv">20</span><span class="op">:</span>p<span class="op">$</span>T))
+  d[,n <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>),<span class="dt">size=</span><span class="dv">1</span>), by=id]
+  d[,x1 <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n=</span><span class="kw">nrow</span>(d))]
+  d[,x2 <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n=</span><span class="kw">nrow</span>(d))]
+  d[,educ <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">sample</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">18</span>,<span class="dt">size=</span><span class="dv">1</span>),by=id]
+  d[,z <span class="op">:</span><span class="er">=</span><span class="st"> </span>it <span class="op">-</span><span class="st"> </span>educ]
+  d[,eta <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n=</span><span class="kw">nrow</span>(d))]
+  d[,w <span class="op">:</span><span class="er">=</span><span class="st"> </span>p<span class="op">$</span>gamma<span class="op">*</span>z <span class="op">+</span><span class="st"> </span>eta]
+  d[,eps <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">mean=</span><span class="dv">0</span>,<span class="dt">sd=</span><span class="dv">1</span>,<span class="dt">n=</span><span class="kw">nrow</span>(d))]
+  d[,v<span class="op">:</span><span class="er">=</span><span class="st"> </span>w <span class="op">-</span><span class="st"> </span>p<span class="op">$</span>pi<span class="op">*</span>n <span class="op">-</span><span class="st"> </span>p<span class="op">$</span>beta1<span class="op">*</span>x1<span class="op">-</span><span class="st"> </span>p<span class="op">$</span>beta2<span class="op">*</span>x2]
+  d[,work <span class="op">:</span><span class="er">=</span><span class="st"> </span>eps <span class="op">&lt;</span><span class="st"> </span>v]
+}</code></pre></div>
 <p>With this modification, our model changes. We have</p>
 <p><span class="math display">\[
 \begin{align}

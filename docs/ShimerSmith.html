@@ -15,13 +15,11 @@
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/simplex.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-1.1/highlight.js"></script>
 <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css" />
 <!--[if lt IE 9]>
@@ -30,22 +28,55 @@
 
   
 <!-- Bootstrap core CSS -->
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.css" rel="stylesheet">
+<link href="site_libs/bootstrap-3.3.5/css/simplex.css" rel="stylesheet">
+
 
 <style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #1f1c1b; background-color: #ffffff; }
+code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code > span.dt { color: #0057ae; } /* DataType */
+code > span.dv { color: #b08000; } /* DecVal */
+code > span.bn { color: #b08000; } /* BaseN */
+code > span.fl { color: #b08000; } /* Float */
+code > span.cn { color: #aa5500; } /* Constant */
+code > span.ch { color: #924c9d; } /* Char */
+code > span.sc { color: #3daee9; } /* SpecialChar */
+code > span.st { color: #bf0303; } /* String */
+code > span.vs { color: #bf0303; } /* VerbatimString */
+code > span.ss { color: #ff5500; } /* SpecialString */
+code > span.im { color: #ff5500; } /* Import */
+code > span.co { color: #898887; } /* Comment */
+code > span.do { color: #607880; } /* Documentation */
+code > span.an { color: #ca60ca; } /* Annotation */
+code > span.cv { color: #0095ff; } /* CommentVar */
+code > span.ot { color: #006e28; } /* Other */
+code > span.fu { color: #644a9b; } /* Function */
+code > span.va { color: #0057ae; } /* Variable */
+code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #1f1c1b; } /* Operator */
+code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code > span.pp { color: #006e28; } /* Preprocessor */
+code > span.at { color: #0057ae; } /* Attribute */
+code > span.re { color: #0057ae; } /* RegionMarker */
+code > span.in { color: #b08000; } /* Information */
+code > span.wa { color: #bf0303; } /* Warning */
+code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
+code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code > span. { color: #1f1c1b; } /* Normal */
+</style>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
   }
 </style>
-<script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
-}
-</script>
-
 
 
 <style type="text/css">
@@ -107,34 +138,34 @@ button.code-folding-btn:focus {
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
-  padding-top: 51px;
+  padding-top: 41px;
   padding-bottom: 40px;
 }
 /* offset scroll position for anchor links (for fixed navbar)  */
 .section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 
 .section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 .section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 .section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 .section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 .section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 46px;
+  margin-top: -46px;
 }
 </style>
 
@@ -253,16 +284,16 @@ $(document).ready(function () {
 <li>learn how to solve an equilibrium search model and</li>
 <li>estimate a two-way fixed effect model on the data generated from the model. We will use the model from Shimer and Smith.</li>
 </ol>
-<p>This is the version from 2018-01-27. Please check for updates later on.</p>
-<pre class="r"><code>  #some imports
-require(gtools)
-require(data.table)
-require(ggplot2)
-require(reshape)
-require(readstata13)
-require(RcppSimpleTensor)
-library(testthat)
-source(&quot;../../ScPo-Labor-sol/src/search-HW.r&quot;) # you do not have access to this repo which has the solutions! :-) !</code></pre>
+<p>This is the version from 2018-02-05. Please check for updates later on.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  <span class="co">#some imports</span>
+<span class="kw">require</span>(gtools)
+<span class="kw">require</span>(data.table)
+<span class="kw">require</span>(ggplot2)
+<span class="kw">require</span>(reshape)
+<span class="kw">require</span>(readstata13)
+<span class="kw">require</span>(RcppSimpleTensor)
+<span class="kw">library</span>(testthat)
+<span class="kw">source</span>(<span class="st">&quot;../../ScPo-Labor-sol/src/search-HW.r&quot;</span>) <span class="co"># you do not have access to this repo which has the solutions! :-) !</span></code></pre></div>
 <div id="solving-shimer-smith" class="section level2">
 <h2>Solving Shimer Smith</h2>
 <p>The equilibrium of Shimer and Smith can be solved by iterating on the Bellman equations <span class="math inline">\(W_0\)</span>, <span class="math inline">\(\Pi_0\)</span> and the surplus function <span class="math inline">\(S\)</span>. They are given by:</p>
@@ -274,81 +305,81 @@ source(&quot;../../ScPo-Labor-sol/src/search-HW.r&quot;) # you do not have acces
 <p>Notice that we endogenize the arrival rates here. This means that we had in class</p>
 <p><span class="math display">\[ r W_0(x) = b + \lambda  \alpha \int \max \{ S(x,y&#39;) , 0\} \frac{v(y&#39;)}{V} dy&#39;\]</span> where <span class="math inline">\(V=\int v(x)dz\)</span> is the mass of all vacancies. With the matching function <span class="math inline">\(N=m(x,y)\)</span> and <span class="math inline">\(\lambda = \frac{N}{U}\)</span> we define get the above formulation by realizing that <span class="math inline">\(\kappa = \frac{N}{UV}\)</span>.</p>
 <p>Here is code that will create a parameter set to initialize your model with some starting values.</p>
-<pre class="r"><code>initp &lt;- function(...) {
-  p = list()
-  p$ay = 0.2
-  p$nx = 50     # number of worker types
-  p$ny = 50     # number of firm types
-  p$sep = 0.02  # separation rate
-  p$r   = 0.05  # interest rate
-  p$rho = -2    # prod func assortative strength [-2,2]
-  p$b   = 0     # unemp
-  p$c   = 0     # vacancy cost
-  p$alpha = 0.5 # bargaining power
-  p$fsize = 50  # firm size
-  p$m   = 0.4   # matching function parameter
-  p$M= 1.5      # mass of firms / mass of workers
-  p$noise = 0.5  # wage disturbance
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">initp &lt;-<span class="st"> </span><span class="cf">function</span>(...) {
+  p =<span class="st"> </span><span class="kw">list</span>()
+  p<span class="op">$</span>ay =<span class="st"> </span><span class="fl">0.2</span>
+  p<span class="op">$</span>nx =<span class="st"> </span><span class="dv">50</span>     <span class="co"># number of worker types</span>
+  p<span class="op">$</span>ny =<span class="st"> </span><span class="dv">50</span>     <span class="co"># number of firm types</span>
+  p<span class="op">$</span>sep =<span class="st"> </span><span class="fl">0.02</span>  <span class="co"># separation rate</span>
+  p<span class="op">$</span>r   =<span class="st"> </span><span class="fl">0.05</span>  <span class="co"># interest rate</span>
+  p<span class="op">$</span>rho =<span class="st"> </span><span class="op">-</span><span class="dv">2</span>    <span class="co"># prod func assortative strength [-2,2]</span>
+  p<span class="op">$</span>b   =<span class="st"> </span><span class="dv">0</span>     <span class="co"># unemp</span>
+  p<span class="op">$</span>c   =<span class="st"> </span><span class="dv">0</span>     <span class="co"># vacancy cost</span>
+  p<span class="op">$</span>alpha =<span class="st"> </span><span class="fl">0.5</span> <span class="co"># bargaining power</span>
+  p<span class="op">$</span>fsize =<span class="st"> </span><span class="dv">50</span>  <span class="co"># firm size</span>
+  p<span class="op">$</span>m   =<span class="st"> </span><span class="fl">0.4</span>   <span class="co"># matching function parameter</span>
+  p<span class="op">$</span>M=<span class="st"> </span><span class="fl">1.5</span>      <span class="co"># mass of firms / mass of workers</span>
+  p<span class="op">$</span>noise =<span class="st"> </span><span class="fl">0.5</span>  <span class="co"># wage disturbance</span>
   
-  #p$pf = function(x,y,z=0,p) x*y + z
-  p$pf = function(x,y,z=0,p)  ( x^p$rho +  y^p$rho )^(1/p$rho) + p$ay # haggerdorn law manovski 
+  <span class="co">#p$pf = function(x,y,z=0,p) x*y + z</span>
+  p<span class="op">$</span>pf =<span class="st"> </span><span class="cf">function</span>(x,y,<span class="dt">z=</span><span class="dv">0</span>,p)  ( x<span class="op">^</span>p<span class="op">$</span>rho <span class="op">+</span><span class="st">  </span>y<span class="op">^</span>p<span class="op">$</span>rho )<span class="op">^</span>(<span class="dv">1</span><span class="op">/</span>p<span class="op">$</span>rho) <span class="op">+</span><span class="st"> </span>p<span class="op">$</span>ay <span class="co"># haggerdorn law manovski </span>
   
-  sp = list(...)
+  sp =<span class="st"> </span><span class="kw">list</span>(...)
   
-  for (n in names(sp)) {
-    p[[n]] = sp[[n]]
+  <span class="cf">for</span> (n <span class="cf">in</span> <span class="kw">names</span>(sp)) {
+    p[[n]] =<span class="st"> </span>sp[[n]]
   }
   
-  return(p)
+  <span class="kw">return</span>(p)
 }
 
-#&#39; Spread Array into dimensions
-#&#39;
-#&#39; this is a utility function that spreads an array into a given dimesion
-#&#39; this is like `repmat` in julia/matlab
-spread &lt;- function (A, loc, dims) {
-  if (!(is.array(A))) {
-    A = array(A, dim = c(length(A)))
+<span class="co">#&#39; Spread Array into dimensions</span>
+<span class="co">#&#39;</span>
+<span class="co">#&#39; this is a utility function that spreads an array into a given dimesion</span>
+<span class="co">#&#39; this is like `repmat` in julia/matlab</span>
+spread &lt;-<span class="st"> </span><span class="cf">function</span> (A, loc, dims) {
+  <span class="cf">if</span> (<span class="op">!</span>(<span class="kw">is.array</span>(A))) {
+    A =<span class="st"> </span><span class="kw">array</span>(A, <span class="dt">dim =</span> <span class="kw">c</span>(<span class="kw">length</span>(A)))
   }
-  adims = dim(A)
-  l = length(loc)
-  if (max(loc) &gt; length(dim(A)) + l) {
-    stop(&quot;incorrect dimensions in spread&quot;)
+  adims =<span class="st"> </span><span class="kw">dim</span>(A)
+  l =<span class="st"> </span><span class="kw">length</span>(loc)
+  <span class="cf">if</span> (<span class="kw">max</span>(loc) <span class="op">&gt;</span><span class="st"> </span><span class="kw">length</span>(<span class="kw">dim</span>(A)) <span class="op">+</span><span class="st"> </span>l) {
+    <span class="kw">stop</span>(<span class="st">&quot;incorrect dimensions in spread&quot;</span>)
   }
-  sdim = c(dim(A), dims)
-  edim = c()
-  oi = 1
-  ni = length(dim(A)) + 1
-  for (i in c(1:(length(dim(A)) + l))) {
-    if (i %in% loc) {
-      edim = c(edim, ni)
-      ni = ni + 1
+  sdim =<span class="st"> </span><span class="kw">c</span>(<span class="kw">dim</span>(A), dims)
+  edim =<span class="st"> </span><span class="kw">c</span>()
+  oi =<span class="st"> </span><span class="dv">1</span>
+  ni =<span class="st"> </span><span class="kw">length</span>(<span class="kw">dim</span>(A)) <span class="op">+</span><span class="st"> </span><span class="dv">1</span>
+  <span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span>(<span class="kw">length</span>(<span class="kw">dim</span>(A)) <span class="op">+</span><span class="st"> </span>l))) {
+    <span class="cf">if</span> (i <span class="op">%in%</span><span class="st"> </span>loc) {
+      edim =<span class="st"> </span><span class="kw">c</span>(edim, ni)
+      ni =<span class="st"> </span>ni <span class="op">+</span><span class="st"> </span><span class="dv">1</span>
     }
-    else {
-      edim = c(edim, oi)
-      oi = oi + 1
+    <span class="cf">else</span> {
+      edim =<span class="st"> </span><span class="kw">c</span>(edim, oi)
+      oi =<span class="st"> </span>oi <span class="op">+</span><span class="st"> </span><span class="dv">1</span>
     }
   }
-  return(aperm(array(A, dim = sdim), edim))
-}</code></pre>
+  <span class="kw">return</span>(<span class="kw">aperm</span>(<span class="kw">array</span>(A, <span class="dt">dim =</span> sdim), edim))
+}</code></pre></div>
 <p>and here is some code that initializes the different functions needed inside your value function iteration proceedure:</p>
-<pre class="r"><code>  X = spread( (0:(p$nx-1))/p$nx , 2, p$ny )  # worker heterogeneity
-  Y = spread( (0:(p$ny-1))/p$ny , 1, p$nx )  # firm heterogeneity
-  FF = p$pf(X,Y,0,p)                         # production function
-  W0 = rep(0,p$nx)                           # value of being unemployed (starting values)
-  P0 = rep(0,p$ny)                           # value of a vacancy (starting values)
-  H  = array(0.8/(p$nx*p$ny),c(p$nx,p$ny))   # joint mass of matches (starting values)
-  U  = rep(0.2/p$nx,p$nx)                    # mass of unemployed  (starting values)
-  V  = (p$M-0.8) * rep(1/p$ny,p$ny)          # mass of vacant jobs (starting values)
-  S  = FF / p$r                              # surplus of a match (starting values)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  X =<span class="st"> </span><span class="kw">spread</span>( (<span class="dv">0</span><span class="op">:</span>(p<span class="op">$</span>nx<span class="op">-</span><span class="dv">1</span>))<span class="op">/</span>p<span class="op">$</span>nx , <span class="dv">2</span>, p<span class="op">$</span>ny )  <span class="co"># worker heterogeneity</span>
+  Y =<span class="st"> </span><span class="kw">spread</span>( (<span class="dv">0</span><span class="op">:</span>(p<span class="op">$</span>ny<span class="op">-</span><span class="dv">1</span>))<span class="op">/</span>p<span class="op">$</span>ny , <span class="dv">1</span>, p<span class="op">$</span>nx )  <span class="co"># firm heterogeneity</span>
+  FF =<span class="st"> </span>p<span class="op">$</span><span class="kw">pf</span>(X,Y,<span class="dv">0</span>,p)                         <span class="co"># production function</span>
+  W0 =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>,p<span class="op">$</span>nx)                           <span class="co"># value of being unemployed (starting values)</span>
+  P0 =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>,p<span class="op">$</span>ny)                           <span class="co"># value of a vacancy (starting values)</span>
+  H  =<span class="st"> </span><span class="kw">array</span>(<span class="fl">0.8</span><span class="op">/</span>(p<span class="op">$</span>nx<span class="op">*</span>p<span class="op">$</span>ny),<span class="kw">c</span>(p<span class="op">$</span>nx,p<span class="op">$</span>ny))   <span class="co"># joint mass of matches (starting values)</span>
+  U  =<span class="st"> </span><span class="kw">rep</span>(<span class="fl">0.2</span><span class="op">/</span>p<span class="op">$</span>nx,p<span class="op">$</span>nx)                    <span class="co"># mass of unemployed  (starting values)</span>
+  V  =<span class="st"> </span>(p<span class="op">$</span>M<span class="op">-</span><span class="fl">0.8</span>) <span class="op">*</span><span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span><span class="op">/</span>p<span class="op">$</span>ny,p<span class="op">$</span>ny)          <span class="co"># mass of vacant jobs (starting values)</span>
+  S  =<span class="st"> </span>FF <span class="op">/</span><span class="st"> </span>p<span class="op">$</span>r                              <span class="co"># surplus of a match (starting values)</span></code></pre></div>
 <p>As guidance here is how I compute the <span class="math inline">\(S(x,y)\)</span> function and the <span class="math inline">\(\kappa\)</span>. You can use and install <a href="https://github.com/tlamadon/RcppSimpleTensor"><code>RcppSimpleTensor</code></a>, or directly use the <code>spread</code>, <code>colSums</code> and <code>rowSums</code> functions. Note that it can be important to use relaxation parameters such as <code>ctrl$rs</code> here. This is because the Bellman equation is a contraction mapping, but the distribution jointly with the Bellman equations might note be.</p>
-<pre class="r"><code>    kp =  pmin(pmin(sum(U), p$m*sum(U)^.5 * sum(V)^.5),sum(V))/(sum(U) * sum(V))
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">    kp =<span class="st">  </span><span class="kw">pmin</span>(<span class="kw">pmin</span>(<span class="kw">sum</span>(U), p<span class="op">$</span>m<span class="op">*</span><span class="kw">sum</span>(U)<span class="op">^</span>.<span class="dv">5</span> <span class="op">*</span><span class="st"> </span><span class="kw">sum</span>(V)<span class="op">^</span>.<span class="dv">5</span>),<span class="kw">sum</span>(V))<span class="op">/</span>(<span class="kw">sum</span>(U) <span class="op">*</span><span class="st"> </span><span class="kw">sum</span>(V))
     
-    S2 = t.S(FF,W0,P0,p$r) / ( p$r + p$sep)
-    dS = mean( (S - S2 )^2 )/mean( (S)^2 )  # distance
-    S = ctrl$rs * S + (1-ctrl$rs) * S2  # update by relaxation
+    S2 =<span class="st"> </span><span class="kw">t.S</span>(FF,W0,P0,p<span class="op">$</span>r) <span class="op">/</span><span class="st"> </span>( p<span class="op">$</span>r <span class="op">+</span><span class="st"> </span>p<span class="op">$</span>sep)
+    dS =<span class="st"> </span><span class="kw">mean</span>( (S <span class="op">-</span><span class="st"> </span>S2 )<span class="op">^</span><span class="dv">2</span> )<span class="op">/</span><span class="kw">mean</span>( (S)<span class="op">^</span><span class="dv">2</span> )  <span class="co"># distance</span>
+    S =<span class="st"> </span>ctrl<span class="op">$</span>rs <span class="op">*</span><span class="st"> </span>S <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span><span class="op">-</span>ctrl<span class="op">$</span>rs) <span class="op">*</span><span class="st"> </span>S2  <span class="co"># update by relaxation</span>
     
-    wage = p$alpha * (p$sep + p$r) * S + p$r * spread(W0,2,p$ny)</code></pre>
+    wage =<span class="st"> </span>p<span class="op">$</span>alpha <span class="op">*</span><span class="st"> </span>(p<span class="op">$</span>sep <span class="op">+</span><span class="st"> </span>p<span class="op">$</span>r) <span class="op">*</span><span class="st"> </span>S <span class="op">+</span><span class="st"> </span>p<span class="op">$</span>r <span class="op">*</span><span class="st"> </span><span class="kw">spread</span>(W0,<span class="dv">2</span>,p<span class="op">$</span>ny)</code></pre></div>
 <p><strong>Question 1</strong>: Write a function that will iterate on the value functions and the distributions to find the fix point of the problem. Stop the loop when <code>dS&lt;1e-7</code>. This requires for you to write down the equations to update <span class="math inline">\(H(x,y),V(y),U(x)\)</span>. Getting these flow equations is crucial. Instead of using the adding up constraint, I suggest you try to write the updating equations for H,V,U and then check that the total mass of workers is still 1 at each step of your loop. You may want to stick to this strategy:</p>
 <ol style="list-style-type: decimal">
 <li>Given current distributions in <span class="math inline">\(U,V\)</span>, compute <span class="math inline">\(\kappa\)</span></li>
@@ -378,16 +409,16 @@ spread &lt;- function (A, loc, dims) {
 </ol></li>
 </ol>
 <p>To test your code, install the libary <code>test_that</code> and write a few test cases that will verify that your code is doing what you expect it to do! For instance, check that the h and u distribution sum to 1 for each x.</p>
-<pre class="r"><code>require(testthat)
-test_that(&quot;Testing model sulotion&quot;, {
-    expect_true( all(diff(model$W0)&gt;0), &quot;W0 is increasing&quot;)
-    expect_true( all(diff(model$P0)&gt;0), &quot;W0 is increasing&quot;)
-    expect_true( abs(1-sum(model$H)-sum(model$U))&lt;1e-8, label = &quot;worker mass is 1&quot;)
-})  </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(testthat)
+<span class="kw">test_that</span>(<span class="st">&quot;Testing model sulotion&quot;</span>, {
+    <span class="kw">expect_true</span>( <span class="kw">all</span>(<span class="kw">diff</span>(model<span class="op">$</span>W0)<span class="op">&gt;</span><span class="dv">0</span>), <span class="st">&quot;W0 is increasing&quot;</span>)
+    <span class="kw">expect_true</span>( <span class="kw">all</span>(<span class="kw">diff</span>(model<span class="op">$</span>P0)<span class="op">&gt;</span><span class="dv">0</span>), <span class="st">&quot;W0 is increasing&quot;</span>)
+    <span class="kw">expect_true</span>( <span class="kw">abs</span>(<span class="dv">1</span><span class="op">-</span><span class="kw">sum</span>(model<span class="op">$</span>H)<span class="op">-</span><span class="kw">sum</span>(model<span class="op">$</span>U))<span class="op">&lt;</span><span class="fl">1e-8</span>, <span class="dt">label =</span> <span class="st">&quot;worker mass is 1&quot;</span>)
+})  </code></pre></div>
 <p>With the default starting values, you should find the following figure:</p>
-<pre class="r"><code>  p &lt;- initp()
-  ctrl=list(maxiter=400,rs=0.5,rw=0.5,rh=0.8)
-  model = shimersmith.solve(p,ctrl)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  p &lt;-<span class="st"> </span><span class="kw">initp</span>()
+  ctrl=<span class="kw">list</span>(<span class="dt">maxiter=</span><span class="dv">400</span>,<span class="dt">rs=</span><span class="fl">0.5</span>,<span class="dt">rw=</span><span class="fl">0.5</span>,<span class="dt">rh=</span><span class="fl">0.8</span>)
+  model =<span class="st"> </span><span class="kw">shimersmith.solve</span>(p,ctrl)</code></pre></div>
 <pre><code>## [ 50] dS=2.109e-04 dH=4.333e-03 m=1.000e+00 kp=1.804420
 ##  [100] dS=1.514e-07 dH=6.059e-05 m=1.000e+00 kp=1.868803
 ##  [150] dS=2.040e-09 dH=9.005e-06 m=1.000e+00 kp=1.871217
@@ -397,9 +428,9 @@ test_that(&quot;Testing model sulotion&quot;, {
 ##  [350] dS=4.287e-09 dH=2.063e-05 m=1.000e+00 kp=1.871352
 ##  [400] dS=3.409e-10 dH=1.246e-06 m=1.000e+00 kp=1.871378
 ##   all good</code></pre>
-<pre class="r"><code>  persp(model$S*(model$S&gt;0))</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  <span class="kw">persp</span>(model<span class="op">$</span>S<span class="op">*</span>(model<span class="op">$</span>S<span class="op">&gt;</span><span class="dv">0</span>))</code></pre></div>
 <p><img src="ShimerSmith_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<pre class="r"><code>  persp(model$H,theta=-30)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  <span class="kw">persp</span>(model<span class="op">$</span>H,<span class="dt">theta=</span><span class="op">-</span><span class="dv">30</span>)</code></pre></div>
 <p><img src="ShimerSmith_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
 </div>
 <div id="simulate-a-panel" class="section level2">
@@ -413,27 +444,27 @@ test_that(&quot;Testing model sulotion&quot;, {
 <p>using the outcome of your model. A sequence of events of length T will be a given individuals. When you simulate a given individual, also store the <strong>spell number</strong>. This number should increase when the worker looses his job or finds a new job (this will be useful later). Set <span class="math inline">\(y=0\)</span> when the worker is not employed.</p>
 <p><strong>Hint:</strong> When simulating, it is much faster to pre-allocate arrays such as <code>X=array(0,T*N)</code> for each variable, then fill these and create the <code>sim</code> data.table at the very end with <code>sim = data.table(x=X,y=Y,t=T,i=I)</code> and such.</p>
 <p>At this point you should have a <code>data.table</code> with columns <code>i,t,x,y,spell</code>. Once we you have simulated this panel, we want to attach firms to spells. We are going to do this is a semi-naive way by randomly attaching firm ids to spells (the firm id needs to be fixed over a spell). Since the separation rate is the same in each job, we do not have to worry to weight them by the length of spells.</p>
-<pre class="r"><code># we want to target a given firm size (that should be a parameter of your simulating function)
-fsize = 200 
-sim = simulate(N,M,fsize)  # you must write function simulate()
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># we want to target a given firm size (that should be a parameter of your simulating function)</span>
+fsize =<span class="st"> </span><span class="dv">200</span> 
+sim =<span class="st"> </span><span class="kw">simulate</span>(N,M,fsize)  <span class="co"># you must write function simulate()</span>
 
-# inside `simulate`:
-# we get spells information, randomly draw from firm without replacement
-spells = unique(sim[y&gt;0,list(i,spell,y)])
-# this creates a unique firm id 
-spells[, fid:= as.integer(y + p$ny*sample( rep((1:ceiling(.N/fsize)),fsize*1.2),.N,replace=FALSE)),y]
+<span class="co"># inside `simulate`:</span>
+<span class="co"># we get spells information, randomly draw from firm without replacement</span>
+spells =<span class="st"> </span><span class="kw">unique</span>(sim[y<span class="op">&gt;</span><span class="dv">0</span>,<span class="kw">list</span>(i,spell,y)])
+<span class="co"># this creates a unique firm id </span>
+spells[, fid<span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">as.integer</span>(y <span class="op">+</span><span class="st"> </span>p<span class="op">$</span>ny<span class="op">*</span><span class="kw">sample</span>( <span class="kw">rep</span>((<span class="dv">1</span><span class="op">:</span><span class="kw">ceiling</span>(.N<span class="op">/</span>fsize)),fsize<span class="op">*</span><span class="fl">1.2</span>),.N,<span class="dt">replace=</span><span class="ot">FALSE</span>)),y]
 
-# merge spells back into sim
-setkey(spells,i,spell)
-setkey(sim,i,spell)
-sim[,fid := spells[sim,fid]]
+<span class="co"># merge spells back into sim</span>
+<span class="kw">setkey</span>(spells,i,spell)
+<span class="kw">setkey</span>(sim,i,spell)
+sim[,fid <span class="op">:</span><span class="er">=</span><span class="st"> </span>spells[sim,fid]]
 
-# quick check!
-assert_that(sim[,length(unique(y)),fid][,all(V1==1)])</code></pre>
+<span class="co"># quick check!</span>
+<span class="kw">assert_that</span>(sim[,<span class="kw">length</span>(<span class="kw">unique</span>(y)),fid][,<span class="kw">all</span>(V1<span class="op">==</span><span class="dv">1</span>)])</code></pre></div>
 <p><strong>Hint:</strong> here you could make your life much easier if you insure that the firm ids are continuous (no gap) and start at 1. This will be convenient when indexing them later. (that’s what I did above.)</p>
 <p>We finish this section by appending the wage. We want to append the equilibrium wage when working and <span class="math inline">\(b\)</span> when not working. Here is a simple way to attach the wage and b:</p>
-<pre class="r"><code>sim[y&gt;0, wage := model$wage[x,y]*exp(rnorm(.N)*noise),list(x,y)]
-sim[y==0, wage := p$b]</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sim[y<span class="op">&gt;</span><span class="dv">0</span>, wage <span class="op">:</span><span class="er">=</span><span class="st"> </span>model<span class="op">$</span>wage[x,y]<span class="op">*</span><span class="kw">exp</span>(<span class="kw">rnorm</span>(.N)<span class="op">*</span>noise),<span class="kw">list</span>(x,y)]
+sim[y<span class="op">==</span><span class="dv">0</span>, wage <span class="op">:</span><span class="er">=</span><span class="st"> </span>p<span class="op">$</span>b]</code></pre></div>
 <p><strong>Hint:</strong> The command makes use of many of the functionalities of data.table. When calling <code>sim[param1, param2 ,by=param3]</code>, param1 subset the table, param2 execute a commmand and using <code>:=</code> assigns a new column. Finally param3 allows us to run the param2 within each values of <code>param3</code>, i.e. it <code>group</code>s the command. Within each we then use the variable <code>.N</code> which gives the size of the sub-group within <code>param3</code>, which allows us to draw exactly the right number of iid noises!</p>
 <div id="testing-your-simulation-code" class="section level3">
 <h3>Testing your simulation code</h3>
@@ -448,37 +479,37 @@ sim[y==0, wage := p$b]</code></pre>
 <div id="firm-fix-effects" class="section level3">
 <h3>Firm fix effects</h3>
 <p>TO estimate AKM we start by focusing on movers and we want to build the firms fix-effects. We are going to estimate it by OLS. We want to create a matrix of dummies for each firm and focus on movers only. Firm select the set of workers that are movers (they need to show up in at least 2 different firms ids). Make this selection using the data.table methods. It should look like:</p>
-<pre class="r"><code>movers_id = sim[y&gt;0,list(N = &lt;somthing that computes the number of firms&gt;),by=i][N&gt;=2,i]  # a mover is a worker with more than 2 firms in his history
-msim = sim[y&gt;0][i %in% movers_id]</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">movers_id =<span class="st"> </span>sim[y<span class="op">&gt;</span><span class="dv">0</span>,<span class="kw">list</span>(<span class="dt">N =</span> <span class="op">&lt;</span>somthing that computes the number of firms<span class="op">&gt;</span>),by=i][N<span class="op">&gt;=</span><span class="dv">2</span>,i]  <span class="co"># a mover is a worker with more than 2 firms in his history</span>
+msim =<span class="st"> </span>sim[y<span class="op">&gt;</span><span class="dv">0</span>][i <span class="op">%in%</span><span class="st"> </span>movers_id]</code></pre></div>
 <p>We then create our matrix of regressors with each firm dummies. We want to use sparse matrices for that. Construct a sparse matrix of zeros using the <code>SparseM</code> package. You need to run through your <code>msim</code> table and put ones in the correct columns for each line, and take the wage for the dependent. Once the matrix of regressors and the dependent are constructed, use <code>slm.fit</code> to run a sparse OLS. You now have your firm fixed effects.</p>
 <p>Finally, reattach the fixed effect to the data using the firm id. Call that column <code>psi</code>. <strong>Hint</strong> be carefull to correclty match the estimated fixed-effect to the correct firm in <code>sim</code>. This merge can be tricky, because you need to keep track of the <code>fid</code> in the order you put them in the matrix.</p>
 </div>
 <div id="worker-fixed-effects" class="section level3">
 <h3>Worker fixed effects</h3>
 <p>We can now recover the worker fix effect by differencing and attaching it to our simulated sample.</p>
-<pre class="r"><code>asim = sim[y&gt;0,list(alpha = mean(wage - psi)),i]
-setkey(asim,i)
-setkey(sim,i)
-sim[,alpha := asim[sim,alpha]]</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">asim =<span class="st"> </span>sim[y<span class="op">&gt;</span><span class="dv">0</span>,<span class="kw">list</span>(<span class="dt">alpha =</span> <span class="kw">mean</span>(wage <span class="op">-</span><span class="st"> </span>psi)),i]
+<span class="kw">setkey</span>(asim,i)
+<span class="kw">setkey</span>(sim,i)
+sim[,alpha <span class="op">:</span><span class="er">=</span><span class="st"> </span>asim[sim,alpha]]</code></pre></div>
 <p><strong>Question 4</strong>: Implement a function that takes your simulated data as input, then extracts both worker and firm fixed effects as suggested and finally reattaces these fixed effects to each row of the simulated data.</p>
 </div>
 </div>
 <div id="variance-analysis" class="section level2">
 <h2>Variance analysis</h2>
 <p>We are at the end of our work! We now want to check the estimated sorting from AKM and compare it to the true decomposition. To get the variance decomposition of AKM we compute the following:</p>
-<pre class="r"><code>fit_akm = lm(wage ~ alpha + psi,sim)
-sim$res = residuals(fit)
-pred = predict(fit_akm,type = &quot;terms&quot;)
-sim$k_hat = pred[,1]
-sim$l_hat = pred[,2]
-vardec_akm = sim[,cov(data.frame(wage,k_hat,l_hat,res))$cov]</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit_akm =<span class="st"> </span><span class="kw">lm</span>(wage <span class="op">~</span><span class="st"> </span>alpha <span class="op">+</span><span class="st"> </span>psi,sim)
+sim<span class="op">$</span>res =<span class="st"> </span><span class="kw">residuals</span>(fit)
+pred =<span class="st"> </span><span class="kw">predict</span>(fit_akm,<span class="dt">type =</span> <span class="st">&quot;terms&quot;</span>)
+sim<span class="op">$</span>k_hat =<span class="st"> </span>pred[,<span class="dv">1</span>]
+sim<span class="op">$</span>l_hat =<span class="st"> </span>pred[,<span class="dv">2</span>]
+vardec_akm =<span class="st"> </span>sim[,<span class="kw">cov</span>(<span class="kw">data.frame</span>(wage,k_hat,l_hat,res))<span class="op">$</span>cov]</code></pre></div>
 <p>To get the best linear projection we do the folliwing:</p>
-<pre class="r"><code>fit = lm(wage ~ factor(x) + factor(y),sim)
-sim$res = residuals(fit)
-pred = predict(fit,type = &quot;terms&quot;)
-sim$k_hat = pred[,1]
-sim$l_hat = pred[,2]
-vardec_best = sim[,cov.wt( data.frame(y_imp,k_hat,l_hat,res))$cov]</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit =<span class="st"> </span><span class="kw">lm</span>(wage <span class="op">~</span><span class="st"> </span><span class="kw">factor</span>(x) <span class="op">+</span><span class="st"> </span><span class="kw">factor</span>(y),sim)
+sim<span class="op">$</span>res =<span class="st"> </span><span class="kw">residuals</span>(fit)
+pred =<span class="st"> </span><span class="kw">predict</span>(fit,<span class="dt">type =</span> <span class="st">&quot;terms&quot;</span>)
+sim<span class="op">$</span>k_hat =<span class="st"> </span>pred[,<span class="dv">1</span>]
+sim<span class="op">$</span>l_hat =<span class="st"> </span>pred[,<span class="dv">2</span>]
+vardec_best =<span class="st"> </span>sim[,<span class="kw">cov.wt</span>( <span class="kw">data.frame</span>(y_imp,k_hat,l_hat,res))<span class="op">$</span>cov]</code></pre></div>
 <p><strong>Question 5</strong>: Now we want to compare the best decomposition to the akm decomposition under values of <span class="math inline">\(\rho\)</span> in the production function that spans positive to negative sorting. Ideally we want to compare these under different firm sizes, to measure the incendital parameter bias. The ideal answer her would show that we few movers the correlation can be strongly negatively correlated, however in the case of PAM, with enough data, AKM should not be doing so badly!</p>
 </div>
 </div>
