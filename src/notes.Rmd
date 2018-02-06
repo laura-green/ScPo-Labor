@@ -24,7 +24,7 @@ output:
     
 ### Additional Material:
 
-  - Children and Gender Inequality slides(coming) and [paper  <i class="fa fa-external-link" aria-hidden="true"></i>](http://econ.lse.ac.uk/staff/clandais/cgi-bin/Articles/Gender.pdf)
+  - Children and Gender Inequality [slides <i class="fa fa-download" aria-hidden="true"></i> ](pdf/child-penalty.pdf) and [paper  <i class="fa fa-external-link" aria-hidden="true"></i>](http://econ.lse.ac.uk/staff/clandais/cgi-bin/Articles/Gender.pdf)
 
 
 <hr>
