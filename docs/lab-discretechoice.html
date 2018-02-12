@@ -378,7 +378,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Lab on Discrete Choice</h1>
-<h4 class="date"><em>05 February, 2018</em></h4>
+<h4 class="date"><em>12 February, 2018</em></h4>
 
 </div>
 
@@ -405,8 +405,9 @@ div.tocify {
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(mlogit)
 <span class="kw">library</span>(kableExtra)</code></pre></div>
 <pre><code>## Warning: package &#39;kableExtra&#39; was built under R version 3.4.3</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(knitr)
-<span class="kw">library</span>(foreach)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(knitr)</code></pre></div>
+<pre><code>## Warning: package &#39;knitr&#39; was built under R version 3.4.3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(foreach)</code></pre></div>
 <pre><code>## Warning: package &#39;foreach&#39; was built under R version 3.4.3</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(<span class="st">&quot;TravelMode&quot;</span>)
 data =<span class="st"> </span>TravelMode
@@ -695,9 +696,9 @@ liks =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</s
 ## 
 ## Coefficients:
 ##   air:(intercept)  train:(intercept)    bus:(intercept)  
-##          1.408603          -1.318121          -2.441394  
+##          -5.60317            4.40535            2.47750  
 ##             gcost  
-##          0.029957</code></pre>
+##          -0.15707</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(fit2)</code></pre></div>
 <pre><code>## 
 ## Call:
@@ -705,11 +706,11 @@ liks =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</s
 ## 
 ## Coefficients:
 ##   air:(intercept)  train:(intercept)    bus:(intercept)  
-##          -5.71832            4.63235            2.69805  
+##          1.524908          -1.429120          -2.443268  
 ##             gcost  
-##          -0.16753</code></pre>
+##          0.031654</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(p1)</code></pre></div>
-<pre><code>## [1] 0.3667511</code></pre>
+<pre><code>## [1] 0.6433592</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(liks)</code></pre></div>
 <p><img src="lab-discretechoice_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>

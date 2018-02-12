@@ -1,3 +1,5 @@
 blockquote {
   font-style: italic
 }
+
+@text-color: @black-50;

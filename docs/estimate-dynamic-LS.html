@@ -378,7 +378,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Homework on estimating dynamic discrete choice models</h1>
-<h4 class="date"><em>05 February, 2018</em></h4>
+<h4 class="date"><em>12 February, 2018</em></h4>
 
 </div>
 
@@ -410,21 +410,38 @@ L(\beta,\pi,F_{\epsilon};x_{it},w_{it}) = \Pi_{i=1}^N \Pi_{t=1}^T \Pr[d_{it}=1|\
 <div id="simulating-a-data-set" class="section level1">
 <h1>Simulating a data set</h1>
 <p>We start out with a simulated data set that we will use in estimation.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># true parameters</span>
+p =<span class="st"> </span><span class="kw">list</span>()
+p<span class="op">$</span>beta1 =<span class="st"> </span><span class="fl">2.5</span>
+p<span class="op">$</span>beta2 =<span class="st"> </span><span class="fl">0.5</span>
+p<span class="op">$</span>pi =<span class="st"> </span><span class="fl">1.5</span>
+p<span class="op">$</span>gamma =<span class="st"> </span><span class="fl">0.6</span>
+p<span class="op">$</span>N =<span class="st"> </span><span class="dv">100</span>
+p<span class="op">$</span>T =<span class="st"> </span><span class="dv">60</span>  <span class="co"># final year of observation</span>
+
+get.data &lt;-<span class="st"> </span><span class="cf">function</span>(p){
+  d =<span class="st"> </span><span class="kw">data.table</span>(<span class="kw">expand.grid</span>(<span class="dt">id =</span> <span class="dv">1</span><span class="op">:</span>p<span class="op">$</span>N,<span class="dt">it=</span><span class="dv">1</span><span class="op">:</span>p<span class="op">$</span>T))
+  d[,n <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>),<span class="dt">size=</span><span class="dv">1</span>), by=id]
+  d[,x1 <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n=</span><span class="kw">nrow</span>(d))]
+  d[,x2 <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n=</span><span class="kw">nrow</span>(d))]
+  d[,w <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="kw">nrow</span>(d),<span class="dt">mean=</span><span class="dv">3</span>)]
+  d[,eps <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">mean=</span><span class="dv">0</span>,<span class="dt">sd=</span><span class="dv">1</span>,<span class="dt">n=</span><span class="kw">nrow</span>(d))]
+  d[,v<span class="op">:</span><span class="er">=</span><span class="st"> </span>w <span class="op">-</span><span class="st"> </span>p<span class="op">$</span>pi<span class="op">*</span>n <span class="op">-</span><span class="st"> </span>p<span class="op">$</span>beta1<span class="op">*</span>x1<span class="op">-</span><span class="st"> </span>p<span class="op">$</span>beta2<span class="op">*</span>x2]
+  d[,work <span class="op">:</span><span class="er">=</span><span class="st"> </span>eps <span class="op">&lt;</span><span class="st"> </span>v]
+}
+d &lt;-<span class="st"> </span><span class="kw">get.data</span>(p)
+d</code></pre></div>
 <div id="r-golfing" class="section level2">
 <h2>R-golfing</h2>
-<p>write a one-liner that computes the means of x,w,eps,v and work from this data.table. count how many characters you had to type with <code>nchar(&quot;YOUR_CODE_IN_QUOTES_LIKE_THIS&quot;)</code>. I have 32.</p>
+<p><span class="btn btn-primary btn-xs">Question 1.</span> Write a one-liner that computes the means of x,w,eps,v and work from this data.table. count how many characters you had to type with <code>nchar(&quot;YOUR_CODE_IN_QUOTES_LIKE_THIS&quot;)</code>. I have 32.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nchar</span>(<span class="st">&quot;d[,lapply(.SD,mean),.SDcols=4:9]&quot;</span>)</code></pre></div>
 <pre><code>## [1] 32</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">d[,<span class="kw">lapply</span>(.SD,mean),.SDcols=<span class="dv">4</span><span class="op">:</span><span class="dv">9</span>]</code></pre></div>
-<pre><code>##              x1          x2        w          eps        v      work
-## 1: 0.0007647946 -0.01694104 2.985013 0.0006751938 1.671571 0.6988333</code></pre>
-<ol style="list-style-type: decimal">
-<li>Why is the mean of w not 2?</li>
-</ol>
+<pre><code>##             x1         x2        w        eps        v      work
+## 1: -0.01232312 0.01121875 3.014307 0.01091621 1.374506 0.6716667</code></pre>
 <div id="estimating-a-static-model" class="section level3">
 <h3>Estimating a static model</h3>
-<p>What does the likelihood function above remind you of?</p>
-<p>Sometimes people use a linear probability model to approximate a probit model. Which parameters can we recover using an LPM here? How well does it predict the average probability of work? Give the quartiles of the probabilities.</p>
+<p><span class="btn btn-primary btn-xs">Question 2.</span> What does the likelihood function above remind you of? Sometimes people use a linear probability model to approximate a probit model. Which parameters can we recover using an LPM here? How well does it predict the average probability of work? Give the quartiles of the predicted probabilities. Then do the same exercise with a probit model.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lmod =<span class="st"> </span><span class="kw">lm</span>(work <span class="op">~</span>w<span class="op">+</span><span class="st"> </span>x1 <span class="op">+</span><span class="st"> </span>x2 <span class="op">+</span><span class="st"> </span><span class="op">+</span>n,d)
 d[,lpm <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">predict</span>(lmod,d) ]
 <span class="kw">summary</span>(lmod)</code></pre></div>
@@ -434,34 +451,34 @@ d[,lpm <span class="op">:</span><span class="er">=</span><span class="st"> </spa
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -0.82049 -0.26127  0.03024  0.25985  0.88123 
+## -0.96368 -0.26027  0.03527  0.26330  0.77246 
 ## 
 ## Coefficients:
 ##              Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)  0.535771   0.013602   39.39   &lt;2e-16 ***
-## w            0.104650   0.004074   25.68   &lt;2e-16 ***
-## x1          -0.269121   0.004059  -66.30   &lt;2e-16 ***
-## x2          -0.052805   0.004156  -12.71   &lt;2e-16 ***
-## n           -0.170462   0.005049  -33.76   &lt;2e-16 ***
+## (Intercept)  0.515914   0.014447   35.71   &lt;2e-16 ***
+## w            0.116259   0.004160   27.95   &lt;2e-16 ***
+## x1          -0.288721   0.004097  -70.47   &lt;2e-16 ***
+## x2          -0.057744   0.004084  -14.14   &lt;2e-16 ***
+## n           -0.178016   0.005430  -32.78   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 0.319 on 5995 degrees of freedom
-## Multiple R-squared:  0.5169, Adjusted R-squared:  0.5166 
-## F-statistic:  1604 on 4 and 5995 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Residual standard error: 0.3197 on 5995 degrees of freedom
+## Multiple R-squared:  0.537,  Adjusted R-squared:  0.5367 
+## F-statistic:  1738 on 4 and 5995 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">d[,<span class="kw">list</span>(<span class="kw">mean</span>(work),<span class="kw">mean</span>(lpm))]</code></pre></div>
 <pre><code>##           V1        V2
-## 1: 0.6988333 0.6988333</code></pre>
+## 1: 0.6716667 0.6716667</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">d[,<span class="kw">quantile</span>(lpm)]</code></pre></div>
 <pre><code>##         0%        25%        50%        75%       100% 
-## -0.4809521  0.4709066  0.6956971  0.9283431  1.7789788</code></pre>
+## -0.5214223  0.4462975  0.6726189  0.9016737  1.9636840</code></pre>
 <p>What about a probit model?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gmod =<span class="st"> </span><span class="kw">glm</span>(work <span class="op">~</span><span class="st"> </span>w<span class="op">+</span><span class="st"> </span>x1 <span class="op">+</span><span class="st"> </span>x2 <span class="op">+</span>n,<span class="dt">family =</span><span class="kw">binomial</span>(<span class="dt">link=</span><span class="st">&quot;probit&quot;</span>),d)</code></pre></div>
 <pre><code>## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">d[,glm <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">predict</span>(gmod,d,<span class="dt">type=</span><span class="st">&quot;response&quot;</span>)]
 d[,<span class="kw">list</span>(<span class="kw">mean</span>(work),<span class="kw">mean</span>(lpm),<span class="kw">mean</span>(glm))]</code></pre></div>
 <pre><code>##           V1        V2        V3
-## 1: 0.6988333 0.6988333 0.6996377</code></pre>
+## 1: 0.6716667 0.6716667 0.6709557</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(gmod)</code></pre></div>
 <pre><code>## 
 ## Call:
@@ -470,23 +487,23 @@ d[,<span class="kw">list</span>(<span class="kw">mean</span>(work),<span class="
 ## 
 ## Deviance Residuals: 
 ##     Min       1Q   Median       3Q      Max  
-## -3.5163  -0.0451   0.0057   0.2179   3.9955  
+## -3.4144  -0.0585   0.0048   0.2193   3.2301  
 ## 
 ## Coefficients:
-##             Estimate Std. Error z value Pr(&gt;|z|)    
-## (Intercept) -0.02375    0.09342  -0.254    0.799    
-## w            0.96363    0.03845  25.060   &lt;2e-16 ***
-## x1          -2.38816    0.06854 -34.843   &lt;2e-16 ***
-## x2          -0.47243    0.03076 -15.361   &lt;2e-16 ***
-## n           -1.39857    0.04818 -29.026   &lt;2e-16 ***
+##              Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept) -0.007408   0.098915  -0.075     0.94    
+## w            1.045377   0.039597  26.400   &lt;2e-16 ***
+## x1          -2.534355   0.071668 -35.362   &lt;2e-16 ***
+## x2          -0.480830   0.030673 -15.676   &lt;2e-16 ***
+## n           -1.603516   0.056498 -28.382   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## (Dispersion parameter for binomial family taken to be 1)
 ## 
-##     Null deviance: 7342.2  on 5999  degrees of freedom
-## Residual deviance: 2461.6  on 5995  degrees of freedom
-## AIC: 2471.6
+##     Null deviance: 7595.9  on 5999  degrees of freedom
+## Residual deviance: 2439.2  on 5995  degrees of freedom
+## AIC: 2449.2
 ## 
 ## Number of Fisher Scoring iterations: 8</code></pre>
 <p>Let’s make the wage a bit more realistic. Suppose we knew completed years of education, and we had a variable <span class="math inline">\(z\)</span> capturing <em>potential experience</em> (age - educ - 6), which determines the wage, and <span class="math inline">\(\eta\)</span> a random error:</p>
@@ -512,14 +529,14 @@ w_{it} = \gamma z_{it} + \eta_{it}
 v_{it}(x_{it},z_{it},n_{it},\epsilon_{it},\eta_{it}) &amp; = \gamma z_{it} - \pi n_{it} -x_{it}\beta + \eta_{it} - \epsilon_{it} \\
 &amp; = \xi_{it}^*(\Omega_{it}) + \xi_{it}
 \end{align}
-\]</span> where <span class="math inline">\(\xi = \eta-\epsilon\)</span> is your new composite iid error, and $_{it}^*(<em>{it}) = z</em>{it} - n_{it} -x_{it}$ Clearly <span class="math inline">\(\Pr[d_{it}=0|\Omega{it}] = 1- \Pr[d_{it}=1|\Omega{it}]\)</span>, and so the likelihood for a random sample of <span class="math inline">\(N\)</span> females observed for <span class="math inline">\(T\)</span> periods is</p>
+\]</span> where <span class="math inline">\(\xi = \eta-\epsilon\)</span> is your new composite iid error, and <span class="math inline">\(\xi_{it}^*(\Omega_{it}) = \gamma z_{it} - \pi n_{it} -x_{it}\beta\)</span>. Clearly <span class="math inline">\(\Pr[d_{it}=0|\Omega{it}] = 1- \Pr[d_{it}=1|\Omega{it}]\)</span>, and so the likelihood for a random sample of <span class="math inline">\(N\)</span> females observed for <span class="math inline">\(T\)</span> periods is</p>
 <p><span class="math display">\[
 L(\beta,\pi,F_{\epsilon};x_{it},w_{it}) = \Pi_{i=1}^N \Pi_{t=1}^T \Pr[d_{it}=1,w_{it}|\Omega{it}]^{d_{it}} \Pr[d_{it}=0|\Omega{it}]^{1-d_{it}}
 \]</span> where again we have</p>
 <p><span class="math display">\[
 \Pr[d_{it}=1,w_{it}|\Omega{it}] = \Pr[d_{it}=1,\eta_{it} = w_{it} - \gamma z_{it}]
 \]</span></p>
-<p><span class="label label-success">Question 7</span> Report the true values, the non biased corrected and the bias corrected.</p>
+<p>Notice that the likelihood now is the likelihood of observing work, <span class="math inline">\(d_{it}=1\)</span>, and a certain wage <span class="math inline">\(w_{it}\)</span>. <span class="label label-success">Question 7</span> Report the true values, the non biased corrected and the bias corrected.</p>
 </div>
 </div>
 </div>

@@ -321,12 +321,10 @@ simdata[, c  <span class="op">:</span><span class="er">=</span><span class="st">
 simdata[, u1 <span class="op">:</span><span class="er">=</span><span class="st"> </span>c<span class="op">^</span>(<span class="dv">1</span><span class="op">+</span>p<span class="op">$</span>eta)<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>p<span class="op">$</span>eta) <span class="op">-</span><span class="st"> </span>p<span class="op">$</span>beta <span class="op">*</span><span class="st"> </span>h<span class="op">^</span>(<span class="dv">1</span><span class="op">+</span>p<span class="op">$</span>gamma)<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>p<span class="op">$</span>gamma) ];</code></pre></div>
 <p>At this point we can regress <span class="math inline">\(\log(w)\)</span> on <span class="math inline">\(\log(c)\)</span> and <span class="math inline">\(\log(h)\)</span> and find precisely the parameters of labor supply:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pander</span>(<span class="kw">summary</span>(simdata[,<span class="kw">lm</span>(lw <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(c) <span class="op">+</span><span class="st"> </span><span class="kw">log</span>(h))]))</code></pre></div>
-<pre><code>## Warning in summary.lm(simdata[, lm(lw ~ log(c) + log(h))]): essentially
-## perfect fit: summary may be unreliable</code></pre>
-<table style="width:94%;">
+<table style="width:93%;">
 <colgroup>
 <col width="25%" />
-<col width="18%" />
+<col width="16%" />
 <col width="18%" />
 <col width="16%" />
 <col width="16%" />
@@ -343,23 +341,23 @@ simdata[, u1 <span class="op">:</span><span class="er">=</span><span class="st">
 <tbody>
 <tr class="odd">
 <td align="center"><strong>(Intercept)</strong></td>
-<td align="center">-4.494e-16</td>
-<td align="center">9.757e-17</td>
-<td align="center">-4.606</td>
-<td align="center">4.646e-06</td>
+<td align="center">6.741e-16</td>
+<td align="center">1.587e-16</td>
+<td align="center">4.248</td>
+<td align="center">2.363e-05</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>log(c)</strong></td>
 <td align="center">1.5</td>
-<td align="center">4.936e-17</td>
-<td align="center">3.039e+16</td>
+<td align="center">7.767e-17</td>
+<td align="center">1.931e+16</td>
 <td align="center">0</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>log(h)</strong></td>
 <td align="center">0.8</td>
-<td align="center">1.154e-16</td>
-<td align="center">6.933e+15</td>
+<td align="center">1.876e-16</td>
+<td align="center">4.264e+15</td>
 <td align="center">0</td>
 </tr>
 </tbody>
@@ -383,7 +381,7 @@ simdata[, u1 <span class="op">:</span><span class="er">=</span><span class="st">
 <tbody>
 <tr class="odd">
 <td align="center">1000</td>
-<td align="center">8.644e-16</td>
+<td align="center">1.482e-15</td>
 <td align="center">1</td>
 <td align="center">1</td>
 </tr>
@@ -399,10 +397,12 @@ simdata[,p1<span class="op">:</span><span class="er">=</span>u1<span class="op">
 <p><img src="static-labor-supply_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>The regression still works, among ecah individual who chooses to work, the FOC is still satified.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pander</span>(<span class="kw">summary</span>(simdata[p1<span class="op">==</span><span class="ot">TRUE</span>,<span class="kw">lm</span>(lw <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(c) <span class="op">+</span><span class="st"> </span><span class="kw">log</span>(h))]))</code></pre></div>
-<table style="width:94%;">
+<pre><code>## Warning in summary.lm(simdata[p1 == TRUE, lm(lw ~ log(c) + log(h))]):
+## essentially perfect fit: summary may be unreliable</code></pre>
+<table style="width:92%;">
 <colgroup>
 <col width="25%" />
-<col width="18%" />
+<col width="15%" />
 <col width="18%" />
 <col width="16%" />
 <col width="16%" />
@@ -419,23 +419,23 @@ simdata[,p1<span class="op">:</span><span class="er">=</span>u1<span class="op">
 <tbody>
 <tr class="odd">
 <td align="center"><strong>(Intercept)</strong></td>
-<td align="center">-1.137e-15</td>
-<td align="center">2.419e-16</td>
-<td align="center">-4.7</td>
-<td align="center">3.067e-06</td>
+<td align="center">8.91e-16</td>
+<td align="center">1.168e-16</td>
+<td align="center">7.627</td>
+<td align="center">7.035e-14</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>log(c)</strong></td>
 <td align="center">1.5</td>
-<td align="center">1.05e-16</td>
-<td align="center">1.429e+16</td>
+<td align="center">4.726e-17</td>
+<td align="center">3.174e+16</td>
 <td align="center">0</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>log(h)</strong></td>
 <td align="center">0.8</td>
-<td align="center">3.526e-16</td>
-<td align="center">2.269e+15</td>
+<td align="center">1.742e-16</td>
+<td align="center">4.592e+15</td>
 <td align="center">0</td>
 </tr>
 </tbody>
@@ -458,8 +458,8 @@ simdata[,p1<span class="op">:</span><span class="er">=</span>u1<span class="op">
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center">791</td>
-<td align="center">1.425e-15</td>
+<td align="center">779</td>
+<td align="center">7.071e-16</td>
 <td align="center">1</td>
 <td align="center">1</td>
 </tr>
@@ -468,7 +468,7 @@ simdata[,p1<span class="op">:</span><span class="er">=</span>u1<span class="op">
 </div>
 <div id="heterogeneity-in-beta" class="section level2">
 <h2>Heterogeneity in <span class="math inline">\(\beta\)</span></h2>
-<p>Finally we want to add heterogeneity in the <span class="math inline">\(\beta\)</span> parameter.</p>
+<p>Finally we want to add heterogeneity in the <span class="math inline">\(\beta\)</span> parameter. I am not sure why <code>:=</code> renders in a weird way below, anyway it’s just a colon next to an equal sign:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">simdata[,betai <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">exp</span>(<span class="fl">0.5</span><span class="op">*</span>X<span class="op">+</span><span class="kw">rnorm</span>(N)<span class="op">*</span><span class="fl">0.1</span>)]
 simdata[, h <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">pmax</span>(<span class="op">-</span>mu<span class="op">+</span>tx<span class="op">$</span>r <span class="op">+</span><span class="st"> </span>p<span class="op">$</span>beta0 ,<span class="dv">0</span>)<span class="op">/</span><span class="kw">exp</span>(lw)<span class="op">+</span><span class="dv">1</span>]
 <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">30</span>) {
@@ -510,24 +510,24 @@ sfit =<span class="st"> </span><span class="kw">summary</span>(simdata[p1<span c
 <tbody>
 <tr class="odd">
 <td align="center"><strong>(Intercept)</strong></td>
-<td align="center">-0.5434</td>
-<td align="center">0.01562</td>
-<td align="center">-34.79</td>
-<td align="center">5.734e-167</td>
+<td align="center">-0.5415</td>
+<td align="center">0.01492</td>
+<td align="center">-36.3</td>
+<td align="center">1.222e-176</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>log(c)</strong></td>
-<td align="center">2.095</td>
-<td align="center">0.02361</td>
-<td align="center">88.74</td>
+<td align="center">2.141</td>
+<td align="center">0.02306</td>
+<td align="center">92.85</td>
 <td align="center">0</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>log(h)</strong></td>
-<td align="center">0.2942</td>
-<td align="center">0.03142</td>
-<td align="center">9.364</td>
-<td align="center">6.354e-20</td>
+<td align="center">0.3146</td>
+<td align="center">0.03059</td>
+<td align="center">10.28</td>
+<td align="center">1.689e-23</td>
 </tr>
 </tbody>
 </table>
@@ -549,10 +549,10 @@ sfit =<span class="st"> </span><span class="kw">summary</span>(simdata[p1<span c
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center">874</td>
-<td align="center">0.1564</td>
-<td align="center">0.9626</td>
-<td align="center">0.9626</td>
+<td align="center">877</td>
+<td align="center">0.1586</td>
+<td align="center">0.9682</td>
+<td align="center">0.9681</td>
 </tr>
 </tbody>
 </table>
@@ -564,12 +564,18 @@ sfit =<span class="st"> </span><span class="kw">summary</span>(simdata[p1<span c
 </div>
 <div id="repeated-cross-section-version" class="section level1">
 <h1>Repeated cross-section version</h1>
-<p>In this section we want to get closer to the Blundell, Duncan and Meghir (1998) exercice. We first modify the cost to allow for an increase return to X, and for the presence of a change in the tax rate. Simulate wages according to:</p>
+<p>In this section we want to get closer to the Blundell, Duncan and Meghir (1998) exercice. Please <em>drop the heterogeneous</em> <span class="math inline">\(\beta\)</span> assumption for the rest of the exercise. We first modify the cost to allow for an increase return to X, and for the presence of a change in the tax rate. Simulate wages according to:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  simdata[,lw <span class="op">:</span><span class="er">=</span><span class="st"> </span>lb<span class="op">*</span>X <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(N)<span class="op">*</span><span class="fl">0.2</span>];      <span class="co"># add a wage which depends on X</span></code></pre></div>
 <p>Write a function that can simulate a full cross section and that takes <code>lb</code> as inpute as well as marginal tax rate <span class="math inline">\(\rho\)</span>. It should apply the same function as before to solve for the interior solution, but use the after-tax wage every where.</p>
-<p><span class="badge badge-success">Question 3.</span> simulate two cross-sections with <span class="math inline">\((lb=1,\rho=1)\)</span> and <span class="math inline">\((lb=1.5,\rho=0.8)\)</span> and use 10k indivduals. Simulate data without participation decision for now. Combine the data and show that previous regression provides biased estimates. Then slice X into K categories (for example using quantiles). Then compute <span class="math inline">\(\log(w)\)</span>, <span class="math inline">\(\log(c)\)</span> and <span class="math inline">\(\log(h)\)</span> within each group and time period. Run the regression in first differences and show that this recovers the structural parameters.</p>
+<p><span class="badge badge-success">Question 3.</span> simulate two cross-sections with <span class="math inline">\((lb=1,\rho=1)\)</span> and <span class="math inline">\((lb=1.5,\rho=0.8)\)</span> and use 10k indivduals.</p>
+<ol style="list-style-type: decimal">
+<li>Simulate data without participation decision for now.</li>
+<li>Combine the data and show that previous regression provides biased estimates. <strong>Combine</strong> literally means to stack the two resulting cross-sections on top of each other and treat them as different time perios.</li>
+<li>Then slice X into K categories (for example using quantiles).</li>
+<li>Then compute <span class="math inline">\(\log(w)\)</span>, <span class="math inline">\(\log(c)\)</span> and <span class="math inline">\(\log(h)\)</span> within each group and time period. Run the regression in first differences and show that this recovers the structural parameters.</li>
+</ol>
 <p><span class="badge badge-success">Question 4.</span> Add the participation decision to the data generating process. Show that the results are now biased.</p>
-<p><span class="badge badge-success">Question 5.</span> Extend the model to add an excluded variable that affects participation through <span class="math inline">\(\mu\)</span> but not the wage (keep X everywhere). Devise a way improve the estimates by controling for participation.</p>
+<p><span class="badge badge-success">Question 5.</span> Extend the model of the previous question 4. to add an excluded variable that affects participation through <span class="math inline">\(\mu\)</span> but not the wage (keep X everywhere). Devise a way improve the estimates by controling for participation.</p>
 </div>
 
 <!--<a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a> -->
